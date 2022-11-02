@@ -1,0 +1,87 @@
+---
+import Container from "@components/container.astro";
+import Dropdown from "./dropdown.astro";
+
+const menuitems = [
+  {
+    title: "Features",
+    path: "#",
+    children: [
+      { title: "Action", path: "#" },
+      { title: "Another action", path: "#" },
+      { title: "Dropdown Submenu", path: "#" },
+    ],
+  },
+  {
+    title: "Pricing",
+    path: "/pricing",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+  {
+    title: "Blog",
+    path: "/blog",
+  },
+  {
+    title: "Resources",
+    path: "#",
+    children: [
+      { title: "Action", path: "#" },
+      { title: "Another action", path: "#" },
+      { title: "Dropdown Submenu", path: "#" },
+    ],
+  },
+];
+---
+
+<Container>
+  <header
+    class="flex justify-between my-5"
+    x-data="{ open: false }"
+    x-init="$watch('open', value => console.log(value))">
+    <div>Astroship</div>
+    <nav
+      class="lg:block"
+      :class="{ 'block': open, 'hidden': !open }"
+      x-show.transition="true">
+      <ul class="flex flex-col lg:flex-row gap-3">
+        {
+          menuitems.map((item) => (
+            <li>
+              {item.children && (
+                <Dropdown title={item.title} children={item.children} />
+              )}
+              {!item.children && <a href={item.path}>{item.title}</a>}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div>
+      <div class="block lg:hidden">
+        <button @click="open = !open" class="text-gray-800">
+          <svg
+            fill="currentColor"
+            class="w-4 h-4"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <title>Menu</title>
+            <path
+              x-show="open"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"
+            ></path>
+            <path
+              x-show="!open"
+              fill-rule="evenodd"
+              d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"
+            ></path>
+          </svg>
+        </button>
+      </div> login
+    </div>
+  </header>
+</Container>
