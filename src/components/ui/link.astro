@@ -1,0 +1,31 @@
+---
+const {
+  href,
+  size = "lg",
+  style = "primary",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const sizes = {
+  lg: "px-5 py-2.5",
+};
+
+const styles = {
+  outline: "border-2 border-black hover:bg-black text-black hover:text-white",
+  primary:
+    "bg-black text-white hover:bg-slate-900  border-2 border-transparent",
+};
+---
+
+<a
+  href={href}
+  {...rest}
+  class:list={[
+    "  rounded  transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    sizes[size],
+    styles[style],
+    className,
+  ]}
+  ><slot />
+</a>

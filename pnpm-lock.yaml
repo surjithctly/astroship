@@ -2,7 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/alpinejs': ^0.1.2
+  '@astrojs/image': ^0.11.0
   '@astrojs/tailwind': ^2.1.1
+  '@fontsource/inter': ^4.5.14
   '@types/alpinejs': ^3.0.0
   alpinejs: ^3.0.0
   astro: ^1.6.0
@@ -10,13 +12,19 @@ specifiers:
 
 dependencies:
   '@astrojs/alpinejs': 0.1.2_epas4sveda2fzipjieohqzpxgq
+  '@astrojs/image': 0.11.0
   '@astrojs/tailwind': 2.1.1_tailwindcss@3.2.1
+  '@fontsource/inter': 4.5.14
   '@types/alpinejs': 3.7.1
   alpinejs: 3.10.5
   astro: 1.6.2
   tailwindcss: 3.2.1
 
 packages:
+
+  /@altano/tiny-async-pool/1.0.2:
+    resolution: {integrity: sha512-qQzaI0TBUPdpjZ3qo5b2ziQY9MSNpbziH2ZrE5lvtUZL+kn9GwVuVJwoOubaoNkeDB+rqEefnpu1k+oMpOCYiw==}
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -42,6 +50,23 @@ packages:
 
   /@astrojs/compiler/0.29.8:
     resolution: {integrity: sha512-D4qKnSQcOF32LgskeGnzq35N30yrITgrSaQrt/EIPU6ItcgcUr/K1BG07JCZdc+4mbfWF6RFQc7yPP9pS8Sg8w==}
+    dev: false
+
+  /@astrojs/image/0.11.0:
+    resolution: {integrity: sha512-cWmqig0t4ndb+4v4YwuKJObpU9zWOVsNdEmvoEPPJUgtrrJzaxJYSRBe+pbvjP0xe+cQIk6fOKAq5lchK8VBzQ==}
+    peerDependencies:
+      sharp: '>=0.31.0'
+    peerDependenciesMeta:
+      sharp:
+        optional: true
+    dependencies:
+      '@altano/tiny-async-pool': 1.0.2
+      http-cache-semantics: 4.1.0
+      image-size: 1.0.2
+      kleur: 4.1.5
+      magic-string: 0.25.9
+      mime: 3.0.0
+      slash: 4.0.0
     dev: false
 
   /@astrojs/language-server/0.26.2:
@@ -419,6 +444,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource/inter/4.5.14:
+    resolution: {integrity: sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==}
+    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -1980,6 +2009,10 @@ packages:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
     dev: false
 
+  /http-cache-semantics/4.1.0:
+    resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
+    dev: false
+
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
@@ -1987,6 +2020,14 @@ packages:
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+    dev: false
+
+  /image-size/1.0.2:
+    resolution: {integrity: sha512-xfOoWjceHntRb3qFCrh5ZFORYH8XCdYpASltMhZ/Q0KZiOwjdE/Yl2QCiWdwD+lygV5bMCvauzgu5PxBX/Yerg==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      queue: 6.0.2
     dev: false
 
   /import-meta-resolve/2.1.0:
@@ -3038,6 +3079,12 @@ packages:
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+    dev: false
+
+  /queue/6.0.2:
+    resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
+    dependencies:
+      inherits: 2.0.4
     dev: false
 
   /quick-lru/5.1.1:

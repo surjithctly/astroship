@@ -1,49 +1,94 @@
-# Welcome to [Astro](https://astro.build)
+# Astroship Starter Template 🛸
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+Astroship is a starter template for startups, marketing websites & landing pages. Built with Astro, TailwindCSS & Alpine.js
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[Image]
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Installation
 
+If you are reading this on github, you can click on the "Use this template" button above to create a new repository from astroship to your account. Then you can do a `git clone` to clone it to your local system.
 
-## 🚀 Project Structure
+Alternatively, you can clone the project directly from this repo to your local system.
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/surjithctly/astroship.git myProjectName
+# or
+git clone https://github.com/surjithctly/astroship.git .
+```
+
+The `.` will clone it to the current directory so make sure you are inside your project folder first.
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or (recommended)
+pnpm install
+```
+
+### 3. Start development Server
+
+```bash
+npm run dev
+# or
+yarn dev
+# or (recommended)
+pnpm dev
+```
+
+### Preview & Build
+
+```bash
+npm run preview
+npm run build
+# or
+yarn preview
+yarn build
+# or (recommended)
+pnpm preview
+pnpm build
+```
+
+We recommend using [pnpm](https://pnpm.io/) so save disk space on your computer.
+
+### Other Commands
+
+```bash
+pnpm astro ...
+pnpm astro add
+pnpm astro --help
+```
+
+## Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```
 /
 ├── public/
-│   └── favicon.svg
+│   └── ...
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   │   └── ...
 │   ├── layouts/
-│   │   └── Layout.astro
+│   │   └── ...
 │   └── pages/
-│       └── index.astro
+│       └── ...
 └── package.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## TailwindCSS & Alpine.js
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+TailwindCSS & Alpine.js are already configured in this repo, so you can start using them without any installation.
 
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Feel free to check out [Astro Documentation](https://docs.astro.build) or jump into our [Discord Chat](https://web3templates.com/discord).

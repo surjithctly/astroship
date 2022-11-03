@@ -1,0 +1,30 @@
+---
+import { Image } from "@astrojs/image/components";
+import heroImage from "assets/hero.avif";
+import Link from "@components/ui/link.astro";
+---
+
+<main class="grid lg:grid-cols-2 place-items-center py-24">
+  <div>
+    <h1 class="text-4xl lg:text-7xl font-bold lg:tracking-tight">
+      Marketing website done with Astro
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      Astroship is a starter template for startups, marketing websites & landing
+      pages.<wbr /> Built with Astro.build, TailwindCSS & Alpine.js. You can quickly
+      create any website with this starter.
+    </p>
+    <div class="mt-6 flex gap-3">
+      <Link href="#">Get Started</Link>
+      <Link
+        size="lg"
+        style="outline"
+        href="https://github.com/surjithctly/astroship"
+        target="_blank">View Repo</Link
+      >
+    </div>
+  </div>
+  <div>
+    <!-- <Image src={heroImage} alt="Astronaut in the air" /> -->
+  </div>
+</main>
