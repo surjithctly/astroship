@@ -15,6 +15,9 @@
       "@layouts/*": [
         "layouts/*"
       ],
+      "@assets/*": [
+        "assets/*"
+      ],
     }
   }
 }

@@ -1,11 +1,18 @@
 ---
+import { getImage } from "@astrojs/image";
 import Navbar from "@components/navbar/navbar.astro";
-
 import "@fontsource/inter/variable.css";
 
 export interface Props {
   title: string;
 }
+const { src } = await getImage({
+  src: "../../assets/hero.png",
+  width: 800,
+  height: 742,
+  format: "avif",
+});
+console.log(src);
 
 const { title } = Astro.props;
 ---
@@ -17,6 +24,8 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <link rel="preload" as="image" href={src} alt="Hero" />
     <title>{title} {title && "|"} Astro Ship</title>
   </head>
   <body>

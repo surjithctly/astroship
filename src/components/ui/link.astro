@@ -1,4 +1,12 @@
 ---
+interface Props {
+  href: string;
+  size?: string;
+  style?: string;
+  class?: string;
+  [x: string]: any;
+}
+
 const {
   href,
   size = "lg",
@@ -9,6 +17,7 @@ const {
 
 const sizes = {
   lg: "px-5 py-2.5",
+  md: "px-4 py-2",
 };
 
 const styles = {
@@ -22,7 +31,7 @@ const styles = {
   href={href}
   {...rest}
   class:list={[
-    "  rounded  transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    "  rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
     sizes[size],
     styles[style],
     className,

@@ -1,10 +1,18 @@
 ---
 import { Image } from "@astrojs/image/components";
-import heroImage from "assets/hero.avif";
+import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 ---
 
-<main class="grid lg:grid-cols-2 place-items-center py-24">
+<main class="grid lg:grid-cols-2 place-items-center py-8">
+  <div class="py-6 md:order-1">
+    <Image
+      src={heroImage}
+      alt="Astronaut in the air"
+      loading="eager"
+      format="avif"
+    />
+  </div>
   <div>
     <h1 class="text-4xl lg:text-7xl font-bold lg:tracking-tight">
       Marketing website done with Astro
@@ -14,8 +22,8 @@ import Link from "@components/ui/link.astro";
       pages.<wbr /> Built with Astro.build, TailwindCSS & Alpine.js. You can quickly
       create any website with this starter.
     </p>
-    <div class="mt-6 flex gap-3">
-      <Link href="#">Get Started</Link>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link href="#" class="">Get Started</Link>
       <Link
         size="lg"
         style="outline"
@@ -23,8 +31,5 @@ import Link from "@components/ui/link.astro";
         target="_blank">View Repo</Link
       >
     </div>
-  </div>
-  <div>
-    <!-- <Image src={heroImage} alt="Astronaut in the air" /> -->
   </div>
 </main>
