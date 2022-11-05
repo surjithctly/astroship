@@ -2,7 +2,7 @@
 interface Props {
   href: string;
   size?: string;
-  style?: string;
+  style?: "outline" | "primary" | "inverted";
   class?: string;
   [x: string]: any;
 }
@@ -24,6 +24,7 @@ const styles = {
   outline: "border-2 border-black hover:bg-black text-black hover:text-white",
   primary:
     "bg-black text-white hover:bg-slate-900  border-2 border-transparent",
+  inverted: "bg-white text-black   border-2 border-transparent",
 };
 ---
 
