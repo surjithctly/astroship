@@ -1,0 +1,49 @@
+---
+import Container from "@components/container.astro";
+import { getFormattedDate } from "@utils/all";
+import { log } from "astro/dist/core/logger/core";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <Container>
+    <div class="mx-auto max-w-[735px] mt-14">
+      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+        {frontmatter.category}
+      </span>
+      <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1">
+        {frontmatter.title}
+      </h1>
+      <div class="flex gap-2 mt-3 items-center">
+        <span class="text-gray-400">
+          {frontmatter.author}
+        </span>
+        <span class="text-gray-400">•</span>
+        <time class="text-gray-400" datetime={frontmatter.publishDate}>
+          {getFormattedDate(frontmatter.publishDate)}
+        </time>
+        <span class="text-gray-400">•</span>
+        <div class="flex gap-3">
+          {
+            frontmatter.tags.map((tag) => (
+              <span class="text-sm text-gray-500">#{tag}</span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto prose prose-lg mt-6">
+      <slot />
+    </div>
+    <div class="text-center mt-8">
+      <a
+        href="/blog"
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        >← Back to Blog</a
+      >
+    </div>
+  </Container>
+</Layout>

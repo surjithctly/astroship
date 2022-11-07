@@ -10,6 +10,9 @@ import alpinejs from "@astrojs/alpinejs";
 import image from "@astrojs/image";
 
 // https://astro.build/config
+import mdx from "@astrojs/mdx";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), alpinejs(), image()]
+  integrations: [tailwind(), alpinejs(), image(), mdx()]
 });

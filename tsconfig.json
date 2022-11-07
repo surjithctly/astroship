@@ -18,6 +18,9 @@
       "@assets/*": [
         "assets/*"
       ],
+      "@pages/*": [
+        "pages/*"
+      ],
     }
   }
 }

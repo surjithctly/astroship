@@ -1,5 +1,6 @@
 ---
-import { getImage } from "@astrojs/image";
+// import { getImage } from "@astrojs/image";
+import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
 
@@ -31,6 +32,7 @@ const { title } = Astro.props;
   <body>
     <Navbar />
     <slot />
+    <Footer />
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

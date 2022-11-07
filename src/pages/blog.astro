@@ -1,0 +1,72 @@
+---
+import { Image } from "@astrojs/image/components";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getFormattedDate } from "@utils/all";
+import { log } from "astro/dist/core/logger/core";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+console.log(posts[0].frontmatter.image);
+---
+
+<Layout title="Blog">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Our Blog</Fragment>
+      <Fragment slot="desc"
+        >We write about building startups and thoughts going on our mind.</Fragment
+      >
+    </Sectionhead>
+    <main class="mt-16">
+      <ul class="grid gap-16 max-w-4xl mx-auto">
+        {
+          posts.map((post) => (
+            <li>
+              <a href={post.url}>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                  <div>
+                    <Image
+                      src={post.frontmatter.image}
+                      alt="Thumbnail"
+                      width={600}
+                      format="avif"
+                      aspectRatio="16:9"
+                      class="rounded-md"
+                    />
+                  </div>
+                  <div>
+                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                      {post.frontmatter.category}
+                    </span>
+
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                      {post.frontmatter.title}
+                    </h2>
+
+                    <div class="flex gap-2 mt-3">
+                      <span class="text-gray-400">
+                        {post.frontmatter.author}
+                      </span>
+                      <span class="text-gray-400">• </span>
+                      <time
+                        class="text-gray-400"
+                        datetime={post.frontmatter.publishDate}>
+                        {getFormattedDate(post.frontmatter.publishDate)}
+                      </time>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout>

@@ -1,13 +1,81 @@
-<div>about</div>
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import { Image } from "@astrojs/image/components";
 
-<div
-  class="max-w-lg p-5 mt-10 text-sm text-left text-gray-600 border max-h-14"
->
-  <p>
-    Thank you for being an early customer. We are still working on our
-    collection of components &amp; templates. It will take some time.
-    By buying early, you will get 50% discount on the original price +
-    all future updates for lifetime free! Sweet isn't it? It's a gift
-    for you.
-  </p>
-</div>
+const TeamImg1 = "https://source.unsplash.com/IF9TK5Uy-KI";
+const TeamImg2 = "https://source.unsplash.com/iEEBWgY_6lA";
+const TeamImg3 = "https://source.unsplash.com/ZHvM3XIOHoE";
+
+const team = [
+  {
+    name: "Janette Lynch",
+    title: "Senior Director",
+    avatar: {
+      src: TeamImg1,
+      width: 480,
+      height: 560,
+    },
+  },
+  {
+    name: "Marcell Ziemann",
+    title: "Principal Strategist",
+    avatar: {
+      src: TeamImg2,
+      width: 580,
+      height: 580,
+    },
+  },
+  {
+    name: "Robert Palmer",
+    title: "Marketing Engineer",
+    avatar: {
+      src: TeamImg3,
+      width: 580,
+      height: 580,
+    },
+  },
+];
+---
+
+<Layout title="About">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">About</Fragment>
+      <Fragment slot="desc">We are a small passionate team.</Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">
+        Empowering the world with Astro.
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        We're a multi-cultural team from around the world! We come from diverse
+        backgrounds, bringing different personalities, experiences and skills to
+        the job. This is what makes our team so special.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+      {
+        team.map((item) => (
+          <div class="group">
+            <div class="w-full aspect-square">
+              <Image
+                {...item.avatar}
+                format="avif"
+                alt="Team"
+                class="w-full h-full object-cover rounded transition  group-hover:-translate-y-1 group-hover:shadow-xl"
+              />
+            </div>
+
+            <div class="mt-4 text-center">
+              <h2 class="text-lg text-gray-800"> {item.name}</h2>
+              <h3 class="text-sm text-slate-500"> {item.title}</h3>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
