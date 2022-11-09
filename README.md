@@ -89,6 +89,10 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 TailwindCSS & Alpine.js are already configured in this repo, so you can start using them without any installation.
 
+## Credits
+
+[Hero Illustration](https://www.figma.com/community/file/1108400791662599811) by [Streamline](https://www.streamlinehq.com/)
+
 ## 👀 Want to learn more?
 
 Feel free to check out [Astro Documentation](https://docs.astro.build) or jump into our [Discord Chat](https://web3templates.com/discord).

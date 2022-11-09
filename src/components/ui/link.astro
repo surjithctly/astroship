@@ -1,7 +1,8 @@
 ---
 interface Props {
   href: string;
-  size?: string;
+  size?: "md" | "lg";
+  block?: boolean;
   style?: "outline" | "primary" | "inverted";
   class?: string;
   [x: string]: any;
@@ -9,6 +10,7 @@ interface Props {
 
 const {
   href,
+  block,
   size = "lg",
   style = "primary",
   class: className,
@@ -21,9 +23,8 @@ const sizes = {
 };
 
 const styles = {
-  outline: "border-2 border-black hover:bg-black text-black hover:text-white",
-  primary:
-    "bg-black text-white hover:bg-slate-900  border-2 border-transparent",
+  outline: "bg-white border-2 border-black hover:bg-gray-100 text-black ",
+  primary: "bg-black text-white hover:bg-gray-800  border-2 border-transparent",
   inverted: "bg-white text-black   border-2 border-transparent",
 };
 ---
@@ -32,7 +33,8 @@ const styles = {
   href={href}
   {...rest}
   class:list={[
-    "  rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    "rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    block && "w-full",
     sizes[size],
     styles[style],
     className,
