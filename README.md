@@ -1,8 +1,10 @@
 # Astroship Starter Template 🛸
 
-Astroship is a starter template for startups, marketing websites & landing pages. Built with Astro, TailwindCSS & Alpine.js
+Astroship is a starter template for startups, marketing websites & landing pages. Built with Astro, TailwindCSS & Alpine.js.
 
-[Image]
+This Free Template is sponsored by [Web3Templates](https://web3templates.com)
+
+![image](https://user-images.githubusercontent.com/1884712/200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
 
 ## Installation
 
@@ -53,7 +55,7 @@ pnpm preview
 pnpm build
 ```
 
-We recommend using [pnpm](https://pnpm.io/) so save disk space on your computer.
+We recommend using [pnpm](https://pnpm.io/) to save disk space on your computer.
 
 ### Other Commands
 
@@ -95,4 +97,4 @@ TailwindCSS & Alpine.js are already configured in this repo, so you can start us
 
 ## 👀 Want to learn more?
 
-Feel free to check out [Astro Documentation](https://docs.astro.build) or jump into our [Discord Chat](https://web3templates.com/discord).
+Feel free to check out [Astro Docs](https://docs.astro.build) or jump into our [Discord Chat](https://web3templates.com/discord).
