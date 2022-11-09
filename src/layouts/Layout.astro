@@ -1,5 +1,5 @@
 ---
-// import { getImage } from "@astrojs/image";
+import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
@@ -14,7 +14,7 @@ export interface Props {
 //   format: "avif",
 // });
 // console.log(src);
-
+const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.url).toString();
 const { title } = Astro.props;
 ---
 
@@ -27,7 +27,22 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <title>{title} {title && "|"} Astro Ship</title>
+    <SEO
+      title={`${title}${title && " | "}Astro Ship`}
+      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      twitter={{
+        creator: "@surjithctly",
+        site: "@web3templates",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          type: "website",
+          title: `${title}${title && " | "}Astro Ship`,
+          image: resolvedImageWithDomain,
+        },
+      }}
+    />
   </head>
   <body>
     <Navbar />
