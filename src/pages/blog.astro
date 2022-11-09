@@ -29,7 +29,7 @@ console.log(posts[0].frontmatter.image);
           posts.map((post) => (
             <li>
               <a href={post.url}>
-                <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <div>
                     <Image
                       src={post.frontmatter.image}
@@ -37,7 +37,7 @@ console.log(posts[0].frontmatter.image);
                       width={600}
                       format="avif"
                       aspectRatio="16:9"
-                      class="rounded-md"
+                      class="w-full rounded-md"
                     />
                   </div>
                   <div>

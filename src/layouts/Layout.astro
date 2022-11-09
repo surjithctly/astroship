@@ -28,7 +28,7 @@ const { title } = Astro.props;
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
-      title={`${title}${title && " | "}Astro Ship`}
+      title={`${title}${title && " | "}Astroship`}
       description="Astroship is a starter website template for Astro built with TailwindCSS."
       twitter={{
         creator: "@surjithctly",
@@ -38,8 +38,11 @@ const { title } = Astro.props;
       openGraph={{
         basic: {
           type: "website",
-          title: `${title}${title && " | "}Astro Ship`,
+          title: `Astroship - Starter Template for Astro`,
           image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "Astroship Homepage Screenshot",
         },
       }}
     />

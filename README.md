@@ -4,6 +4,16 @@ Astroship is a starter template for startups, marketing websites & landing pages
 
 This Free Template is sponsored by [Web3Templates](https://web3templates.com)
 
+## Live Demo
+
+### [https://astroship.web3templates.com/](https://astroship.web3templates.com/)
+
+## Deploy on Vercel
+
+Click the below link to deploy this template on Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/surjithctly/astroship)
+
 ![image](https://user-images.githubusercontent.com/1884712/200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
 
 ## Installation
