@@ -1,4 +1,4 @@
-# Astroship Starter Template 🛸
+# Astroship - Astro Starter Template 🛸
 
 Astroship is a starter template for startups, marketing websites & landing pages. Built with Astro, TailwindCSS & Alpine.js.
 
