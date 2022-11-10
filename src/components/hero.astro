@@ -2,6 +2,7 @@
 import { Image } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
 ---
 
 <main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-8">
@@ -25,16 +26,23 @@ import Link from "@components/ui/link.astro";
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
         href="#"
-        href="https://web3templates.com/"
+        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
         target="_blank"
-        rel="noopener">Get Started</Link
+        class="flex gap-1 items-center justify-center"
+        rel="noopener">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+
+        Download for Free</Link
       >
       <Link
         size="lg"
         style="outline"
         rel="noopener"
         href="https://github.com/surjithctly/astroship"
-        target="_blank">View Repo</Link
+        class="flex gap-1 items-center justify-center"
+        target="_blank">
+        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+        Github Repo</Link
       >
     </div>
   </div>

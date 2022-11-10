@@ -16,6 +16,10 @@ export interface Props {
 // console.log(src);
 const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.url).toString();
 const { title } = Astro.props;
+
+const makeTitle = title
+  ? title + " | " + "Astroship"
+  : "Astroship - Starter Template for Astro with TailwindCSS & Alpine.js";
 ---
 
 <!DOCTYPE html>
@@ -28,7 +32,7 @@ const { title } = Astro.props;
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
-      title={`${title}${title && " | "}Astroship`}
+      title={makeTitle}
       description="Astroship is a starter website template for Astro built with TailwindCSS."
       twitter={{
         creator: "@surjithctly",
