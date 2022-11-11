@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: http://astroship.web3templates.com/sitemap-index.xml
