@@ -16,6 +16,7 @@ export interface Props {
 // console.log(src);
 const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.url).toString();
 const { title } = Astro.props;
+console.log(resolvedImageWithDomain, Astro.url);
 
 const makeTitle = title
   ? title + " | " + "Astroship"
