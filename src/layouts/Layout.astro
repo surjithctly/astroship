@@ -3,10 +3,12 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
+import { log } from "astro/dist/core/logger/core";
 
 export interface Props {
   title: string;
 }
+
 // const { src } = await getImage({
 //   src: "../../assets/hero.png",
 //   width: 800,
@@ -14,9 +16,15 @@ export interface Props {
 //   format: "avif",
 // });
 // console.log(src);
-const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.url).toString();
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
 const { title } = Astro.props;
-console.log(resolvedImageWithDomain, Astro.url);
 
 const makeTitle = title
   ? title + " | " + "Astroship"
@@ -35,6 +43,7 @@ const makeTitle = title
     <SEO
       title={makeTitle}
       description="Astroship is a starter website template for Astro built with TailwindCSS."
+      canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
         site: "@web3templates",
@@ -42,6 +51,7 @@ const makeTitle = title
       }}
       openGraph={{
         basic: {
+          url: canonicalURL,
           type: "website",
           title: `Astroship - Starter Template for Astro`,
           image: resolvedImageWithDomain,
