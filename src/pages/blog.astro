@@ -32,11 +32,11 @@ console.log(posts[0].frontmatter.image);
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <Picture
                     src={post.frontmatter.image}
-                    widths={[400, 800]}
-                    aspectRatio="16:9"
+                    widths={[200, 400, 800]}
                     sizes="(max-width: 800px) 100vw, 800px"
-                    alt="descriptive text"
-                    class="w-full rounded-md"
+                    aspectRatio="16:9"
+                    alt="Thumbnail"
+                    class="w-full rounded-md aspect-video"
                   />
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
