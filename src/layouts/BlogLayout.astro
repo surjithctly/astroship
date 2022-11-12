@@ -17,7 +17,7 @@ const { frontmatter } = Astro.props;
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {frontmatter.title}
       </h1>
-      <div class="flex gap-2 mt-3 items-center">
+      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
         <span class="text-gray-400">
           {frontmatter.author}
         </span>
@@ -25,8 +25,8 @@ const { frontmatter } = Astro.props;
         <time class="text-gray-400" datetime={frontmatter.publishDate}>
           {getFormattedDate(frontmatter.publishDate)}
         </time>
-        <span class="text-gray-400">•</span>
-        <div class="flex gap-3">
+        <span class="text-gray-400 hidden md:block">•</span>
+        <div class="w-full md:w-auto flex flex-wrap gap-3">
           {
             frontmatter.tags.map((tag) => (
               <span class="text-sm text-gray-500">#{tag}</span>

@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
@@ -30,16 +30,14 @@ console.log(posts[0].frontmatter.image);
             <li>
               <a href={post.url}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <div>
-                    <Image
-                      src={post.frontmatter.image}
-                      alt="Thumbnail"
-                      width={600}
-                      format="avif"
-                      aspectRatio="16:9"
-                      class="w-full rounded-md"
-                    />
-                  </div>
+                  <Picture
+                    src={post.frontmatter.image}
+                    widths={[400, 800]}
+                    aspectRatio="16:9"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    alt="descriptive text"
+                    class="w-full rounded-md"
+                  />
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
                       {post.frontmatter.category}
