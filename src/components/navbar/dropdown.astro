@@ -1,4 +1,5 @@
 ---
+import { acviteLink } from "@utils/path";
 const { title, lastItem, children } = Astro.props;
 ---
 
@@ -32,7 +33,12 @@ const { title, lastItem, children } = Astro.props;
       class="px-3 lg:py-2 lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col">
       {
         children.map((item) => (
-          <a href={item.path} class="py-1 text-gray-600 hover:text-gray-900">
+          <a
+            href={item.path}
+            class:list={[
+              "py-1 text-gray-600 hover:text-gray-900",
+              acviteLink(Astro.url.pathname, item.path) ? "text-blue-600" : "",
+            ]}>
             {item.title}
           </a>
         ))

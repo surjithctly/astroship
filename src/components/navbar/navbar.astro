@@ -2,20 +2,25 @@
 import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
+import { acviteLink } from "@utils/path";
 
 const menuitems = [
   {
     title: "Features",
     path: "#",
     children: [
-      { title: "Action", path: "#" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
+      { title: "Action", path: "/feature" },
+      { title: "Another action", path: "/feature/#action" },
+      { title: "Dropdown Submenu", path: "/feature/100-static-html-no-js" },
     ],
   },
   {
     title: "Pricing",
     path: "/pricing",
+  },
+  {
+    title: "Home",
+    path: "/",
   },
   {
     title: "About",
@@ -87,7 +92,12 @@ const menuitems = [
                 <li>
                   <a
                     href={item.path}
-                    class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
+                    class:list={[
+                      "flex lg:px-3 py-2 text-gray-600 hover:text-gray-900",
+                      acviteLink(Astro.url.pathname, item.path)
+                        ? "text-blue-600"
+                        : "",
+                    ]}>
                     {item.title}
                   </a>
                 </li>
