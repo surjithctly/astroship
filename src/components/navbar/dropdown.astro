@@ -1,5 +1,4 @@
 ---
-import { acviteLink } from "@utils/path";
 const { title, lastItem, children } = Astro.props;
 ---
 
@@ -30,15 +29,20 @@ const { title, lastItem, children } = Astro.props;
       lastItem ? "lg:right-0 origin-top-right" : "lg:left-0 origin-top-left",
     ]}>
     <div
+      x-data="{ $page: { path: window.location.pathname, hash: window.location.hash } }"
       class="px-3 lg:py-2 lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col">
       {
         children.map((item) => (
           <a
+            x-bind:class={
+              "{'text-blue-600': !$page.hash ? $page.path === '" +
+              item.path +
+              "' :  $page.path+$page.hash === '" +
+              item.path +
+              "'}"
+            }
             href={item.path}
-            class:list={[
-              "py-1 text-gray-600 hover:text-gray-900",
-              acviteLink(Astro.url.pathname, item.path) ? "text-blue-600" : "",
-            ]}>
+            class={"py-1 text-gray-600 hover:text-gray-900"}>
             {item.title}
           </a>
         ))

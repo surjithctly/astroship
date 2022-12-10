@@ -2,7 +2,6 @@
 import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
-import { acviteLink } from "@utils/path";
 
 const menuitems = [
   {
@@ -69,6 +68,7 @@ const menuitems = [
       </div>
     </div>
     <nav
+      x-data="{ $page: { path: window.location.pathname } }"
       class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0"
       :class="{ 'block': open, 'hidden': !open }"
       x-transition>
@@ -87,12 +87,10 @@ const menuitems = [
               {!item.children && (
                 <li>
                   <a
+                    x-bind:class={"{'text-blue-600': $page.path === '"+ item.path + "'}"}
                     href={item.path}
                     class:list={[
                       "flex lg:px-3 py-2 text-gray-600 hover:text-gray-900",
-                      acviteLink(Astro.url.pathname, item.path)
-                        ? "text-blue-600"
-                        : "",
                     ]}>
                     {item.title}
                   </a>
