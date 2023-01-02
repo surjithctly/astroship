@@ -28,7 +28,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with TailwindCSS & Alpine.js";
+  : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
 <!DOCTYPE html>
@@ -71,10 +71,6 @@ const makeTitle = title
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
-      }
-      /* Avoid Alpine.js Hidden Element Flash */
-      [x-cloak] {
-        display: none;
       }
     </style>
   </body>
