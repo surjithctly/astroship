@@ -9,26 +9,26 @@ specifiers:
   '@fontsource/inter': ^4.5.14
   '@tailwindcss/typography': ^0.5.7
   '@types/alpinejs': ^3.0.0
-  alpinejs: ^3.0.0
   astro: ^1.6.0
   astro-feather-icons: ^1.0.2
   astro-icon: ^0.8.0
+  astro-navbar: ^1.0.1
   astro-seo: ^0.6.0
   sharp: ^0.31.3
   tailwindcss: ^3.0.24
 
 dependencies:
-  '@astrojs/alpinejs': 0.1.2_epas4sveda2fzipjieohqzpxgq
+  '@astrojs/alpinejs': 0.1.2_@types+alpinejs@3.7.1
   '@astrojs/image': 0.11.0_sharp@0.31.3
   '@astrojs/mdx': 0.11.5
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 2.1.1_tailwindcss@3.2.1
   '@fontsource/inter': 4.5.14
   '@types/alpinejs': 3.7.1
-  alpinejs: 3.10.5
   astro: 1.6.2
   astro-feather-icons: 1.0.2
   astro-icon: 0.8.0
+  astro-navbar: 1.0.1
   astro-seo: 0.6.0
   tailwindcss: 3.2.1
 
@@ -50,14 +50,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: false
 
-  /@astrojs/alpinejs/0.1.2_epas4sveda2fzipjieohqzpxgq:
+  /@astrojs/alpinejs/0.1.2_@types+alpinejs@3.7.1:
     resolution: {integrity: sha512-pcy+r7TTeFMbdZpRUuOYbf5L3ccFp107gH9j0Hdl5z8hmrSw9918pxkK1tiAcbwrQKxifv7nM5V5FJKu7SoJrw==}
     peerDependencies:
       '@types/alpinejs': ^3.0.0
       alpinejs: ^3.0.0
     dependencies:
       '@types/alpinejs': 3.7.1
-      alpinejs: 3.10.5
     dev: false
 
   /@astrojs/compiler/0.23.5:
@@ -786,20 +785,10 @@ packages:
       vscode-uri: 2.1.2
     dev: false
 
-  /@vue/reactivity/3.1.5:
-    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
-    dependencies:
-      '@vue/shared': 3.1.5
-    dev: false
-
   /@vue/reactivity/3.2.41:
     resolution: {integrity: sha512-9JvCnlj8uc5xRiQGZ28MKGjuCoPhhTwcoAdv3o31+cfGgonwdPNuvqAXLhlzu4zwqavFEG5tvaoINQEfxz+l6g==}
     dependencies:
       '@vue/shared': 3.2.41
-    dev: false
-
-  /@vue/shared/3.1.5:
-    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
     dev: false
 
   /@vue/shared/3.2.41:
@@ -834,12 +823,6 @@ packages:
     resolution: {integrity: sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-    dev: false
-
-  /alpinejs/3.10.5:
-    resolution: {integrity: sha512-qlvnal44Gof2XVfm/lef8fYpXKxR9fjdSki7aFB/9THyFvbsRKZ6lM5SjxXpIs7B0faJt7bgpK2K25gzrraXJw==}
-    dependencies:
-      '@vue/reactivity': 3.1.5
     dev: false
 
   /ansi-align/3.0.1:
@@ -919,6 +902,10 @@ packages:
       node-fetch: 3.2.10
       resolve-pkg: 2.0.0
       svgo: 2.8.0
+    dev: false
+
+  /astro-navbar/1.0.1:
+    resolution: {integrity: sha512-aDkBiczb1JHRBaysvMFOUvHnoMqU6GmGb6UgMrZ7UBFypTaBjyKsckSTdNEIb45JtjHmYNekKGAnHyoIqacczA==}
     dev: false
 
   /astro-seo/0.6.0:
