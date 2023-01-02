@@ -25,9 +25,6 @@
     "astro-seo": "^0.6.0",
     "tailwindcss": "^3.0.24"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.7",
     "sharp": "^0.31.3"
