@@ -1,15 +1,18 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
 
-<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-8">
+<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:py-24">
   <div class="py-6 md:order-1 hidden md:block">
-    <Image
+    <Picture
       src={heroImage}
       alt="Astronaut in the air"
+      widths={[200, 400, 600]}
+      aspectRatio="4:3"
+      sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
     />
@@ -33,8 +36,8 @@ import { Icon } from "astro-icon";
         rel="noopener">
         <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
 
-        Download for Free</Link
-      >
+        Download for Free
+      </Link>
       <Link
         size="lg"
         style="outline"
@@ -43,8 +46,8 @@ import { Icon } from "astro-icon";
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        Github Repo</Link
-      >
+        Github Repo
+      </Link>
     </div>
   </div>
 </main>
