@@ -7,7 +7,7 @@ specifiers:
   '@astrojs/tailwind': ^2.1.3
   '@fontsource/inter': ^4.5.14
   '@tailwindcss/typography': ^0.5.8
-  astro: ^1.9.0
+  astro: ^1.9.1
   astro-feather-icons: ^1.0.2
   astro-icon: ^0.8.0
   astro-navbar: ^1.1.5
@@ -21,7 +21,7 @@ dependencies:
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 2.1.3_tailwindcss@3.2.4
   '@fontsource/inter': 4.5.14
-  astro: 1.9.0
+  astro: 1.9.1
   astro-feather-icons: 1.0.2
   astro-icon: 0.8.0
   astro-navbar: 1.1.5
@@ -881,8 +881,8 @@ packages:
     resolution: {integrity: sha512-eszmxiycjfLcmoRyB8x5lCrWAwcSHs1i5riR1a5JbyJI8OQAl9tn1JvWFRuZvNH483CFdfNCczirnc805t/soA==}
     dev: false
 
-  /astro/1.9.0:
-    resolution: {integrity: sha512-wHHMOHgqBGV4L8ThjCeBuVHq0mGF1F515jRyp5ns0MzFcu2nFk1frlXBKZEfmMMM84cilq3HeimrRTLkIGxI8A==}
+  /astro/1.9.1:
+    resolution: {integrity: sha512-aQ6rvAP4w4VCgipVYA/zPmnkuTbFrMZ/+x/sAv2W1uJHWU2iQmrVRrrjUFJl+i1TuYYlHAuC2vKK7aRyXCjD4A==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
