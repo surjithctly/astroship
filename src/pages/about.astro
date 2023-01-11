@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import { Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 
 const TeamImg1 =
   "https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280";
@@ -64,11 +64,15 @@ const team = [
         team.map((item) => (
           <div class="group">
             <div class="w-full aspect-square">
-              <Image
+              <Picture
                 {...item.avatar}
                 format="avif"
                 alt="Team"
+                widths={[200, 400]}
+                aspectRatio="1:1"
+                sizes="(max-width: 800px) 100vw, 400px"
                 class="w-full h-full object-cover rounded transition  group-hover:-translate-y-1 group-hover:shadow-xl"
+                format="avif"
               />
             </div>
 
