@@ -1,62 +1,66 @@
 ---
+import { getCollection } from "astro:content";
 import { Picture } from "@astrojs/image/components";
+import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Layout from "@layouts/Layout.astro";
-import { getFormattedDate } from "@utils/all";
-import { log } from "astro/dist/core/logger/core";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
-);
-console.log(posts[0].frontmatter.image);
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
 ---
 
 <Layout title="Blog">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>
-      <Fragment slot="desc"
-        >We write about building startups and thoughts going on our mind.</Fragment
-      >
+      <Fragment slot="desc">
+        We write about building startups and thoughts going on our mind.
+      </Fragment>
     </Sectionhead>
     <main class="mt-16">
       <ul class="grid gap-16 max-w-4xl mx-auto">
         {
-          posts.map((post, index) => (
+          publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
-              <a href={post.url}>
+              <a href={`/blog/${blogPostEntry.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <Picture
-                    src={post.frontmatter.image}
-                    widths={[200, 400, 800]}
+                    src={blogPostEntry.data.image.src}
+                    alt={blogPostEntry.data.image.alt}
                     sizes="(max-width: 800px) 100vw, 800px"
+                    widths={[200, 400, 800]}
                     aspectRatio="16:9"
-                    alt="Thumbnail"
+                    background="#ffffff"
+                    fit="cover"
+                    position="center"
                     loading={index === 0 ? "eager" : "lazy"}
-                    class="w-full rounded-md aspect-video"
+                    class="w-full rounded-md"
                   />
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {post.frontmatter.category}
+                      {blogPostEntry.data.category}
                     </span>
 
                     <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {post.frontmatter.title}
+                      {blogPostEntry.data.title}
                     </h2>
 
                     <div class="flex gap-2 mt-3">
                       <span class="text-gray-400">
-                        {post.frontmatter.author}
+                        {blogPostEntry.data.author}
                       </span>
                       <span class="text-gray-400">• </span>
                       <time
                         class="text-gray-400"
-                        datetime={post.frontmatter.publishDate}>
-                        {getFormattedDate(post.frontmatter.publishDate)}
+                        datetime={blogPostEntry.data.publishDate.toISOString()}>
+                        {blogPostEntry.data.publishDate.toDateString()}
                       </time>
                     </div>
                   </div>
