@@ -1,37 +1,100 @@
 ---
 draft: false
-title: "The Complete Guide to Full Stack Web Development"
-snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
+title: "Pine64 A64(+) + Armbian Buster + Docker"
+snippet: ""
 image: {
-    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240",
+    src: "https://www.acervera.com/blog/2020/04/pine64-a64-armbian-docker/pine64_cluster.jpg",
     alt: "full stack web development"
 }
 publishDate: "2022-11-08 11:39"
 category: "Tutorials"
-author: "Janette Lynch"
+author: "Silvia Roldan Sanchez"
 tags: [webdev, tailwindcss, frontend]
 ---
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit euismod rutrum, consequat fringilla ultricies nullam curae mollis semper conubia viverra, orci aenean dapibus pharetra nec tortor tellus cubilia. Ullamcorper mi lectus eu malesuada tempor massa praesent magna mattis posuere, lobortis vulputate ut duis magnis parturient habitant nibh id tristique, quis suspendisse donec nisl penatibus sem non feugiat taciti. Mollis per ridiculus integer cursus semper vestibulum fermentum penatibus cubilia blandit scelerisque, tempus platea leo posuere ac pharetra volutpat aliquet euismod id ullamcorper lobortis, urna est magna mus rhoncus massa curae libero praesent eget. Mattis malesuada vestibulum quis ac nam phasellus suscipit facilisis libero diam posuere, cursus massa vehicula neque imperdiet tincidunt dui egestas lacinia mollis aliquet orci, nisl curabitur dapibus litora dis cum nostra montes ligula praesent. Facilisi aliquam convallis molestie tempor blandit ultricies bibendum parturient cubilia quam, porttitor morbi torquent tempus taciti nec faucibus elementum phasellus, quis inceptos vestibulum gravida augue potenti eget nunc maecenas. Tempor facilisis ligula volutpat habitant consequat inceptos orci per potenti blandit platea, mus sapien eget vel libero vestibulum augue cubilia ut ultrices fringilla lectus, imperdiet pellentesque cum ridiculus convallis sollicitudin nisl interdum semper felis.
+## Table of Content.
+<!-- toc -->
 
-Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti augue nulla vivamus senectus odio, quisque curabitur enim consequat class sociis feugiat ullamcorper, felis dis imperdiet cubilia commodo sed massa phasellus. Viverra purus mus nisi condimentum dui vehicula facilisis turpis, habitant nascetur lectus tempor quisque habitasse urna scelerisque, nibh nullam vestibulum luctus aenean mollis metus. Suscipit gravida duis nec aliquet natoque molestie a ridiculus scelerisque cum, justo cursus sapien sodales purus dignissim vel facilisi magnis, inceptos rutrum ut integer auctor commodo sollicitudin fames et. Faucibus ligula nibh sagittis mauris auctor posuere habitant, scelerisque phasellus accumsan egestas gravida viverra nam, sed etiam eleifend proin massa dictumst. Porttitor risus luctus per aenean tellus primis fringilla vitae fames lacinia mauris metus, nec pulvinar quisque commodo sodales ac nibh natoque phasellus semper placerat. Lectus aenean potenti leo sollicitudin tristique eros quam ligula, vestibulum diam consequat enim torquent nec tempus, blandit viverra dapibus eleifend dis nunc nascetur.
+## Introduction.
+Following the list of step to install Docker in the Pine64 cluster:
 
-## Sodales hendrerit malesuada et vestibulum
+## Armbian.
+1. [Download Armbian Buster image for pine64](https://www.armbian.com/pine64/)
+2. Burn ssd using [Etcher](https://www.balena.io/etcher/)
+3. Start Pine64 with the new ssd.
+   It will take few seconds because is resizing the sdd partition to use the full size. After that:
+    1. Login using `Log in as: root  Password: 1234`
+    2. First login as root will ask for a new password.
+    3. First login will ask to create a new admin user.
+    4. Login using the new user.
+4. Change host name. The default hostname is `pine64`. We are going to create a small cluster, so we don't want to use
+   the same name in all nodes.
+    1. Change hostname
+        ```bash
+        hostnamectl
+        hostnamectl set-hostname pine641
+        ```
+    2. Replace all references to the old name in /etc/hosts
+       ```bash
+       sudo vi /etc/hosts
+       ```
+    3. Reboot
+5. Update and install commons used software.
+   The Debian image installed is the server version, so it comes with `htop`, `openssh`, etc..
+   ```bash
+   sudo apt update
+   sudo apt full-upgrade
+   sudo apt install neovim
+   sudo update-alternatives --config editor
+   sudo update-alternatives --config vi
+   ```
+6. Set static ip. I'm going to use 192.168.1.191 to 194 for the Pine64 nodes. So, I will add the static configuration
+   in `/etc/network/interfaces`:
+   ```text
+   auto eth0
+   #iface eth0 inet dhcp
+   iface eth0 inet static
+      address 192.168.1.191
+      netmask 255.255.255.0
+      gateway 192.168.1.1
+      dns-nameservers 192.168.1.1
+   ```
+   And restart the network service:
+   ```bash
+   sudo service networking restart
+   ```
+## Docker
+Docker officially supports Debian Buster 10, so [let's follow the documentation](https://docs.docker.com/engine/install/debian/):
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt autoremove
+sudo apt-get update
 
-- Luctus euismod pretium nisi et, est dui enim.
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
 
-- Curae eget inceptos malesuada, fermentum class.
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
-- Porttitor vestibulum aliquam porta feugiat velit, potenti eu placerat.
+sudo apt-key fingerprint 0EBFCD88
 
-- Ligula lacus tempus ac porta, vel litora.
+sudo add-apt-repository \
+   "deb [arch=arm64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
 
-Torquent non nisi lacinia faucibus nibh tortor taciti commodo porttitor, mus hendrerit id leo scelerisque mollis habitasse orci tristique aptent, lacus at molestie cubilia facilisis porta accumsan condimentum. Metus lacus suscipit porttitor integer facilisi torquent, nostra nulla platea at natoque varius venenatis, id quam pharetra aliquam leo. Dictum orci himenaeos quam mi fusce lacinia maecenas ac magna eleifend laoreet, vivamus enim curabitur ullamcorper est ultrices convallis suscipit nascetur. Ornare fames pretium ante ac eget nisi tellus vivamus, convallis mauris sapien imperdiet sollicitudin aliquet taciti quam, lacinia tempor primis magna iaculis at eu. Est facilisi proin risus eleifend orci torquent ultricies platea, quisque nullam vel porttitor euismod sociis non, maecenas sociosqu interdum arcu sed pharetra potenti. Aliquet risus tempus hendrerit sapien tellus eget cursus enim etiam dui, lobortis nostra pellentesque odio posuere morbi ad neque senectus arcu eu, turpis proin ac felis purus fames magnis dis dignissim.
+sudo apt-get update
 
-Orci volutpat augue viverra scelerisque dictumst ut condimentum vivamus, accumsan cum sem sollicitudin aliquet vehicula porta pretium placerat, malesuada euismod primis cubilia rutrum tempus parturient. Urna mauris in nibh morbi hendrerit vulputate condimentum, iaculis consequat porttitor dui dis euismod eros, arcu elementum venenatis varius lectus nisi. Nibh arcu ultrices semper morbi quam aptent quisque porta posuere iaculis, vestibulum cum vitae primis varius natoque conubia eu. Placerat sociis sagittis sociosqu morbi purus lobortis convallis, bibendum tortor ridiculus orci habitasse viverra dictum, quis rutrum fusce potenti volutpat vehicula. Curae porta inceptos lectus mus urna litora semper aliquam libero rutrum sem dui maecenas ligula quis, eget risus non imperdiet cum morbi magnis suspendisse etiam augue porttitor placerat facilisi hendrerit. Et eleifend eget augue duis fringilla sagittis erat est habitasse commodo tristique quisque pretium, suspendisse imperdiet inceptos mollis blandit magna mus elementum molestie sed vestibulum. Euismod morbi hendrerit suscipit felis ornare libero ligula, mus tortor urna interdum blandit nisi netus posuere, purus fermentum magnis nam primis nulla.
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-## Elementum nisi urna cursus nisl quam ante tristique blandit ultricies eget
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
 
-Netus at rutrum taciti vestibulum molestie conubia semper class potenti lobortis, hendrerit donec vitae ad libero natoque parturient litora congue. Torquent rhoncus odio cursus iaculis molestie arcu leo condimentum accumsan, laoreet congue duis libero justo tortor commodo fusce, massa eros hac euismod netus sodales mi magnis. Aenean nullam sollicitudin ad velit nulla venenatis suspendisse iaculis, aliquet senectus mollis aptent fringilla volutpat nascetur, nec urna vehicula lacinia neque augue orci. Suspendisse et eleifend convallis sollicitudin posuere diam turpis gravida congue ultrices, laoreet ultricies dapibus proin facilisis magna class praesent fusce. Mus morbi magnis ultricies sed turpis ultrices tempus tortor bibendum, netus nulla viverra torquent malesuada ridiculus tempor. Parturient sociosqu erat ullamcorper gravida natoque varius, etiam habitant augue praesent per curabitur iaculis, donec pellentesque cursus suscipit aliquet. Congue curae cursus scelerisque pellentesque quis fusce arcu eros dictumst luctus ridiculus nisl viverra, turpis class faucibus phasellus feugiat eleifend fringilla orci tristique habitasse conubia quam. Habitasse montes congue sodales rutrum cras torquent cursus auctor condimentum imperdiet egestas nascetur, platea tincidunt ut sollicitudin purus libero lobortis ad nisi diam quam.
-
-Suspendisse et eleifend convallis sollicitudin posuere diam turpis gravida congue ultrices, laoreet ultricies dapibus proin facilisis magna class praesent fusce. Mus morbi magnis ultricies sed turpis ultrices tempus tortor bibendum, netus nulla viverra torquent malesuada ridiculus tempor. Parturient sociosqu erat ullamcorper gravida natoque varius, etiam habitant augue praesent per curabitur iaculis, donec pellentesque cursus suscipit aliquet. Congue curae cursus scelerisque pellentesque quis fusce arcu eros dictumst luctus ridiculus nisl viverra, turpis class faucibus phasellus feugiat eleifend fringilla orci tristique habitasse conubia quam. Habitasse montes congue sodales rutrum cras torquent cursus auctor condimentum imperdiet egestas nascetur.
+Restart the session, to be sure changes in the user groups are available, and then:
+```bash
+docker run hello-world
+```

@@ -1,10 +1,10 @@
 ---
 draft: false
-name: "Marcell Ziemann"
-title: "Principal Strategist"
+name: "Ángel Cervera Claudio"
+title: "Senior Architect"
 avatar: {
-    src: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?&fit=crop&w=280",
-    alt: "Marcell Ziemann"
+    src: "https://www.acervera.com/images/og_image.png",
+    alt: "Ángel Cervera Claudio"
 }
 publishDate: "2022-11-08 15:39"
 ---

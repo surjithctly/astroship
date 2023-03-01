@@ -1,80 +1,60 @@
 ---
+import { getCollection } from "astro:content";
+import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Pricing from "@components/pricing.astro";
 
-const pricing = [
-  {
-    name: "Personal",
-    price: "Free",
-    popular: false,
-    features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "/",
-    },
-  },
-  {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
-    popular: true,
-    features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "#",
-    },
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    popular: false,
-    features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
-    ],
-    button: {
-      text: "Contact us",
-      link: "/contact",
-    },
-  },
-];
+// Filter team entries with 'draft: false' & date before current date
+const publishedPersonalProjects = await getCollection("personalprojects", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
 ---
 
-<Layout title="Pricing">
+<Layout title="Last Personal Projects">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc"
-        >Simple & Predictable pricing. No Surprises.</Fragment
-      >
+      <Fragment slot="title">Last Personal Projects</Fragment>
+      <Fragment slot="desc">Partial list of us current OSS projects..</Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <Pricing plan={item} />)}
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">
+        Empowering the world with new technologies.
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Good software is only possible with happy developers in a great work environment
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+      {
+        publishedPersonalProjects.map((personalprojectsMemberEntry) => (
+          <div class="group">
+            <div class="w-full aspect-square">
+              <Picture
+                src={personalprojectsMemberEntry.data.avatar.src}
+                alt={personalprojectsMemberEntry.data.avatar.alt}
+                sizes="(max-width: 800px) 100vw, 400px"
+                widths={[200, 400]}
+                aspectRatio="1:1"
+                background="#ffffff"
+                fit="cover"
+                position="center"
+                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
+              />
+            </div>
+
+            <div class="mt-4 text-center">
+              <h2 class="text-lg text-gray-800">
+                {personalprojectsMemberEntry.data.name}
+              </h2>
+              <h3 class="text-sm text-slate-500">
+                {personalprojectsMemberEntry.data.title}
+              </h3>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </Container>
 </Layout>

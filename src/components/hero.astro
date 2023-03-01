@@ -1,6 +1,6 @@
 ---
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/hero.png";
+import simplex from "assets/3dX.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
@@ -9,8 +9,8 @@ import { Icon } from "astro-icon";
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
+      src={simplex}
+      alt="Logo SimplexPortal"
       widths={[200, 400, 600]}
       aspectRatio="4:3"
       sizes="(max-width: 800px) 100vw, 620px"
@@ -21,34 +21,47 @@ import { Icon } from "astro-icon";
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      <font color="#F39207"> SimplexPortal</font>
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      We bring to every project experience, agile methodologies and desire to be with a great team. No one is more Java / Scala evangelist and advocate than us, but our experience taught us that not everything is nails.
+
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
 
-        Download for Free
-      </Link>
       <Link
         size="lg"
         style="outline"
         rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
+        href="https://www.acervera.com/"
+        class="flex gap-3 items-center justify-center"
         target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        <Icon class="text-black w-6 h-6" name="mdi:web" />
+        Angel C.C
       </Link>
+
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://www.linkedin.com/in/silvia-rold%C3%A1n-s%C3%A1nchez-b1a49120/"
+        class="flex gap-3 items-center justify-center"
+        target="_blank">
+        <Icon class="text-black w-6 h-6" name="bi:linkedin" />
+        Silvia R.S
+      </Link>
+
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://angelcerveraroldan-d287a.web.app/"
+        class="flex gap-3 items-center justify-center"
+        target="_blank">
+        <Icon class="text-black w-6 h-6" name="mdi:web" />
+        Angel C.R
+      </Link>
+
     </div>
   </div>
 </main>

@@ -1,10 +1,11 @@
 ---
 draft: false
-name: "Janette Lynch"
-title: "Senior Director"
+name: "Silvia Roldán Sánchez"
+title: "CO & Director"
+
 avatar: {
-    src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280",
-    alt: "Janette Lynch"
+    src: "https://pbs.twimg.com/profile_images/1221806637662556161/hAzJ4Tsl_400x400.jpg",
+    alt: "Silvia Roldán Sánchez"
 }
 publishDate: "2022-11-07 15:39"
 ---
