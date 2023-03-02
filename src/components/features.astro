@@ -4,85 +4,97 @@ import { Icon } from "astro-icon";
 
 //     <span class="font-semibold">wiselydesk</span>'s enables users to have a conversation with your help center. Users will spend less time searching and more time understanding your content
 
-
-const aboutYou = [  {
+const aboutYou = [
+  {
     title: "High quality help center content",
-    icon: "ri:checkbox-circle-fill",
+    icon: "ri:checkbox-circle-fill"
   },
   {
     title: "Impressive Support Team to handle complex queries",
-    icon: "ri:checkbox-circle-fill",
-  }]  
+    icon: "ri:checkbox-circle-fill"
+  }
+];
 
-const realities = [  {
+const realities = [
+  {
     title: "Users often miss relevant help center content",
-    icon: "ri:emotion-normal-fill",
+    icon: "ri:emotion-normal-fill"
   },
   {
     title: "Users contact support for easy queries",
-    icon: "ri:emotion-normal-fill",
-  }]
+    icon: "ri:emotion-normal-fill"
+  }
+];
 
-const effects = [  {
+const effects = [
+  {
     title: "Lower incentive to maintain high quality content",
-    icon: "ri:emotion-unhappy-fill",
+    icon: "ri:emotion-unhappy-fill"
   },
   {
     title: "Less time to spend on complex queries",
-    icon: "ri:emotion-unhappy-fill",
-  }]
-
+    icon: "ri:emotion-unhappy-fill"
+  }
+];
 ---
 
 <div class="">
-  <h2 class="ml-7 text-4xl lg:text-5xl font-bold tracking-tight flex items-start">
-      73%<span class="text-[1.5rem]">*</span> of help center content remains unread
+  <h2
+    class="ml-7 flex items-start text-4xl font-bold tracking-tight lg:text-5xl">
+    73%<span class="text-[1.5rem]">*</span> of help center content remains unread
   </h2>
 </div>
 
 <div class="flex justify-around">
-<div class="w-[45%] grid grid-cols-1 mt-8 gap-6 bg-slate-300 p-6 rounded">
-  <h2 class="font-semibold text-center">ABOUT YOU</h2>
-  {
-    aboutYou.map((item) => (
-      <div class="flex gap-4 justify-left items-center">
-        <div class="w-[50px] mt-1 bg-green-300 rounded-full shrink-0">
-          <Icon class=" text-green-300 bg-white rounded-full" name={item.icon} />
+  <div class="mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
+    <h2 class="text-center font-semibold">ABOUT YOU</h2>
+    {
+      aboutYou.map((item) => (
+        <div class="justify-left flex items-center gap-4">
+          <div class="mt-1 w-[50px] shrink-0 rounded-full bg-green-300">
+            <Icon
+              class=" rounded-full bg-white text-green-300"
+              name={item.icon}
+            />
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-        </div>
-      </div>
-    ))
-  }
-</div>
+      ))
+    }
+  </div>
 
-<div class="w-[45%] grid grid-cols-1 mt-8 gap-6 bg-slate-300 p-6 rounded">
-  <h2 class="font-semibold text-center">REALITY</h2>
-  {
-    realities.map((item) => (
-      <div class="flex gap-4 justify-left items-center">
-        <div class="w-[50px] mt-1 bg-yellow-300 rounded-full shrink-0">
-          <Icon class=" text-yellow-300 bg-white rounded-full" name={item.icon} />
+  <div class="mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
+    <h2 class="text-center font-semibold">REALITY</h2>
+    {
+      realities.map((item) => (
+        <div class="justify-left flex items-center gap-4">
+          <div class="mt-1 w-[50px] shrink-0 rounded-full bg-yellow-300">
+            <Icon
+              class=" rounded-full bg-white text-yellow-300"
+              name={item.icon}
+            />
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-        </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
-</div>
-<div class="bg-slate-300 w-[45%] mt-8 p-6 rounded m-auto gap-6 grid grid-cols-1 "> 
-  <h2 class="font-semibold text-center">SUPPORT TEAM EFFECT</h2>
+<div
+  class="m-auto mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
+  <h2 class="text-center font-semibold">SUPPORT TEAM EFFECT</h2>
   {
     effects.map((item) => (
-      <div class="flex gap-4 justify-left items-center">
-        <div class="w-[50px] mt-1 bg-red-300 rounded-full shrink-0">
-          <Icon class=" text-red-300 bg-white rounded-full" name={item.icon} />
+      <div class="justify-left flex items-center gap-4">
+        <div class="mt-1 w-[50px] shrink-0 rounded-full bg-red-300">
+          <Icon class=" rounded-full bg-white text-red-300" name={item.icon} />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
         </div>
       </div>
     ))

@@ -3,29 +3,32 @@ import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
 
-<main
-  class="text-center m-auto max-w-screen-lg pt-16 pb-8 md:pt-12 md:pb-24">
+<main class="m-auto max-w-screen-lg pt-16 pb-8 text-center md:pt-12 md:pb-24">
   <div class="mt-16">
     <h1
-      class="tracking-tight text-5xl lg:text-6xl xl:text-7xl font-bold xl:tracking-tighter">
+      class="text-5xl font-bold tracking-tight lg:text-6xl xl:text-7xl xl:tracking-tighter">
       Supercharge your Zendesk HC
     </h1>
-    <p class=" tracking-tight text-3xl mt-4  m-auto">
-      Improve your Help Center CX. Accurate, 24/7, and unlimited scale conversations about your content. 
+    <p class="m-auto mt-4 text-3xl tracking-tight">
+      Improve your Help Center CX. Accurate, 24/7, and unlimited scale
+      conversations about your content.
     </p>
-    <div class="mt-32 mb-4 justify-center flex flex-col sm:flex-row gap-3">
+    <div class="mt-32 mb-4 flex flex-col justify-center gap-3 sm:flex-row">
       <Link
         href="#"
         href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
         target="_blank"
-        class="flex gap-2 items-center justify-center font-medium"
+        class="flex items-center justify-center gap-2 font-medium"
         rel="noopener">
-        <Icon class="text-white w-10 h-10 " name="ri:messenger-fill" />
+        <Icon class="h-10 w-10 text-white" name="ri:messenger-fill" />
         Demo your subdomain now
       </Link>
     </div>
-    <div class="max-w-[300px] text-[13px] mt-3 m-auto grid grid-cols-1 gap-6">
-      <p>No credit card required. 60 day free trial and free implementation manager.</p>
+    <div class="m-auto mt-3 grid max-w-[300px] grid-cols-1 gap-6 text-[13px]">
+      <p>
+        No credit card required. 60 day free trial and free implementation
+        manager.
+      </p>
     </div>
   </div>
 </main>

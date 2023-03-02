@@ -5,13 +5,13 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://wiselydesk.com",
   integrations: [
     tailwind(),
     image({
-      serviceEntryPoint: "@astrojs/image/sharp",
+      serviceEntryPoint: "@astrojs/image/sharp"
     }),
     mdx(),
-    sitemap(),
-  ],
+    sitemap()
+  ]
 });

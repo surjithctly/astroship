@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry }
   }));
 }
 
@@ -19,15 +19,15 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title}>
   <Container>
-    <div class="mx-auto max-w-[735px] mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+    <div class="mx-auto mt-14 max-w-[735px]">
+      <span class="text-sm font-medium uppercase tracking-wider text-blue-400">
         {entry.data.category}
       </span>
       <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="mt-1 text-4xl font-bold lg:text-5xl lg:leading-tight lg:tracking-tight">
         {entry.data.title}
       </h1>
-      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
+      <div class="mt-3 flex flex-wrap items-center gap-2 md:flex-nowrap">
         <span class="text-gray-400">
           {entry.data.author}
         </span>
@@ -37,8 +37,8 @@ const { Content } = await entry.render();
           datetime={entry.data.publishDate.toISOString()}>
           {entry.data.publishDate.toDateString()}
         </time>
-        <span class="text-gray-400 hidden md:block">•</span>
-        <div class="w-full md:w-auto flex flex-wrap gap-3">
+        <span class="hidden text-gray-400 md:block">•</span>
+        <div class="flex w-full flex-wrap gap-3 md:w-auto">
           {
             entry.data.tags.map((tag) => (
               <span class="text-sm text-gray-500">#{tag}</span>
@@ -48,13 +48,13 @@ const { Content } = await entry.render();
       </div>
     </div>
 
-    <div class="mx-auto prose prose-lg mt-6">
-        <Content />
+    <div class="prose prose-lg mx-auto mt-6">
+      <Content />
     </div>
-    <div class="text-center mt-8">
+    <div class="mt-8 text-center">
       <a
         href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        class="rounded-md bg-gray-100 px-5 py-3 transition hover:bg-gray-200"
         >← Back to Blog</a
       >
     </div>

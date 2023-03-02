@@ -18,10 +18,10 @@ import Button from "./ui/button.astro";
       type="text"
       placeholder="Full Name"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
       name="name"
     />
-    <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
       Please provide your full name.
     </div>
   </div>
@@ -32,12 +32,12 @@ import Button from "./ui/button.astro";
       placeholder="Email Address"
       name="email"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
     />
-    <div class="empty-feedback text-red-400 text-sm mt-1">
+    <div class="empty-feedback mt-1 text-sm text-red-400">
       Please provide your email address.
     </div>
-    <div class="invalid-feedback text-red-400 text-sm mt-1">
+    <div class="invalid-feedback mt-1 text-sm text-red-400">
       Please provide a valid email address.
     </div>
   </div>
@@ -46,9 +46,9 @@ import Button from "./ui/button.astro";
       name="message"
       required
       placeholder="Your Message"
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="h-36 w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
     ></textarea>
-    <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
       Please enter your message.
     </div>
   </div>
@@ -97,9 +97,9 @@ import Button from "./ui/button.astro";
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        Accept: "application/json"
       },
-      body: json,
+      body: json
     })
       .then(async (response) => {
         let json = await response.json();

@@ -4,6 +4,6 @@ export const getFormattedDate = (date) =>
     ? new Date(date).toLocaleDateString("en-us", {
         year: "numeric",
         month: "short",
-        day: "numeric",
+        day: "numeric"
       })
     : "";

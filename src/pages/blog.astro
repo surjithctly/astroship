@@ -25,12 +25,12 @@ publishedBlogEntries.sort(function (a, b) {
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+      <ul class="mx-auto grid max-w-4xl gap-16">
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
               <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <div class="grid items-center gap-5 md:grid-cols-2 md:gap-10">
                   <Picture
                     src={blogPostEntry.data.image.src}
                     alt={blogPostEntry.data.image.alt}
@@ -45,15 +45,15 @@ publishedBlogEntries.sort(function (a, b) {
                     class="w-full rounded-md"
                   />
                   <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    <span class="text-sm font-medium uppercase tracking-wider text-blue-400">
                       {blogPostEntry.data.category}
                     </span>
 
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                    <h2 class="mt-1 text-3xl font-semibold leading-snug tracking-tight ">
                       {blogPostEntry.data.title}
                     </h2>
 
-                    <div class="flex gap-2 mt-3">
+                    <div class="mt-3 flex gap-2">
                       <span class="text-gray-400">
                         {blogPostEntry.data.author}
                       </span>

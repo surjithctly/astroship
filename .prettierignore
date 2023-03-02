@@ -1,0 +1,8 @@
+.astro
+dist
+node_modules
+package.json
+tsconfig.json
+*.md
+*.mdx
+*.config.cjs

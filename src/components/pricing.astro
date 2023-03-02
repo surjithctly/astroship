@@ -7,7 +7,7 @@ const { plan } = Astro.props;
 
 <div>
   <div
-    class="flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md">
+    class="order-first flex w-full flex-col rounded-md border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 lg:order-none">
     <div class="text-center">
       <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4><p
         class="mt-3 text-4xl font-bold text-black md:text-4xl">
@@ -24,16 +24,16 @@ const { plan } = Astro.props;
           </p>
         )
       } -->
-    </div><ul class="grid mt-8 text-left gap-y-4">
+    </div><ul class="mt-8 grid gap-y-4 text-left">
       {
         plan.features.map((item) => (
           <li class="flex items-start gap-3 text-gray-800">
-            <Tick class="w-6 h-6" />
+            <Tick class="h-6 w-6" />
             <span>{item}</span>
           </li>
         ))
       }
-    </ul><div class="flex mt-8">
+    </ul><div class="mt-8 flex">
       <Link
         href={plan.button.link || "#"}
         block
