@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "TAILWIND_MODE=watch astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

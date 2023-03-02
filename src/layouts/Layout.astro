@@ -26,7 +26,7 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
+  ? title + " | " + "wiselydesk"
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
@@ -61,13 +61,11 @@ const makeTitle = title
       }}
     />
   </head>
-  <body>
+  <body class="text-[#1D2D35] antialiased">
     <Navbar />
     <slot />
     <Footer />
     <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
       }

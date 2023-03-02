@@ -2,66 +2,87 @@
 // @ts-ignore
 import { Icon } from "astro-icon";
 
-const features = [
-  {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+//     <span class="font-semibold">wiselydesk</span>'s enables users to have a conversation with your help center. Users will spend less time searching and more time understanding your content
+
+
+const aboutYou = [  {
+    title: "High quality help center content",
+    icon: "ri:checkbox-circle-fill",
   },
   {
-    title: "100% Static HTML, No JS",
-    description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+    title: "Impressive Support Team to handle complex queries",
+    icon: "ri:checkbox-circle-fill",
+  }]  
+
+const realities = [  {
+    title: "Users often miss relevant help center content",
+    icon: "ri:emotion-normal-fill",
   },
   {
-    title: "On-Demand Components",
-    description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+    title: "Users contact support for easy queries",
+    icon: "ri:emotion-normal-fill",
+  }]
+
+const effects = [  {
+    title: "Lower incentive to maintain high quality content",
+    icon: "ri:emotion-unhappy-fill",
   },
   {
-    title: "Broad Integration",
-    description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
-  },
-];
+    title: "Less time to spend on complex queries",
+    icon: "ri:emotion-unhappy-fill",
+  }]
+
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+<div class="">
+  <h2 class="ml-7 text-4xl lg:text-5xl font-bold tracking-tight flex items-start">
+      73%<span class="text-[1.5rem]">*</span> of help center content remains unread
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
-  </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="flex justify-around">
+<div class="w-[45%] grid grid-cols-1 mt-8 gap-6 bg-slate-300 p-6 rounded">
+  <h2 class="font-semibold text-center">ABOUT YOU</h2>
   {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+    aboutYou.map((item) => (
+      <div class="flex gap-4 justify-left items-center">
+        <div class="w-[50px] mt-1 bg-green-300 rounded-full shrink-0">
+          <Icon class=" text-green-300 bg-white rounded-full" name={item.icon} />
         </div>
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<div class="w-[45%] grid grid-cols-1 mt-8 gap-6 bg-slate-300 p-6 rounded">
+  <h2 class="font-semibold text-center">REALITY</h2>
+  {
+    realities.map((item) => (
+      <div class="flex gap-4 justify-left items-center">
+        <div class="w-[50px] mt-1 bg-yellow-300 rounded-full shrink-0">
+          <Icon class=" text-yellow-300 bg-white rounded-full" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+        </div>
+      </div>
+    ))
+  }
+</div>
+</div>
+<div class="bg-slate-300 w-[45%] mt-8 p-6 rounded m-auto gap-6 grid grid-cols-1 "> 
+  <h2 class="font-semibold text-center">SUPPORT TEAM EFFECT</h2>
+  {
+    effects.map((item) => (
+      <div class="flex gap-4 justify-left items-center">
+        <div class="w-[50px] mt-1 bg-red-300 rounded-full shrink-0">
+          <Icon class=" text-red-300 bg-white rounded-full" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
         </div>
       </div>
     ))
