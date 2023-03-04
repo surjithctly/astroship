@@ -15,9 +15,9 @@ function Question({ onSubmit, setQuestion, question }) {
 
   return (
     <label htmlFor="userQuestion">
-      <div className="md:bg-vert-light-gradient dark:md:bg-vert-dark-gradient absolute bottom-0 left-0 w-full border-t bg-white dark:border-white/20 dark:bg-gray-800 md:border-t-0 md:border-transparent md:!bg-transparent md:dark:border-transparent">
+      <div className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
         <form
-          className="stretch mx-2 flex flex-row gap-3 pt-2 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
+          className="stretch mx-2 flex w-[80%] flex-row gap-3 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
           onSubmit={handleSubmit}
           onKeyDown={handleEnterBtn}>
           <div className="relative flex h-full flex-1 md:flex-col">
@@ -52,9 +52,6 @@ function Question({ onSubmit, setQuestion, question }) {
             </div>
           </div>
         </form>
-        <div className="px-3 pt-2 pb-3 text-center text-xs text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
-          Free everything cause we're testing
-        </div>
       </div>
     </label>
   );

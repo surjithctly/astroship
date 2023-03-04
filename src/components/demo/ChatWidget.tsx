@@ -71,26 +71,29 @@ function ChatWidget({ selectTheme }): JSX.Element {
 
   if (selectTheme === "ChatGPT") {
     return (
-      <div className="relative flex h-[600px] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
-        {messages.map((message, index) => {
-          if (message.sender === "user") {
-            return (
-              <ChatGPTUserMessage
-                key={index}
-                text={message.text}
-                sentTime={message.sentTime}
-              />
-            );
-          }
-          return <ChatGPTAssistantMessage key={index} text={message.text} />;
-        })}
+      <>
+        <div className="h- relative flex h-[66vh] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
+          {messages.map((message, index) => {
+            if (message.sender === "user") {
+              return (
+                <ChatGPTUserMessage
+                  key={index}
+                  text={message.text}
+                  sentTime={message.sentTime}
+                />
+              );
+            }
+            return <ChatGPTAssistantMessage key={index} text={message.text} />;
+          })}
+
+          <div ref={messagesEndRef} />
+        </div>
         <ChatGPTQuestion
           question={question}
           onSubmit={onSubmit}
           setQuestion={setQuestion}
         />
-        <div ref={messagesEndRef} />
-      </div>
+      </>
     );
   }
 
