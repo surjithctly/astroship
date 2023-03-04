@@ -12,9 +12,9 @@ function iMessageQuestion({ question, onSubmit, setQuestion }) {
   }
 
   return (
-    <div className="absolute bottom-0 flex w-full items-center border-t border-gray-300 px-4 pb-2 pt-2">
+    <div className="relative m-auto flex w-[90%] items-center justify-center bg-black px-4 pb-2 pt-2">
       <input
-        className="mr-2 flex-1 appearance-none rounded border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="mr-2 w-3/4 appearance-none rounded border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         type="text"
         placeholder="Input your question"
         value={question}

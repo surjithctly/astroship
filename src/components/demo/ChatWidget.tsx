@@ -46,33 +46,36 @@ function ChatWidget({ selectTheme }): JSX.Element {
 
   if (selectTheme === "iMessage") {
     return (
-      <div className="relative m-auto mt-6 h-[600px] w-[90%] overflow-scroll rounded-lg border-2 bg-black shadow">
-        {messages.map((message, index) => {
-          if (message.sender === "user") {
-            return (
-              <ImessageUserMessage
-                key={index}
-                text={message.text}
-                sentTime={message.sentTime}
-              />
-            );
-          }
-          return <ImessageAssistantMessage key={index} text={message.text} />;
-        })}
+      <>
+        <div className="relative m-auto mt-6 h-[66vh] w-[90%] overflow-scroll rounded-t-lg bg-black pb-2 shadow">
+          {messages.map((message, index) => {
+            if (message.sender === "user") {
+              return (
+                <ImessageUserMessage
+                  key={index}
+                  text={message.text}
+                  sentTime={message.sentTime}
+                />
+              );
+            }
+            return <ImessageAssistantMessage key={index} text={message.text} />;
+          })}
+
+          <div ref={messagesEndRef} />
+        </div>
         <ImessageQuestion
           question={question}
           onSubmit={onSubmit}
           setQuestion={setQuestion}
         />
-        <div ref={messagesEndRef} />
-      </div>
+      </>
     );
   }
 
   if (selectTheme === "ChatGPT") {
     return (
       <>
-        <div className="h- relative flex h-[66vh] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
+        <div className="relative flex h-[66vh] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
           {messages.map((message, index) => {
             if (message.sender === "user") {
               return (
