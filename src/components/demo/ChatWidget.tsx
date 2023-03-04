@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ImessageQuestion from "@components/demo/themes/imessage/question";
 import ImessageUserMessage from "@components/demo/themes/imessage/usermessage";
 import ImessageAssistantMessage from "@components/demo/themes/imessage/assistantmessage";
@@ -31,6 +31,19 @@ function ChatWidget({ selectTheme }): JSX.Element {
     setQuestion("");
   }
 
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   if (selectTheme === "iMessage") {
     return (
       <div className="relative m-auto mt-6 h-[600px] w-[90%] overflow-scroll rounded-lg border-2 bg-black shadow">
@@ -51,6 +64,7 @@ function ChatWidget({ selectTheme }): JSX.Element {
           onSubmit={onSubmit}
           setQuestion={setQuestion}
         />
+        <div ref={messagesEndRef} />
       </div>
     );
   }
@@ -75,6 +89,7 @@ function ChatWidget({ selectTheme }): JSX.Element {
           onSubmit={onSubmit}
           setQuestion={setQuestion}
         />
+        <div ref={messagesEndRef} />
       </div>
     );
   }
