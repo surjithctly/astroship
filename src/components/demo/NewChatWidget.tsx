@@ -84,7 +84,7 @@ function ChatWidget({ selectTheme }): JSX.Element {
 
   if (selectTheme === "ChatGPT") {
     return (
-      <div className="relative flex h-[600px] flex-col items-center text-base font-medium dark:bg-gray-800">
+      <div className="relative flex h-[600px] flex-col items-center text-base font-medium dark:bg-[#343541]">
         {messages.map((message, index) => {
           if (message.sender === "user") {
             return (

@@ -3,13 +3,13 @@ import ChatWidget from "@components/demo/NewChatWidget";
 import WidgetThemeSelector from "@components/demo/widgetThemeSelector";
 
 const WIDGET_THEMES = [
-  { value: "iMessage", label: "iMessage" },
-  { value: "ChatGPT", label: "ChatGPT" }
+  { value: "ChatGPT", label: "ChatGPT" },
+  { value: "iMessage", label: "iMessage" }
 ];
 
 export default function ChatWidgetComponent() {
   const [selectChatTheme, setSelectedChatTheme] = useState(
-    WIDGET_THEMES[1].value
+    WIDGET_THEMES[0].value
   );
 
   // handle SSR and hydration correctly
