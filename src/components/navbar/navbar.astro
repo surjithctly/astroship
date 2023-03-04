@@ -6,25 +6,27 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Features",
-    path: "#",
-    children: [
-      { title: "Action", path: "#" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" }
-    ]
+    title: "Demo",
+    path: "/demo",
+    class: "flex py-2 font-semibold text-gray-600 hover:text-gray-900 lg:px-3"
   },
   {
     title: "Pricing",
     path: "/pricing"
   },
   {
-    title: "About",
-    path: "/about"
+    title: "Company",
+    path: "#",
+    children: [
+      { title: "About", path: "/about" },
+      { title: "Careers", path: "#" },
+      { title: "Privacy", path: "#" }
+    ]
   },
   {
-    title: "Blog",
-    path: "/blog"
+    title: "Resources",
+    path: "#",
+    children: [{ title: "Blog", path: "/blog" }]
   },
   {
     title: "Contact",
@@ -63,7 +65,10 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex py-2 text-gray-600 hover:text-gray-900 lg:px-3">
+                      class={
+                        item.class ??
+                        "flex py-2 text-gray-600 hover:text-gray-900 lg:px-3"
+                      }>
                       {item.title}
                     </a>
                   </li>

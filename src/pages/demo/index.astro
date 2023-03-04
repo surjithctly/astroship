@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import ChatWidgetComponent from "@components/demo/ChatWidgetComponent";
+---
+
+<Layout title="Demo">
+  <Container>
+    <div class="mx-auto max-w-3xl">
+      <form class="mx-auto mt-8">
+        <div class="mb-4">
+          <label
+            class="smb-2 ml-2 block text-xl font-bold text-gray-700"
+            for="article">
+            Zendesk Article Url
+          </label>
+          <input
+            class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 text-lg leading-tight text-gray-700 shadow"
+            id="article"
+            type="text"
+            placeholder="https://support.zendesk.com/hc/en-us/articles/4408884056346-Introduction-Getting-started-with-Zendesk-Support"
+            autofocus
+          />
+        </div>
+      </form>
+    </div>
+    <ChatWidgetComponent client:load />
+  </Container>
+</Layout>
