@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import ChatWidget from "@components/demo/NewChatWidget";
+import { useState, useEffect } from "react";
+import ChatWidget from "@components/demo/ChatWidget";
 import WidgetThemeSelector from "@components/demo/widgetThemeSelector";
 
 const WIDGET_THEMES = [

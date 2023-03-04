@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ImessageQuestion from "@components/demo/themes/imessage/question";
 import ImessageUserMessage from "@components/demo/themes/imessage/usermessage";
 import ImessageAssistantMessage from "@components/demo/themes/imessage/assistantmessage";
@@ -12,59 +12,28 @@ type Message = {
   sentTime?: string;
 };
 
-const baseUserMessage: Message = {
-  text: "Hey, how are you?",
-  sender: "user",
-  sentTime: new Date().toLocaleTimeString([], {
+function HHMM() {
+  return new Date().toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit"
-  })
-};
-
-const baseAssistantMessage: Message = {
-  text: "Good, thank you.",
-  sender: "assistant"
-};
-
-const baseUserMessage2: Message = {
-  text: "Doing good thank you so much for asking. I'm just wondering what is the weather in Berlin today?",
-  sender: "user",
-  sentTime: new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  })
-};
-
-const baseAssistantMessage2: Message = {
-  text: "It should be cloudy because it is winter and that is classic winter weather for Berlin. Sorry about that.",
-  sender: "assistant"
-};
+  });
+}
 
 function ChatWidget({ selectTheme }): JSX.Element {
-  const [messages, setMessages] = useState<Message[]>([
-    baseUserMessage,
-    baseAssistantMessage,
-    baseUserMessage2,
-    baseAssistantMessage2
-  ]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const message = e.target.message.value;
-    // setMessages([...messages, { text: message, sender: "user" }]);
-  };
-
-  function onChange() {
-    console.log("changed");
-  }
+  const [question, setQuestion] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
 
   function onSubmit() {
-    console.log("submitted");
+    setMessages([
+      ...messages,
+      { sender: "user", sentTime: HHMM(), text: question }
+    ]);
+    setQuestion("");
   }
 
   if (selectTheme === "iMessage") {
     return (
-      <div className="relative m-auto mt-6 h-[600px] w-[90%] rounded-lg border-2 bg-black shadow">
+      <div className="relative m-auto mt-6 h-[600px] w-[90%] overflow-scroll rounded-lg border-2 bg-black shadow">
         {messages.map((message, index) => {
           if (message.sender === "user") {
             return (
@@ -77,14 +46,18 @@ function ChatWidget({ selectTheme }): JSX.Element {
           }
           return <ImessageAssistantMessage key={index} text={message.text} />;
         })}
-        <ImessageQuestion onChange={onChange} onSubmit={onSubmit} />
+        <ImessageQuestion
+          question={question}
+          onSubmit={onSubmit}
+          setQuestion={setQuestion}
+        />
       </div>
     );
   }
 
   if (selectTheme === "ChatGPT") {
     return (
-      <div className="relative flex h-[600px] flex-col items-center text-base font-medium dark:bg-[#343541]">
+      <div className="relative flex h-[600px] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
         {messages.map((message, index) => {
           if (message.sender === "user") {
             return (
@@ -97,7 +70,11 @@ function ChatWidget({ selectTheme }): JSX.Element {
           }
           return <ChatGPTAssistantMessage key={index} text={message.text} />;
         })}
-        <ChatGPTQuestion onChange={onChange} onSubmit={onSubmit} />
+        <ChatGPTQuestion
+          question={question}
+          onSubmit={onSubmit}
+          setQuestion={setQuestion}
+        />
       </div>
     );
   }
@@ -113,7 +90,7 @@ function ChatWidget({ selectTheme }): JSX.Element {
         }
         return <AssistantMessage text={message.text} />;
       })} */}
-      <ImessageQuestion onChange={onChange} onSubmit={onSubmit} />
+      {/* <ImessageQuestion onSubmit={onSubmit} setQuestion={setQuestion} /> */}
     </div>
   );
 }

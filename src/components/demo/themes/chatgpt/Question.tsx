@@ -1,19 +1,39 @@
-import React from "react";
+function Question({ onSubmit, setQuestion, question }) {
+  function handleEnterBtn(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const textArea = e.target as HTMLTextAreaElement;
+      setQuestion(textArea.value);
+      onSubmit();
+    }
+  }
 
-const Question = ({ onChange, onSubmit }) => {
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+  }
+
   return (
     <label htmlFor="userQuestion">
       <div className="md:bg-vert-light-gradient dark:md:bg-vert-dark-gradient absolute bottom-0 left-0 w-full border-t bg-white dark:border-white/20 dark:bg-gray-800 md:border-t-0 md:border-transparent md:!bg-transparent md:dark:border-transparent">
-        <form className="stretch mx-2 flex flex-row gap-3 pt-2 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6">
+        <form
+          className="stretch mx-2 flex flex-row gap-3 pt-2 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
+          onSubmit={handleSubmit}
+          onKeyDown={handleEnterBtn}>
           <div className="relative flex h-full flex-1 md:flex-col">
             <div className="relative flex w-full flex-grow flex-col rounded-md border border-black/10 bg-white py-2 shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-gray-700 dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] md:py-3 md:pl-4">
               <textarea
                 id="userQuestion"
                 tabIndex={0}
+                value={question}
                 placeholder="Input your question"
                 rows={1}
+                onChange={(e) => setQuestion(e.target.value)}
                 className="h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pl-0"></textarea>
-              <button className="absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2">
+              <button
+                className="absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2"
+                onClick={handleSubmit}
+                type="submit">
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -38,28 +58,6 @@ const Question = ({ onChange, onSubmit }) => {
       </div>
     </label>
   );
-  // return (
-  //   <div className="absolute bottom-0 flex w-full items-center border-t border-gray-300 px-4 pb-2 pt-2">
-  //     <input
-  //       className="mr-2 flex-1 appearance-none rounded border py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  //       type="text"
-  //       placeholder="iMessage"
-  //       value="Input your question"
-  //       onChange={onChange}
-  //       onKeyDown={(e) => {
-  //         if (e.key === "Enter") {
-  //           e.preventDefault();
-  //           onSubmit();
-  //         }
-  //       }}
-  //     />
-  //     <button
-  //       className="text-blue-500 hover:text-blue-700 focus:underline focus:outline-none"
-  //       onClick={onSubmit}>
-  //       Send
-  //     </button>
-  //   </div>
-  // );
-};
+}
 
 export default Question;

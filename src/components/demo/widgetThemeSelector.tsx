@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function WidgetThemeSelector({ themes, setTheme }) {
   return (
     <div className="absolute top-24 ml-[72%]">
