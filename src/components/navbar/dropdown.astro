@@ -24,7 +24,7 @@ const { title, lastItem, children } = Astro.props;
     <DropdownItems>
       <div
         class:list={[
-          "lg:absolute  w-full  lg:w-48",
+          "lg:absolute w-full lg:w-48 z-10",
           lastItem
             ? "lg:right-0 origin-top-right"
             : "lg:left-0 origin-top-left",
