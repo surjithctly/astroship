@@ -21,6 +21,9 @@
       ],
       "@pages/*": [
         "pages/*"
+      ],
+      "@clients/*": [
+        "clients/*"
       ]
     },
     "jsx": "react-jsx",

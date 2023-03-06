@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ChatWidget from "@components/demo/ChatWidget";
 import WidgetThemeSelector from "@components/demo/widgetThemeSelector";
 
@@ -12,23 +12,13 @@ export default function ChatWidgetComponent() {
     WIDGET_THEMES[0].value
   );
 
-  // handle SSR and hydration correctly
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
-  if (!hydrated) {
-    // Returns null on first render, so the client and server match
-    return null;
-  }
-
   return (
-    <>
+    <React.StrictMode>
       <WidgetThemeSelector
         themes={WIDGET_THEMES}
         setTheme={setSelectedChatTheme}
       />
       <ChatWidget selectTheme={selectChatTheme} />
-    </>
+    </React.StrictMode>
   );
 }
