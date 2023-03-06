@@ -5,35 +5,25 @@ import ImessageAssistantMessage from "@components/demo/themes/imessage/assistant
 import ChatGPTQuestion from "@components/demo/themes/chatgpt/Question";
 import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
+import ChatMessage from "@models/demo/chatMessage";
 import { postData } from "@clients/fetch";
 import { getHHMM } from "@utils/index";
 
-type Message = {
-  text: string;
-  sender: string;
-  sentTime?: string;
-};
-
-type Messages = (
-  | Message
-  | { sender: string; sentTime: string; text: string }
-)[];
-
 type AiResponseDTO = {
   ai_answer: {
-    sender: string;
+    sender: "user" | "assistant";
     text: string;
   };
 };
 
 function ChatWidget({ selectTheme }): JSX.Element {
   const [question, setQuestion] = useState("");
-  const [messages, setMessages] = useState<Messages>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   async function onSubmit() {
     const updatedMessages = [
       ...messages,
-      { sender: "user", sentTime: getHHMM(), text: question }
+      new ChatMessage({ sender: "user", sentTime: getHHMM(), text: question })
     ];
 
     // Add the user message to the chat

@@ -24,6 +24,9 @@
       ],
       "@clients/*": [
         "clients/*"
+      ],
+      "@models/*": [
+        "models/*"
       ]
     },
     "jsx": "react-jsx",

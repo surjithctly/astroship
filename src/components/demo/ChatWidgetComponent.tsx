@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ChatWidget from "@components/demo/ChatWidget";
-import WidgetThemeSelector from "@components/demo/widgetThemeSelector";
+import ChatThemeSelector from "@components/demo/ChatThemeSelector";
 
 const WIDGET_THEMES = [
   { value: "ChatGPT", label: "ChatGPT" },
@@ -14,7 +14,7 @@ export default function ChatWidgetComponent() {
 
   return (
     <React.StrictMode>
-      <WidgetThemeSelector
+      <ChatThemeSelector
         themes={WIDGET_THEMES}
         setTheme={setSelectedChatTheme}
       />

@@ -1,4 +1,4 @@
-export default function WidgetThemeSelector({ themes, setTheme }) {
+export default function ChatThemeSelector({ themes, setTheme }) {
   return (
     <div className="absolute top-24 ml-[72%]">
       <label
