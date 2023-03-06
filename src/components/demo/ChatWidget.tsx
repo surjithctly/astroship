@@ -7,13 +7,9 @@ import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
 import ChatMessage from "@models/demo/chatMessage";
 import { postData } from "@clients/fetch";
-import { getHHMM } from "@utils/index";
 
 type AiResponseDTO = {
-  ai_answer: {
-    sender: "user" | "assistant";
-    text: string;
-  };
+  ai_answer: ChatMessage;
 };
 
 function ChatWidget({ selectTheme }): JSX.Element {
@@ -23,7 +19,11 @@ function ChatWidget({ selectTheme }): JSX.Element {
   async function onSubmit() {
     const updatedMessages = [
       ...messages,
-      new ChatMessage({ sender: "user", sentTime: getHHMM(), text: question })
+      new ChatMessage({
+        sender: "user",
+        sentTime: ChatMessage.createSentTimeField(),
+        text: question
+      })
     ];
 
     // Add the user message to the chat

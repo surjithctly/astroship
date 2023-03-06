@@ -10,4 +10,11 @@ export default class ChatMessage {
       this.sentTime = sentTime;
     }
   }
+
+  static createSentTimeField() {
+    return new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
 }
