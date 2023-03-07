@@ -13,7 +13,11 @@ type AiResponseDTO = {
   ai_answer: ChatMessage;
 };
 
-function ChatWidget({ selectTheme, articleInputObject }): JSX.Element {
+function ChatWidget({
+  selectTheme,
+  articleInputObject,
+  isValidZendeskUrl
+}): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
@@ -107,6 +111,7 @@ function ChatWidget({ selectTheme, articleInputObject }): JSX.Element {
         question={question}
         onSubmit={onSubmit}
         setQuestion={setQuestion}
+        isValidZendeskUrl={isValidZendeskUrl}
       />
     </>
   );

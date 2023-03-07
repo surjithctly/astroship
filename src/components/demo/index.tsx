@@ -42,6 +42,7 @@ function Demo() {
       <ChatWidget
         articleInputObject={articleInputObject}
         selectTheme={selectChatTheme}
+        isValidZendeskUrl={isValidZendeskUrl}
       />
     </React.StrictMode>
   );

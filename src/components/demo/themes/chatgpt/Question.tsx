@@ -1,4 +1,4 @@
-function Question({ onSubmit, setQuestion, question }) {
+function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
   function handleEnterBtn(e) {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -29,10 +29,12 @@ function Question({ onSubmit, setQuestion, question }) {
                 placeholder="Input your question"
                 rows={1}
                 onChange={(e) => setQuestion(e.target.value)}
+                disabled={!isValidZendeskUrl}
                 className="h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pl-0"></textarea>
               <button
                 className="absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2"
                 onClick={handleSubmit}
+                disabled={!isValidZendeskUrl}
                 type="submit">
                 <svg
                   stroke="currentColor"
