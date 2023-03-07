@@ -1,3 +1,5 @@
+import { Tooltip } from "react-tooltip";
+
 function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
   function handleEnterBtn(e) {
     if (e.key === "Enter") {
@@ -15,7 +17,11 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
 
   return (
     <label htmlFor="userQuestion">
-      <div className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
+      <div
+        className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent"
+        data-tooltip-content="Please input a valid Zendesk subdomain URL above"
+        data-tooltip-place="top"
+        data-tooltip-id="my-tooltip">
         <form
           className="stretch mx-2 flex w-[80%] flex-row gap-3 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
           onSubmit={handleSubmit}
@@ -30,9 +36,13 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
                 rows={1}
                 onChange={(e) => setQuestion(e.target.value)}
                 disabled={!isValidZendeskUrl}
-                className="h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pl-0"></textarea>
+                className={`h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pl-0 ${
+                  !isValidZendeskUrl && "cursor-not-allowed"
+                }`}></textarea>
               <button
-                className="absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2"
+                className={`absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2 ${
+                  !isValidZendeskUrl && "cursor-not-allowed"
+                }`}
                 onClick={handleSubmit}
                 disabled={!isValidZendeskUrl}
                 type="submit">
@@ -51,6 +61,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
+              {!isValidZendeskUrl && <Tooltip id="my-tooltip" />}
             </div>
           </div>
         </form>
