@@ -13,10 +13,14 @@ type AiResponseDTO = {
   ai_answer: ChatMessage;
 };
 
-function ChatWidget({ selectTheme, zendeskUrl }): JSX.Element {
+function ChatWidget({
+  selectTheme,
+  zendeskUrl,
+  setArticleInputObject,
+  articleInputObject
+}): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [articleInputObject, setArticleInputObject] = useState<ArticleInput>();
 
   async function onSubmit() {
     const updatedMessages = [
