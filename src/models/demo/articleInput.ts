@@ -12,6 +12,10 @@ export default class ArticleInput {
     }
   }
 
+  public isInputUrlValid(): boolean {
+    return !!this.subdomain && !!this.articleId;
+  }
+
   private findSubdomainAndArticleIdRegexGroups(zendeskUrl: string) {
     return zendeskUrl.match(
       /\/\/(?<subdomain>\w+).*\/articles\/(?<articleId>\d+)/

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ArticleInputModel from "@models/demo/articleInput";
 import ChatWidget from "@components/demo/ChatWidget";
 import ChatThemeSelector from "@components/demo/ChatThemeSelector";
@@ -14,20 +14,36 @@ function Demo() {
     WIDGET_THEMES[0].value
   );
   const [zendeskUrl, setZendeskUrl] = useState("");
+  const [inputRanOnce, setInputRanOnce] = useState(false);
+  const [isValidZendeskUrl, setIsValidZendeskUrl] = useState(false);
   const [articleInputObject, setArticleInputObject] =
     useState<ArticleInputModel>();
 
+  useEffect(() => {
+    if (zendeskUrl || inputRanOnce) {
+      setInputRanOnce(true);
+      const articleInputValue = new ArticleInputModel(zendeskUrl);
+      if (articleInputValue.isInputUrlValid()) {
+        setArticleInputObject(articleInputValue);
+        setIsValidZendeskUrl(true);
+      } else {
+        setIsValidZendeskUrl(false);
+      }
+    }
+  }, [zendeskUrl]);
+
   return (
     <React.StrictMode>
-      <ArticleInput setZendeskUrl={setZendeskUrl} />
+      <ArticleInput
+        isValidZendeskUrl={isValidZendeskUrl}
+        setZendeskUrl={setZendeskUrl}
+      />
       <ChatThemeSelector
         themes={WIDGET_THEMES}
         setTheme={setSelectedChatTheme}
       />
       <ChatWidget
         articleInputObject={articleInputObject}
-        setArticleInputObject={setArticleInputObject}
-        zendeskUrl={zendeskUrl}
         selectTheme={selectChatTheme}
       />
     </React.StrictMode>

@@ -6,19 +6,14 @@ import ChatGPTQuestion from "@components/demo/themes/chatgpt/Question";
 import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
 import ChatMessage from "@models/demo/chatMessage";
-import ArticleInput from "@models/demo/articleInput";
+
 import { postData } from "@clients/fetch";
 
 type AiResponseDTO = {
   ai_answer: ChatMessage;
 };
 
-function ChatWidget({
-  selectTheme,
-  zendeskUrl,
-  setArticleInputObject,
-  articleInputObject
-}): JSX.Element {
+function ChatWidget({ selectTheme, articleInputObject }): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
@@ -61,12 +56,6 @@ function ChatWidget({
   useEffect(() => {
     scrollToBottom(messagesEndRef);
   }, [messages]);
-
-  useEffect(() => {
-    if (zendeskUrl) {
-      setArticleInputObject(new ArticleInput(zendeskUrl));
-    }
-  }, [zendeskUrl]);
 
   if (selectTheme === "iMessage") {
     return (
