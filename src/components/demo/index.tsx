@@ -14,20 +14,17 @@ function Demo() {
     WIDGET_THEMES[0].value
   );
   const [zendeskUrl, setZendeskUrl] = useState("");
-  const [inputRanOnce, setInputRanOnce] = useState(false);
   const [isValidZendeskUrl, setIsValidZendeskUrl] = useState(false);
   const [articleInputObject, setArticleInputObject] =
     useState<ArticleInputModel>();
 
   useEffect(() => {
-    if (zendeskUrl || inputRanOnce) {
-      setInputRanOnce(true);
+    setIsValidZendeskUrl(false);
+    if (zendeskUrl) {
       const articleInputValue = new ArticleInputModel(zendeskUrl);
       if (articleInputValue.isInputUrlValid()) {
         setArticleInputObject(articleInputValue);
         setIsValidZendeskUrl(true);
-      } else {
-        setIsValidZendeskUrl(false);
       }
     }
   }, [zendeskUrl]);
