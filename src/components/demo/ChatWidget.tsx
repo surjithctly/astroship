@@ -39,14 +39,14 @@ function ChatWidget({
     const aiResponse = new ChatMessage({ sender: "assistant", text: "" });
     setMessages([...updatedMessages, aiResponse]);
 
-    let res = await postData<AiResponseDTO>(
-      `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
-      {
-        question
-      }
-    );
+    // let res = await postData<AiResponseDTO>(
+    //   `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
+    //   {
+    //     question
+    //   }
+    // );
 
-    res = {
+    let res = {
       ai_answer: {
         sender: "assistant",
         text: "I don't know."
@@ -55,6 +55,7 @@ function ChatWidget({
 
     console.log(res);
     // Add the AI response to the chat
+    // @ts-expect-error
     setMessages([...updatedMessages, res.ai_answer]);
   }
 

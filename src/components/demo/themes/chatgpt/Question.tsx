@@ -2,8 +2,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
   function handleEnterBtn(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      const textArea = e.target as HTMLTextAreaElement;
-      setQuestion(textArea.value);
+      setQuestion(e.target.value);
       onSubmit();
     }
   }
@@ -15,7 +14,13 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
 
   return (
     <label htmlFor="userQuestion">
-      <div className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
+      <div className="flex w-full justify-center border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
+        {!isValidZendeskUrl && (
+          <div className="absolute mt-[-30px] rounded-2xl border-2 border-none bg-black p-4 text-white">
+            Please enter a valid Zendesk URL at the top
+          </div>
+        )}
+
         <form
           className="stretch mx-2 flex w-[80%] flex-row gap-3 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
           onSubmit={handleSubmit}
