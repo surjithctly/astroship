@@ -1,5 +1,3 @@
-import * as ReactToolTip from "react-tooltip";
-
 function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
   function handleEnterBtn(e) {
     if (e.key === "Enter") {
@@ -17,11 +15,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
 
   return (
     <label htmlFor="userQuestion">
-      <div
-        className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent"
-        data-tooltip-content="Please input a valid Zendesk subdomain URL above"
-        data-tooltip-place="top"
-        data-tooltip-id="my-tooltip">
+      <div className="flex w-full border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
         <form
           className="stretch mx-2 flex w-[80%] flex-row gap-3 last:mb-2 md:last:mb-6 lg:mx-auto lg:max-w-3xl lg:pt-6"
           onSubmit={handleSubmit}
@@ -61,7 +55,6 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
-              {!isValidZendeskUrl && <ReactToolTip.Tooltip id="my-tooltip" />}
             </div>
           </div>
         </form>
