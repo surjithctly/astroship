@@ -6,15 +6,17 @@ import ChatGPTQuestion from "@components/demo/themes/chatgpt/Question";
 import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
 import ChatMessage from "@models/demo/chatMessage";
+import ArticleInput from "@models/demo/articleInput";
 import { postData } from "@clients/fetch";
 
 type AiResponseDTO = {
   ai_answer: ChatMessage;
 };
 
-function ChatWidget({ selectTheme }): JSX.Element {
+function ChatWidget({ selectTheme, zendeskUrl }): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [articleInputObject, setArticleInputObject] = useState<ArticleInput>();
 
   async function onSubmit() {
     const updatedMessages = [
@@ -31,7 +33,7 @@ function ChatWidget({ selectTheme }): JSX.Element {
     setQuestion("");
 
     const res = await postData<AiResponseDTO>(
-      "http://127.0.0.1:5000/landingPage/articleIngestor/chat/ultimateai/4401884334994",
+      `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
       {
         question
       }
@@ -55,6 +57,12 @@ function ChatWidget({ selectTheme }): JSX.Element {
   useEffect(() => {
     scrollToBottom(messagesEndRef);
   }, [messages]);
+
+  useEffect(() => {
+    if (zendeskUrl) {
+      setArticleInputObject(new ArticleInput(zendeskUrl));
+    }
+  }, [zendeskUrl]);
 
   if (selectTheme === "iMessage") {
     return (

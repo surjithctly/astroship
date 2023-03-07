@@ -7,7 +7,11 @@ const WIDGET_THEMES = [
   { value: "iMessage", label: "iMessage" }
 ];
 
-export default function ChatWidgetComponent() {
+export default function ChatWidgetComponent({
+  zendeskUrl
+}: {
+  zendeskUrl: string;
+}) {
   const [selectChatTheme, setSelectedChatTheme] = useState(
     WIDGET_THEMES[0].value
   );
@@ -18,7 +22,7 @@ export default function ChatWidgetComponent() {
         themes={WIDGET_THEMES}
         setTheme={setSelectedChatTheme}
       />
-      <ChatWidget selectTheme={selectChatTheme} />
+      <ChatWidget zendeskUrl={zendeskUrl} selectTheme={selectChatTheme} />
     </React.StrictMode>
   );
 }
