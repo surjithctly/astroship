@@ -84,6 +84,7 @@ function ChatWidget({
           question={question}
           onSubmit={onSubmit}
           setQuestion={setQuestion}
+          isValidZendeskUrl={isValidZendeskUrl}
         />
       </>
     );
