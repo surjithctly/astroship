@@ -35,6 +35,10 @@ function ChatWidget({
     setMessages(updatedMessages);
     setQuestion("");
 
+    // add empty assistant reply to mimic chat GPT
+    const aiResponse = new ChatMessage({ sender: "assistant", text: "" });
+    setMessages([...updatedMessages, aiResponse]);
+
     const res = await postData<AiResponseDTO>(
       `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
       {

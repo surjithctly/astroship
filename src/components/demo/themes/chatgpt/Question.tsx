@@ -1,4 +1,4 @@
-import { Tooltip } from "react-tooltip";
+import * as ReactToolTip from "react-tooltip";
 
 function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
   function handleEnterBtn(e) {
@@ -61,7 +61,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
-              {!isValidZendeskUrl && <Tooltip id="my-tooltip" />}
+              {!isValidZendeskUrl && <ReactToolTip.Tooltip id="my-tooltip" />}
             </div>
           </div>
         </form>

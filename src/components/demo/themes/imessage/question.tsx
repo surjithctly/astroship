@@ -1,4 +1,4 @@
-import { Tooltip } from "react-tooltip";
+import * as ReactToolTip from "react-tooltip";
 
 function iMessageQuestion({
   question,
@@ -43,7 +43,7 @@ function iMessageQuestion({
         disabled={!isValidZendeskUrl}>
         Send
       </button>
-      {!isValidZendeskUrl && <Tooltip id="my-tooltip" />}
+      {!isValidZendeskUrl && <ReactToolTip.Tooltip id="my-tooltip" />}
     </div>
   );
 }
