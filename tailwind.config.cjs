@@ -6,7 +6,17 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+      }, 
+      animation: {
+        'assistant-message': 'blink 1s steps(5,start) infinite',
       },
+      keyframes: { 
+        blink: {
+          to: {
+              visibility: 'hidden'
+          }
+        }
+    }
     },
   },
   plugins: [require("@tailwindcss/typography"),require('@tailwindcss/forms')],

@@ -13,6 +13,11 @@ type AiResponseDTO = {
   ai_answer: ChatMessage;
 };
 
+const mockMessages = [
+  { sender: "user", text: "hey how are you?", sentTime: "9:03am" },
+  { sender: "assistant", text: "I don't know." }
+];
+
 function ChatWidget({
   selectTheme,
   articleInputObject,
@@ -39,23 +44,13 @@ function ChatWidget({
     const aiResponse = new ChatMessage({ sender: "assistant", text: "" });
     setMessages([...updatedMessages, aiResponse]);
 
-    // let res = await postData<AiResponseDTO>(
-    //   `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
-    //   {
-    //     question
-    //   }
-    // );
-
-    let res = {
-      ai_answer: {
-        sender: "assistant",
-        text: "I don't know."
+    const res = await postData<AiResponseDTO>(
+      `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
+      {
+        question
       }
-    };
+    );
 
-    console.log(res);
-    // Add the AI response to the chat
-    // @ts-expect-error
     setMessages([...updatedMessages, res.ai_answer]);
   }
 
