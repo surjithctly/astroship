@@ -27,7 +27,10 @@
       ],
       "@models/*": [
         "models/*"
-      ]
+      ],
+      "@dto/*": [
+        "dto/*"
+      ],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

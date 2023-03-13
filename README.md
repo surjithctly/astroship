@@ -1,4 +1,4 @@
-# wiselydesk Landing Page
+# WiselyDesk Landing Page
 
 Landing page with a demo.
 

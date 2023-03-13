@@ -7,6 +7,7 @@ import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
 import ChatMessage from "@models/demo/chatMessage";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
+import { convertChatMessageToChatGPT } from "@dto/openai";
 
 function ChatWidget({
   selectTheme,
@@ -21,17 +22,20 @@ function ChatWidget({
     useState(false);
 
   async function onSubmit() {
+    setAssistantResponseFinished(false);
     const updatedMessages = [
       ...messages,
       new ChatMessage({
         sender: "user",
         sentTime: ChatMessage.createSentTimeField(),
         text: question
-      }),
-      new ChatMessage({ sender: "assistant", text: "" }) // send empty response to mimic chatGPT
+      })
     ];
 
-    setMessages(updatedMessages);
+    setMessages([
+      ...updatedMessages,
+      new ChatMessage({ sender: "assistant", text: "" }) // send empty response to mimic chatGPT
+    ]);
     setQuestion("");
 
     fetchEventSource(
@@ -44,7 +48,8 @@ function ChatWidget({
         body: JSON.stringify({
           question,
           subdomain: articleInputObject.subdomain,
-          article_id: articleInputObject.articleId
+          article_id: articleInputObject.articleId,
+          messages: convertChatMessageToChatGPT(updatedMessages)
         }),
         onmessage(mes) {
           const newStreamingResponse =
@@ -68,6 +73,7 @@ function ChatWidget({
       }
     ).catch((e) => {
       if (e.cause === "hack") {
+        console.log(e);
         // do nothing
         return;
       }
@@ -80,6 +86,7 @@ function ChatWidget({
       return;
     }
 
+    // stream the assistant answer
     if (messages.length > 0) {
       const lastAssistantAnswer = messages.slice(-1)[0];
       lastAssistantAnswer.text = assistantStreamingResponse;
