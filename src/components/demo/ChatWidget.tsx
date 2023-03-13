@@ -6,17 +6,7 @@ import ChatGPTQuestion from "@components/demo/themes/chatgpt/Question";
 import ChatGPTUserMessage from "@components/demo/themes/chatgpt/UserMessage";
 import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMessage";
 import ChatMessage from "@models/demo/chatMessage";
-
-import { postData } from "@clients/fetch";
-
-type AiResponseDTO = {
-  ai_answer: ChatMessage;
-};
-
-const mockMessages = [
-  { sender: "user", text: "hey how are you?", sentTime: "9:03am" },
-  { sender: "assistant", text: "I don't know." }
-];
+import { fetchEventSource } from "@microsoft/fetch-event-source";
 
 function ChatWidget({
   selectTheme,
@@ -25,6 +15,10 @@ function ChatWidget({
 }): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [assistantStreamingResponse, setAssistantStreamingResponse] =
+    useState("");
+  const [assistantResponseFinished, setAssistantResponseFinished] =
+    useState(false);
 
   async function onSubmit() {
     const updatedMessages = [
@@ -33,26 +27,68 @@ function ChatWidget({
         sender: "user",
         sentTime: ChatMessage.createSentTimeField(),
         text: question
-      })
+      }),
+      new ChatMessage({ sender: "assistant", text: "" }) // send empty response to mimic chatGPT
     ];
 
-    // Add the user message to the chat
     setMessages(updatedMessages);
     setQuestion("");
 
-    // add empty assistant reply to mimic chat GPT
-    const aiResponse = new ChatMessage({ sender: "assistant", text: "" });
-    setMessages([...updatedMessages, aiResponse]);
-
-    const res = await postData<AiResponseDTO>(
-      `http://127.0.0.1:5000/landingPage/articleIngestor/chat/${articleInputObject?.subdomain}/${articleInputObject?.articleId}`,
+    fetchEventSource(
+      "http://127.0.0.1:5000/landingPage/articleIngestor/conversation",
       {
-        question
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          question,
+          subdomain: articleInputObject.subdomain,
+          article_id: articleInputObject.articleId
+        }),
+        onmessage(mes) {
+          const newStreamingResponse =
+            assistantStreamingResponse + JSON.parse(mes.data).text;
+          setAssistantStreamingResponse((a) => a + newStreamingResponse);
+        },
+        onclose() {
+          setAssistantStreamingResponse("");
+          setAssistantResponseFinished(true);
+          throw new Error("Hack to close SSE connection client side", {
+            cause: "hack"
+          }); // hack to close the connection
+        },
+        onerror() {
+          setAssistantStreamingResponse("");
+          setAssistantResponseFinished(true);
+          throw new Error("Hack to close SSE connection client side", {
+            cause: "hack"
+          }); // hack to close the connection
+        }
       }
-    );
-
-    setMessages([...updatedMessages, res.ai_answer]);
+    ).catch((e) => {
+      if (e.cause === "hack") {
+        // do nothing
+        return;
+      }
+      throw new Error(e);
+    });
   }
+
+  useEffect(() => {
+    if (assistantResponseFinished === true) {
+      return;
+    }
+
+    if (messages.length > 0) {
+      const lastAssistantAnswer = messages.slice(-1)[0];
+      lastAssistantAnswer.text = assistantStreamingResponse;
+      setMessages([
+        ...messages.slice(0, messages.length - 1),
+        lastAssistantAnswer
+      ]);
+    }
+  }, [assistantStreamingResponse]);
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
@@ -111,7 +147,13 @@ function ChatWidget({
               />
             );
           }
-          return <ChatGPTAssistantMessage key={index} text={message.text} />;
+          return (
+            <ChatGPTAssistantMessage
+              assistantResponseFinished={assistantResponseFinished}
+              key={index}
+              text={message.text}
+            />
+          );
         })}
 
         <div ref={messagesEndRef} />

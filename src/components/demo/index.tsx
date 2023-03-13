@@ -30,7 +30,7 @@ function Demo() {
   }, [zendeskUrl]);
 
   return (
-    <React.StrictMode>
+    <>
       <ArticleInput
         isValidZendeskUrl={isValidZendeskUrl}
         setZendeskUrl={setZendeskUrl}
@@ -44,7 +44,7 @@ function Demo() {
         selectTheme={selectChatTheme}
         isValidZendeskUrl={isValidZendeskUrl}
       />
-    </React.StrictMode>
+    </>
   );
 }
 

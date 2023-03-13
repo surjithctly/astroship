@@ -1,4 +1,4 @@
-function assistantMessage({ text }): JSX.Element {
+function assistantMessage({ assistantResponseFinished, text }): JSX.Element {
   return (
     <div className="w-full border-b border-black/10 bg-gray-50 text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100">
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
@@ -21,8 +21,15 @@ function assistantMessage({ text }): JSX.Element {
         <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap ">
-              <div className="prose w-full break-words dark:prose-invert last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']">
-                <p className="">{text}</p>
+              <div className="prose w-full break-words dark:prose-invert ">
+                <p
+                  className={`${
+                    assistantResponseFinished
+                      ? ""
+                      : "last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']"
+                  }`}>
+                  {text}
+                </p>
               </div>
             </div>
           </div>
