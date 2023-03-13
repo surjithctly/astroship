@@ -22,7 +22,6 @@ function ChatWidget({
     useState(false);
 
   async function onSubmit() {
-    setAssistantResponseFinished(false);
     const updatedMessages = [
       ...messages,
       new ChatMessage({
@@ -51,6 +50,9 @@ function ChatWidget({
           article_id: articleInputObject.articleId,
           messages: convertChatMessageToChatGPT(updatedMessages)
         }),
+        async onopen() {
+          setAssistantResponseFinished(false);
+        },
         onmessage(mes) {
           const newStreamingResponse =
             assistantStreamingResponse + JSON.parse(mes.data).text;
@@ -143,8 +145,15 @@ function ChatWidget({
 
   return (
     <>
-      <div className="relative flex h-[66vh] min-h-[400px] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541]">
+      <div
+        className={`relative flex h-[66vh] min-h-[400px] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541] ${
+          assistantResponseFinished
+            ? ""
+            : "last:after:ml-1 last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']"
+        }
+      `}>
         {messages.map((message, index) => {
+          const isNotLastMessage = messages.length !== index + 1;
           if (message.sender === "user") {
             return (
               <ChatGPTUserMessage
@@ -157,6 +166,7 @@ function ChatWidget({
           return (
             <ChatGPTAssistantMessage
               assistantResponseFinished={assistantResponseFinished}
+              isNotLastAssistanceMessage={isNotLastMessage}
               key={index}
               text={message.text}
             />

@@ -1,4 +1,8 @@
-function assistantMessage({ assistantResponseFinished, text }): JSX.Element {
+function assistantMessage({
+  assistantResponseFinished,
+  text,
+  isNotLastAssistanceMessage
+}): JSX.Element {
   return (
     <div className="w-full border-b border-black/10 bg-gray-50 text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100">
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
@@ -24,9 +28,9 @@ function assistantMessage({ assistantResponseFinished, text }): JSX.Element {
               <div className="prose w-full break-words dark:prose-invert ">
                 <p
                   className={`${
-                    assistantResponseFinished
+                    assistantResponseFinished || isNotLastAssistanceMessage
                       ? ""
-                      : "last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']"
+                      : "!last:after:mt-1 last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']"
                   }`}>
                   {text}
                 </p>
