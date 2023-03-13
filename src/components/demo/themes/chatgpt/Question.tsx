@@ -29,7 +29,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
             <div className="relative flex w-full flex-grow flex-col rounded-md border border-black/10 bg-white py-2 shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-gray-700 dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] md:py-3 md:pl-4">
               <textarea
                 id="userQuestion"
-                tabIndex={0}
+                tabIndex={1}
                 value={question}
                 placeholder="Input your question"
                 rows={1}

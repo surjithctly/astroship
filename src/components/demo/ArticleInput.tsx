@@ -16,6 +16,7 @@ function ArticleInput({ setZendeskUrl, isValidZendeskUrl }) {
             } `}
             id="article"
             type="text"
+            tabIndex={1}
             onChange={(e) => setZendeskUrl(e.target.value)}
             placeholder="https://support.zendesk.com/hc/en-us/articles/4408884056346-Introduction-Getting-started-with-Zendesk-Support"
             autoFocus

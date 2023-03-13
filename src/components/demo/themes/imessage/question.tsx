@@ -33,6 +33,7 @@ function iMessageQuestion({
         onChange={(e) => setQuestion(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={!isValidZendeskUrl}
+        tabIndex={1}
       />
       <button
         className={`text-blue-500 hover:text-blue-700 focus:underline focus:outline-none ${
