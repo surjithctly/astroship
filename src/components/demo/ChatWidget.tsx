@@ -54,8 +54,12 @@ function ChatWidget({
           setAssistantResponseFinished(false);
         },
         onmessage(mes) {
-          const newStreamingResponse =
-            assistantStreamingResponse + JSON.parse(mes.data).text;
+          let lastMessage = JSON.parse(mes.data).text as string;
+
+          if (lastMessage.includes("<NEWLINE>")) {
+            lastMessage = lastMessage.replaceAll("<NEWLINE>", "\n");
+          }
+          const newStreamingResponse = assistantStreamingResponse + lastMessage;
           setAssistantStreamingResponse((a) => a + newStreamingResponse);
         },
         onclose() {
