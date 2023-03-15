@@ -8,11 +8,16 @@ import ChatGPTAssistantMessage from "@components/demo/themes/chatgpt/AssistantMe
 import ChatMessage from "@models/demo/chatMessage";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { convertChatMessageToChatGPT } from "@dto/openai";
+import ArticleInput from "@models/demo/articleInput";
 
 function ChatWidget({
   selectTheme,
   articleInputObject,
   isValidZendeskUrl
+}: {
+  selectTheme: string;
+  articleInputObject: ArticleInput | undefined;
+  isValidZendeskUrl: boolean;
 }): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -20,6 +25,8 @@ function ChatWidget({
     useState("");
   const [assistantResponseFinished, setAssistantResponseFinished] =
     useState(false);
+
+  const organization = articleInputObject?.getOrganization();
 
   async function onSubmit() {
     const updatedMessages = [
@@ -46,8 +53,8 @@ function ChatWidget({
         },
         body: JSON.stringify({
           question,
-          subdomain: articleInputObject.subdomain,
-          article_id: articleInputObject.articleId,
+          subdomain: organization,
+          article_id: articleInputObject?.articleId,
           messages: convertChatMessageToChatGPT(updatedMessages),
           secret: import.meta.env.PUBLIC_SECRET_API_KEY
         }),
