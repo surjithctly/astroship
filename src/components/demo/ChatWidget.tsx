@@ -38,7 +38,7 @@ function ChatWidget({
     setQuestion("");
 
     fetchEventSource(
-      "http://127.0.0.1:5000/landingPage/articleIngestor/conversation",
+      "https://wiselydesk-backend.onrender.com/landingPage/articleIngestor/conversation",
       {
         method: "POST",
         headers: {
@@ -48,7 +48,8 @@ function ChatWidget({
           question,
           subdomain: articleInputObject.subdomain,
           article_id: articleInputObject.articleId,
-          messages: convertChatMessageToChatGPT(updatedMessages)
+          messages: convertChatMessageToChatGPT(updatedMessages),
+          secret: import.meta.env.PUBLIC_SECRET_API_KEY
         }),
         async onopen() {
           setAssistantResponseFinished(false);

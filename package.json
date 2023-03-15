@@ -17,6 +17,7 @@
     "@astrojs/react": "^2.0.2",
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/vercel": "^3.2.1",
     "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.13",
     "@microsoft/fetch-event-source": "^2.0.1",
