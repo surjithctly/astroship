@@ -14,7 +14,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
 
   return (
     <label htmlFor="userQuestion">
-      <div className="flex w-full justify-center border-t dark:border-white/20 dark:bg-[#343541] md:border-t-0 md:border-transparent md:dark:border-transparent">
+      <div className="flex w-full justify-center border-t border-white/20 bg-[#343541] md:border-t-0 md:border-transparent md:border-transparent">
         {!isValidZendeskUrl && (
           <div className="absolute mt-[-30px] rounded-2xl border-2 border-none bg-black p-4 text-white">
             Please enter a valid Zendesk URL at the top
@@ -26,7 +26,7 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
           onSubmit={handleSubmit}
           onKeyDown={handleEnterBtn}>
           <div className="relative flex h-full flex-1 md:flex-col">
-            <div className="relative flex w-full flex-grow flex-col rounded-md border border-black/10 bg-white py-2 shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-gray-700 dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] md:py-3 md:pl-4">
+            <div className="relative flex w-full flex-grow flex-col rounded-md border border-black/10 border-gray-900/50 bg-white bg-gray-700 py-2 text-white shadow-[0_0_10px_rgba(0,0,0,0.10)] shadow-[0_0_15px_rgba(0,0,0,0.10)] md:py-3 md:pl-4">
               <textarea
                 id="userQuestion"
                 tabIndex={1}
@@ -35,11 +35,11 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
                 rows={1}
                 onChange={(e) => setQuestion(e.target.value)}
                 disabled={!isValidZendeskUrl}
-                className={`h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pl-0 ${
+                className={`h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 md:pl-0 ${
                   !isValidZendeskUrl && "cursor-not-allowed"
                 }`}></textarea>
               <button
-                className={`absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 disabled:hover:bg-transparent dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:disabled:hover:bg-transparent md:bottom-2.5 md:right-2 ${
+                className={`absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-100 hover:bg-gray-900 hover:text-gray-400 disabled:hover:bg-transparent disabled:hover:bg-transparent md:bottom-2.5 md:right-2 ${
                   !isValidZendeskUrl && "cursor-not-allowed"
                 }`}
                 onClick={handleSubmit}

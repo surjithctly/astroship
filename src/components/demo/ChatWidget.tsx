@@ -151,7 +151,7 @@ function ChatWidget({
   return (
     <>
       <div
-        className={`relative flex h-[66vh] min-h-[400px] flex-col items-center overflow-scroll text-base font-medium dark:bg-[#343541] ${
+        className={`relative flex h-[66vh] min-h-[400px] flex-col items-center overflow-scroll bg-[#343541] text-base font-medium ${
           assistantResponseFinished
             ? ""
             : "last:after:ml-1 last:after:animate-assistant-message last:after:bg-white last:after:text-white last:after:content-['▋']"
