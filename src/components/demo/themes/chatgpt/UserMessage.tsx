@@ -29,7 +29,7 @@ function userMessage(props): JSX.Element {
   }
 
   return (
-    <div className="w-full border-b border-black/10 border-gray-900/50 bg-[#343541] text-gray-800 text-gray-100">
+    <div className="w-full border-b  border-gray-900/50 bg-[#343541] text-gray-100">
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
         <div className="relative flex w-[30px] flex-col items-end">
           <div className="relative flex">

@@ -4,7 +4,7 @@ function assistantMessage({
   isNotLastAssistanceMessage
 }): JSX.Element {
   return (
-    <div className="w-full border-b border-black/10 border-gray-900/50 bg-gray-50 bg-[#444654] text-gray-800 text-gray-100">
+    <div className="w-full border-b  border-gray-900/50  bg-[#444654] text-gray-100">
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
         <div className="relative flex w-[30px] flex-col items-end">
           <div className="relative flex h-[30px] w-[30px] items-center justify-center rounded-sm bg-[#10A37F] p-1 text-white">
@@ -39,7 +39,7 @@ function assistantMessage({
           </div>
           <div className="flex justify-between">
             <div className="visible mt-2 flex justify-center gap-3 self-end text-gray-400 md:gap-4 lg:absolute lg:top-0 lg:right-0 lg:mt-0 lg:translate-x-full lg:gap-1 lg:self-center lg:pl-2">
-              <button className="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:bg-gray-700 hover:text-gray-700 hover:text-gray-200 disabled:hover:text-gray-400">
+              <button className="rounded-md p-1 text-gray-400 hover:bg-gray-700 hover:text-gray-200 disabled:hover:text-gray-400">
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -54,7 +54,7 @@ function assistantMessage({
                   <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
                 </svg>
               </button>
-              <button className="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:bg-gray-700 hover:text-gray-700 hover:text-gray-200 disabled:hover:text-gray-400">
+              <button className="rounded-md p-1 text-gray-400 hover:bg-gray-700  hover:text-gray-200 disabled:hover:text-gray-400">
                 <svg
                   stroke="currentColor"
                   fill="none"
