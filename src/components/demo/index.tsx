@@ -29,6 +29,11 @@ function Demo() {
     }
   }, [zendeskUrl]);
 
+  // hack to get around free tier limits
+  useEffect(() => {
+    fetch("https://wiselydesk-backend.onrender.com");
+  });
+
   return (
     <>
       <ArticleInput
