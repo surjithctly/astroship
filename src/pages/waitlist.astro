@@ -4,24 +4,26 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Button from "@components/ui/button.astro";
-import Contactform from "@components/contactform.astro";
+import Waitlistform from "@components/waitlistform.astro";
 ---
 
-<Layout title="Contact">
+<Layout title="Waitlist">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
+      <Fragment slot="title">Waitlist</Fragment>
       <Fragment slot="desc">
-        Let us know if you have any questions or comments! We're happy to help!
+        Your Help Center deserves to <span class="font-bold"> actually</span> be
+        used
       </Fragment>
     </Sectionhead>
 
-    <div class="mx-auto mt-16 grid max-w-4xl gap-10 md:grid-cols-2">
+    <div class="mx-auto mt-16 grid max-w-5xl gap-10 md:grid-cols-2">
       <div>
-        <h2 class="text-2xl font-medium text-gray-800">Contact WiselyDesk</h2>
+        <h2 class="text-2xl font-medium text-gray-800">
+          No commitment. No spam. No sales people.
+        </h2>
         <p class="mt-3 text-lg leading-relaxed text-slate-500">
-          Have something to say? We are here to help. Fill up the form or send
-          email.
+          We'll reach out within one business day with more information.
         </p>
         <div class="mt-5">
           <div class="mt-2 flex items-center space-x-2 text-gray-600">
@@ -31,15 +33,11 @@ import Contactform from "@components/contactform.astro";
             <Icon class="h-4 w-4 text-gray-400" name="uil:envelope" /><a
               href="mailto:wiselydesk@gmail.com">wiselydesk@gmail.com</a
             >
-            <!-- </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
-            <Icon class="h-4 w-4 text-gray-400" name="uil:phone" /><a
-              href="tel:+1 (987) 4587 899">+1 (987) 4587 899</a
-            > -->
           </div>
         </div>
       </div>
       <div>
-        <Contactform />
+        <Waitlistform />
       </div>
     </div>
   </Container>

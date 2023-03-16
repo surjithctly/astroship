@@ -1,0 +1,155 @@
+---
+import Button from "./ui/button.astro";
+---
+
+<!-- To make this contact form work, create your free access key from https://web3forms.com/
+     Then you will get all form submissions in your email inbox. -->
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  id="form"
+  class="needs-validation"
+  novalidate>
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+  <!-- Create your free access key from https://web3forms.com/ -->
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+  <div class="mb-5">
+    <input
+      type="text"
+      placeholder="Name"
+      required
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-1"
+      name="name"
+    />
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
+      Your name.
+    </div>
+  </div>
+  <div class="mb-5">
+    <label for="email_address" class="sr-only">Email Address</label><input
+      id="email_address"
+      type="email"
+      placeholder="Email Address"
+      name="email"
+      required
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-1"
+    />
+    <div class="empty-feedback mt-1 text-sm text-red-400">
+      Please provide your email address.
+    </div>
+    <div class="invalid-feedback mt-1 text-sm text-red-400">
+      Please provide a valid email address.
+    </div>
+  </div>
+  <div class="mb-5">
+    <input
+      type="text"
+      placeholder="Zendesk Help Center Url (any article)"
+      required
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-1"
+      name="zendeskSubdomain"
+    />
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
+      Required - Zendesk Help Center Url (any article).
+    </div>
+  </div>
+  <div class="mb-3">
+    <textarea
+      name="message"
+      placeholder="Any other questions or comments?"
+      class="h-36 w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-1"
+    ></textarea>
+  </div>
+
+  <Button type="submit" size="md">Send Message</Button>
+
+  <div id="result" class="mt-3 text-center"></div>
+</form>
+<Button class="my-1 bg-blue-700 hover:bg-blue-800" size="md">
+  <a
+    href=""
+    onclick="Calendly.initPopupWidget({url: 'https://calendly.com/wiselydesk-waitlist/waitlist-introduction'});return false;"
+    >Schedule 30 minute introduction instead</a
+  >
+</Button>
+<!-- Calendly link widget begin -->
+<link
+  href="https://assets.calendly.com/assets/external/widget.css"
+  rel="stylesheet"
+/>
+<script
+  src="https://assets.calendly.com/assets/external/widget.js"
+  type="text/javascript"
+  async
+></script>
+
+<!-- Calendly link widget end -->
+<style>
+  .invalid-feedback,
+  .empty-feedback {
+    display: none;
+  }
+
+  .was-validated :placeholder-shown:invalid ~ .empty-feedback {
+    display: block;
+  }
+
+  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+    display: block;
+  }
+
+  .is-invalid,
+  .was-validated :invalid {
+    border-color: #dc3545;
+  }
+</style>
+
+<script is:inline>
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    form.classList.add("was-validated");
+    if (!form.checkValidity()) {
+      form.querySelectorAll(":invalid")[0].focus();
+      return;
+    }
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Sending...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.classList.add("text-green-500");
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.classList.add("text-red-500");
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        form.classList.remove("was-validated");
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 5000);
+      });
+  });
+</script>

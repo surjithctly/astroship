@@ -19,7 +19,7 @@ const menuitems = [
     path: "#",
     children: [
       { title: "About", path: "/about" },
-      { title: "Careers", path: "#" },
+      { title: "Careers", path: "/careers" },
       { title: "Privacy", path: "#" }
     ]
   },
@@ -78,13 +78,13 @@ const menuitems = [
           }
         </ul>
         <div class="mt-3 flex items-center gap-4 lg:hidden">
-          <Link href="#" size="md" block>Join Waitlist</Link>
+          <Link href="/waitlist" size="md" block>Join Waitlist</Link>
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden items-center gap-4 lg:flex">
-        <Link href="#" size="md">Join Waitlist</Link>
+        <Link href="/waitlist" size="md">Join Waitlist</Link>
       </div>
     </div>
   </header>

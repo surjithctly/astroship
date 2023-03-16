@@ -4,11 +4,31 @@ import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Pricing from "@components/pricing.astro";
 
+const betaPricing = [
+  {
+    name: "Beta",
+    price: "Free",
+    popular: true,
+    features: [
+      "Free during beta",
+      "Unlimited users",
+      "Seemless Zendesk integrations",
+      "Customizable chat widget",
+      "Implementation engineer",
+      "White glove treatment"
+    ],
+    button: {
+      text: "Join Waitlist",
+      link: "/waitlist"
+    }
+  }
+];
+
 const pricing = [
   {
     name: "Personal",
     price: "Free",
-    popular: false,
+    popular: true,
     features: [
       "Lifetime free",
       "Up to 3 users",
@@ -30,7 +50,7 @@ const pricing = [
       discount: "10%",
       original: "$24"
     },
-    popular: true,
+    popular: false,
     features: [
       "All Free Features",
       "Up to 20 users",
@@ -68,13 +88,17 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc">
-        Simple & Predictable pricing. No Surprises.
+      <Fragment slot="desc" className="w-[52%]">
+        We're a new startup and still figuring out how to price our product. So,
+        <strong>during our beta phase, it's completely free</strong>. We'd love
+        to work with you to find a fair and competitive price that works for
+        both of us once we launch. And don't worry, we'll keep you in the loop
+        every step of the way!
       </Fragment>
     </Sectionhead>
 
-    <div class="mx-auto mt-12 grid max-w-screen-lg gap-10 md:grid-cols-3">
-      {pricing.map((item) => <Pricing plan={item} />)}
+    <div class="mx-auto mt-12 grid max-w-screen-lg gap-10 md:grid-cols-1">
+      {betaPricing.map((item) => <Pricing plan={item} />)}
     </div>
   </Container>
 </Layout>

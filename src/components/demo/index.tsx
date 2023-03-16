@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ArticleInputModel from "@models/demo/articleInput";
 import ChatWidget from "@components/demo/ChatWidget";
 import ChatThemeSelector from "@components/demo/ChatThemeSelector";
 import ArticleInput from "@components/demo/ArticleInput";
+import Notice from "@components/demo/Notice";
 
 const WIDGET_THEMES = [
   { value: "ChatGPT", label: "ChatGPT" },
@@ -36,6 +37,7 @@ function Demo() {
 
   return (
     <>
+      <Notice />
       <ArticleInput
         isValidZendeskUrl={isValidZendeskUrl}
         setZendeskUrl={setZendeskUrl}

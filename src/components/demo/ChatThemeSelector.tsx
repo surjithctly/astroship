@@ -1,6 +1,6 @@
 export default function ChatThemeSelector({ themes, setTheme }) {
   return (
-    <div className="absolute top-24 ml-[72%]">
+    <div className="inherit absolute top-[11rem] ml-[72%] hidden md:block">
       <label
         htmlFor="theme"
         className="block text-sm font-medium leading-6 text-gray-900">
