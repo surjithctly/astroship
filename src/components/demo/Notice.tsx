@@ -16,7 +16,8 @@ export default function Example() {
             <a
               href="/waitlist"
               className="font-medium text-yellow-700 underline hover:text-yellow-600">
-              Join waiting list to see a demo using your entire Zendesk account.
+              Join the waiting list for a demo using your entire Zendesk
+              knowledge base.
             </a>
           </p>
         </div>
