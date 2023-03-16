@@ -13,11 +13,13 @@ import ArticleInput from "@models/demo/articleInput";
 function ChatWidget({
   selectTheme,
   articleInputObject,
-  isValidZendeskUrl
+  isValidZendeskUrl,
+  shouldFocusQuestion
 }: {
   selectTheme: string;
   articleInputObject: ArticleInput | undefined;
   isValidZendeskUrl: boolean;
+  shouldFocusQuestion: boolean;
 }): JSX.Element {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -26,6 +28,9 @@ function ChatWidget({
   const [assistantResponseFinished, setAssistantResponseFinished] =
     useState(false);
 
+  const url = import.meta.env.DEV
+    ? "http://localhost:5000"
+    : "https://wiselydesk-backend.onrender.com/";
   const organization = articleInputObject?.getOrganization();
 
   async function onSubmit() {
@@ -44,48 +49,45 @@ function ChatWidget({
     ]);
     setQuestion("");
 
-    fetchEventSource(
-      "https://wiselydesk-backend.onrender.com/landingPage/articleIngestor/conversation",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          question,
-          subdomain: organization,
-          article_id: articleInputObject?.articleId,
-          messages: convertChatMessageToChatGPT(updatedMessages),
-          secret: import.meta.env.PUBLIC_SECRET_API_KEY
-        }),
-        async onopen() {
-          setAssistantResponseFinished(false);
-        },
-        onmessage(mes) {
-          let lastMessage = JSON.parse(mes.data).text as string;
+    fetchEventSource(`${url}/landingPage/articleIngestor/conversation`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question,
+        subdomain: organization,
+        article_id: articleInputObject?.articleId,
+        messages: convertChatMessageToChatGPT(updatedMessages),
+        secret: import.meta.env.PUBLIC_SECRET_API_KEY
+      }),
+      async onopen() {
+        setAssistantResponseFinished(false);
+      },
+      onmessage(mes) {
+        let lastMessage = JSON.parse(mes.data).text as string;
 
-          if (lastMessage.includes("<NEWLINE>")) {
-            lastMessage = lastMessage.replaceAll("<NEWLINE>", "\n");
-          }
-          const newStreamingResponse = assistantStreamingResponse + lastMessage;
-          setAssistantStreamingResponse((a) => a + newStreamingResponse);
-        },
-        onclose() {
-          setAssistantStreamingResponse("");
-          setAssistantResponseFinished(true);
-          throw new Error("Hack to close SSE connection client side", {
-            cause: "hack"
-          }); // hack to close the connection
-        },
-        onerror() {
-          setAssistantStreamingResponse("");
-          setAssistantResponseFinished(true);
-          throw new Error("Hack to close SSE connection client side", {
-            cause: "hack"
-          }); // hack to close the connection
+        if (lastMessage.includes("<NEWLINE>")) {
+          lastMessage = lastMessage.replaceAll("<NEWLINE>", "\n");
         }
+        const newStreamingResponse = assistantStreamingResponse + lastMessage;
+        setAssistantStreamingResponse((a) => a + newStreamingResponse);
+      },
+      onclose() {
+        setAssistantStreamingResponse("");
+        setAssistantResponseFinished(true);
+        throw new Error("Hack to close SSE connection client side", {
+          cause: "hack"
+        }); // hack to close the connection
+      },
+      onerror() {
+        setAssistantStreamingResponse("");
+        setAssistantResponseFinished(true);
+        throw new Error("Hack to close SSE connection client side", {
+          cause: "hack"
+        }); // hack to close the connection
       }
-    ).catch((e) => {
+    }).catch((e) => {
       if (e.cause === "hack") {
         console.log(e);
         // do nothing
@@ -192,6 +194,7 @@ function ChatWidget({
         onSubmit={onSubmit}
         setQuestion={setQuestion}
         isValidZendeskUrl={isValidZendeskUrl}
+        shouldFocusQuestion={shouldFocusQuestion}
       />
     </>
   );

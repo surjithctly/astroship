@@ -1,4 +1,8 @@
-function ArticleInput({ setZendeskUrl, isValidZendeskUrl }) {
+function ArticleInput({
+  setZendeskUrl,
+  isValidZendeskUrl,
+  handleInputKeyDown
+}) {
   return (
     <div className="mx-auto max-w-3xl">
       <form className="mx-auto mt-8">
@@ -19,6 +23,7 @@ function ArticleInput({ setZendeskUrl, isValidZendeskUrl }) {
             tabIndex={1}
             onChange={(e) => setZendeskUrl(e.target.value)}
             placeholder="https://support.zendesk.com/hc/en-us/articles/4408884056346-Introduction-Getting-started-with-Zendesk-Support"
+            onKeyDown={handleInputKeyDown}
             autoFocus
           />
         </div>

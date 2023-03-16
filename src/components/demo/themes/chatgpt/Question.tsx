@@ -1,4 +1,12 @@
-function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
+import { useEffect, useRef } from "react";
+
+function Question({
+  onSubmit,
+  setQuestion,
+  question,
+  isValidZendeskUrl,
+  shouldFocusQuestion
+}) {
   function handleEnterBtn(e) {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -12,6 +20,16 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
     onSubmit();
   }
 
+  const questionRef = useRef<null | HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (shouldFocusQuestion) {
+      console.log("shoud focus q");
+      console.log(questionRef.current);
+      questionRef.current?.scrollIntoView(false);
+      setTimeout(() => question.current?.focus(), 1000);
+    }
+  }, [shouldFocusQuestion]);
   return (
     <label htmlFor="userQuestion">
       <div className="flex w-full justify-center border-t border-white/20 bg-[#343541] md:border-t-0  md:border-transparent">
@@ -28,13 +46,14 @@ function Question({ onSubmit, setQuestion, question, isValidZendeskUrl }) {
           <div className="relative flex h-full flex-1 md:flex-col">
             <div className="relative flex w-full flex-grow flex-col rounded-md border border-gray-900/50 bg-gray-700 py-2 text-white shadow-[0_0_15px_rgba(0,0,0,0.10)] md:py-3 md:pl-4">
               <textarea
+                ref={questionRef}
                 id="userQuestion"
                 tabIndex={1}
                 value={question}
                 placeholder="Input your question"
                 rows={1}
                 onChange={(e) => setQuestion(e.target.value)}
-                disabled={!isValidZendeskUrl}
+                // disabled={!isValidZendeskUrl}
                 className={`h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 md:pl-0 ${
                   !isValidZendeskUrl && "cursor-not-allowed"
                 }`}></textarea>

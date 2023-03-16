@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ArticleInputModel from "@models/demo/articleInput";
 import ChatWidget from "@components/demo/ChatWidget";
 import ChatThemeSelector from "@components/demo/ChatThemeSelector";
@@ -30,10 +30,21 @@ function Demo() {
     }
   }, [zendeskUrl]);
 
-  // hack to get around free tier limits
-  useEffect(() => {
-    fetch("https://wiselydesk-backend.onrender.com");
-  });
+  if (import.meta.env.PROD) {
+    // hack to get around free tier limits
+    useEffect(() => {
+      fetch("https://wiselydesk-backend.onrender.com");
+    }, []);
+  }
+
+  const [shouldFocusQuestion, setShouldFocusQuestion] = useState(false);
+
+  function handleInputKeyDown(event: KeyboardEvent) {
+    if (isValidZendeskUrl && event.key.toLowerCase() === "enter") {
+      event.preventDefault();
+      setShouldFocusQuestion(true);
+    }
+  }
 
   return (
     <>
@@ -41,6 +52,7 @@ function Demo() {
       <ArticleInput
         isValidZendeskUrl={isValidZendeskUrl}
         setZendeskUrl={setZendeskUrl}
+        handleInputKeyDown={handleInputKeyDown}
       />
       <ChatThemeSelector
         themes={WIDGET_THEMES}
@@ -50,6 +62,7 @@ function Demo() {
         articleInputObject={articleInputObject}
         selectTheme={selectChatTheme}
         isValidZendeskUrl={isValidZendeskUrl}
+        shouldFocusQuestion={shouldFocusQuestion}
       />
     </>
   );
