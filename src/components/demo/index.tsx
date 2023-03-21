@@ -30,13 +30,6 @@ function Demo() {
     }
   }, [zendeskUrl]);
 
-  if (import.meta.env.PROD) {
-    // hack to get around free tier limits
-    useEffect(() => {
-      fetch("https://wiselydesk-backend.onrender.com");
-    }, []);
-  }
-
   const [shouldFocusQuestion, setShouldFocusQuestion] = useState(false);
 
   function handleInputKeyDown(event: KeyboardEvent) {

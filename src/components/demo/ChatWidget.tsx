@@ -28,6 +28,11 @@ function ChatWidget({
   const [assistantResponseFinished, setAssistantResponseFinished] =
     useState(false);
 
+  function clearStreamingResponse() {
+    setAssistantStreamingResponse("");
+    setAssistantResponseFinished(true);
+  }
+
   const url = import.meta.env.DEV
     ? "http://localhost:5000"
     : "https://wiselydesk-backend.onrender.com/";
@@ -43,12 +48,15 @@ function ChatWidget({
       })
     ];
 
+    // send empty response to indicate to user that a reply is coming
     setMessages([
       ...updatedMessages,
-      new ChatMessage({ sender: "assistant", text: "" }) // send empty response to mimic chatGPT
+      new ChatMessage({ sender: "assistant", text: "" })
     ]);
+    setAssistantResponseFinished(false);
     setQuestion("");
 
+    const controller = new AbortController();
     fetchEventSource(`${url}/landingPage/articleIngestor/conversation`, {
       method: "POST",
       headers: {
@@ -61,35 +69,44 @@ function ChatWidget({
         messages: convertChatMessageToChatGPT(updatedMessages),
         secret: import.meta.env.PUBLIC_SECRET_API_KEY
       }),
+      signal: controller.signal,
       async onopen() {
-        setAssistantResponseFinished(false);
+        console.log("Opened SSE connection");
+        if (assistantResponseFinished) {
+          setAssistantResponseFinished(false);
+        }
       },
       onmessage(mes) {
-        let lastMessage = JSON.parse(mes.data).text as string;
+        const event = mes.event as string | undefined;
+        if (event === "closing_connection") {
+          console.log("Server has no more messages. Closing SSE connection.");
+          clearStreamingResponse();
+          return controller.abort();
+        }
 
-        if (lastMessage.includes("<NEWLINE>")) {
+        const data = JSON.parse(mes.data);
+        let lastMessage = data.text as string | undefined;
+        if (lastMessage?.includes("<NEWLINE>")) {
           lastMessage = lastMessage.replaceAll("<NEWLINE>", "\n");
         }
         const newStreamingResponse = assistantStreamingResponse + lastMessage;
         setAssistantStreamingResponse((a) => a + newStreamingResponse);
       },
       onclose() {
-        setAssistantStreamingResponse("");
-        setAssistantResponseFinished(true);
-        throw new Error("Hack to close SSE connection client side", {
-          cause: "hack"
-        }); // hack to close the connection
+        console.log("Closing SSE connection");
+        clearStreamingResponse();
+        controller.abort();
       },
-      onerror() {
-        setAssistantStreamingResponse("");
-        setAssistantResponseFinished(true);
+      onerror(e) {
+        console.error(e);
+        clearStreamingResponse();
         throw new Error("Hack to close SSE connection client side", {
           cause: "hack"
         }); // hack to close the connection
       }
     }).catch((e) => {
       if (e.cause === "hack") {
-        console.log(e);
+        console.error("Cause error from hack with SSE");
         // do nothing
         return;
       }
@@ -103,7 +120,7 @@ function ChatWidget({
     }
 
     // stream the assistant answer
-    if (messages.length > 0) {
+    if (messages.length > 0 && assistantStreamingResponse) {
       const lastAssistantAnswer = messages.slice(-1)[0];
       lastAssistantAnswer.text = assistantStreamingResponse;
       setMessages([

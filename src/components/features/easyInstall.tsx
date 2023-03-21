@@ -18,7 +18,7 @@ const features = [
     icon: LightBulbIcon
   },
   {
-    name: "Endless customization.",
+    name: "Endless customizations.",
     description:
       "A friendly full stack engineer with AI knowledge leads your launch. Customize your WiselyDesk platform to your liking.",
     icon: RocketLaunchIcon
@@ -40,7 +40,7 @@ export default function EasyInstall() {
               </p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Use the latest and great technology to help your customers.
-                Install by copy and pasting one file. Customization (chat,
+                Install by copy and pasting one file. Customizations (chat,
                 responses, chatbot tone) available.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
