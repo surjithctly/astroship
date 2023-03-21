@@ -68,7 +68,7 @@ export default function Footer() {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-24 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-20 pb-8 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <p className="h-7 text-slate-500 opacity-80">
@@ -161,7 +161,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+        <div className="mt-8 border-t border-gray-900/10 pt-8">
           <p className="text-xs leading-5 text-gray-500">
             Copyright © {new Date().getFullYear()} WiselyDesk. All rights
             reserved.

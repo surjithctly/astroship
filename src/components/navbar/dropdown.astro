@@ -30,13 +30,22 @@ const { title, lastItem, children } = Astro.props;
         <div
           class="flex flex-col px-3 lg:rounded-md lg:border lg:bg-white lg:py-2 lg:shadow">
           {
-            children.map((item) => (
-              <a
-                href={item.path}
-                class="py-1 text-gray-600 hover:text-gray-900">
-                {item.title}
-              </a>
-            ))
+            children.map((item) =>
+              item.newWindow ? (
+                <a
+                  href={item.path}
+                  target="_blank"
+                  class="py-1 text-gray-600 hover:text-gray-900">
+                  {item.title}
+                </a>
+              ) : (
+                <a
+                  href={item.path}
+                  class="py-1 text-gray-600 hover:text-gray-900">
+                  {item.title}
+                </a>
+              )
+            )
           }
         </div>
       </div>
