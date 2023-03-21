@@ -11,13 +11,13 @@ const faqs = [
     question:
       "Does Generative AI have a tendency to generate false or inaccurate information?",
     answer:
-      "Older versions of Generative AI were known for generating false or inaccurate information, but the newer GPT-4 model has made improvements in this area. With clever prompts and context-specific training, we can usually achieve results that are as good as or better than what humans can do."
+      "Older versions of Generative AI were known for generating false or inaccurate information, but the newer GPT-4 model has made improvements in this area. With clever prompts and context-specific training, we can usually achieve results that are as good as or better than what humans can do. However, we don't recommend WiselyDesk if the information needs to be 100% correct 100% of the time."
   },
   {
     question:
       "Will the implementation of this require a significant investment of our time?",
     answer:
-      "Nope, our dedicated implementation engineer will make sure everything goes smoothly without taking up too much of your time. "
+      "Nope, our dedicated full stack engineer with AI knowledge will make sure everything goes smoothly with limited involvement from your end. However, as this is using ground-breaking technology, we are happy to involve you and teach you about the latest and greatest in AI"
   },
   {
     question: "Who would benefit from using this?",
@@ -25,9 +25,14 @@ const faqs = [
       "Our ideal customers are SaaS and online companies of all sizes who prioritize their customer support and want to enhance the effectiveness of their help center. Whether you're a small startup or a large enterprise, if you care about providing top-notch support to your customers, we're here to help you make it happen!"
   },
   {
+    question: "Who should not use this?",
+    answer:
+      "As mentioned before, we don't recommend WiselyDesk at it's current iteration if your customers need 100% accurate information 100% of the time."
+  },
+  {
     question: "What if Zendesk builds this?",
     answer:
-      "If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. Our goal is to eventually replace Zendesk as an AI first contact center."
+      "If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. We also think, as a small startup, we'll be able to create features faster that will please our customers."
   },
   {
     question:
