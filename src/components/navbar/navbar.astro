@@ -7,8 +7,12 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 const menuitems = [
   {
     title: "Demo",
-    path: "/demo",
-    class: "flex py-2 font-semibold text-gray-600 hover:text-gray-900 lg:px-3"
+    path: "#",
+    class: "flex py-2 font-semibold text-gray-600 hover:text-gray-900 lg:px-3",
+    children: [
+      { title: "Your Article", path: "/demoArticle" },
+      { title: "Fake Help Center", path: "/demoFakeHc" }
+    ]
   },
   {
     title: "Pricing",

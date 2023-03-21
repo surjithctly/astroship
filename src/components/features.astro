@@ -1,102 +1,14 @@
----
-// @ts-ignore
-import { Icon } from "astro-icon";
-
-//     <span class="font-semibold">wiselydesk</span>'s enables users to have a conversation with your help center. Users will spend less time searching and more time understanding your content
-
-const aboutYou = [
-  {
-    title: "High quality help center content",
-    icon: "ri:checkbox-circle-fill"
-  },
-  {
-    title: "Impressive Support Team to handle complex queries",
-    icon: "ri:checkbox-circle-fill"
-  }
-];
-
-const realities = [
-  {
-    title: "Users often miss relevant help center content",
-    icon: "ri:emotion-normal-fill"
-  },
-  {
-    title: "Users contact support for easy queries",
-    icon: "ri:emotion-normal-fill"
-  }
-];
-
-const effects = [
-  {
-    title: "Lower incentive to maintain high quality content",
-    icon: "ri:emotion-unhappy-fill"
-  },
-  {
-    title: "Less time to spend on complex queries",
-    icon: "ri:emotion-unhappy-fill"
-  }
-];
----
-
-<div class="">
+<div class="mx-[calc(50%-50vw)] bg-slate-100 pt-8">
   <h2
-    class="ml-7 flex items-start text-4xl font-bold tracking-tight lg:text-5xl">
-    73%<span class="text-[1.5rem]">*</span> of help center content remains unread
+    class="ml-32 flex items-start text-4xl font-bold tracking-tight lg:text-5xl">
+    73%<span class="text-[1.5rem]">*</span> of your help center content remains unread
   </h2>
-</div>
-
-<div class="flex justify-around">
-  <div class="mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
-    <h2 class="text-center font-semibold">ABOUT YOU</h2>
-    {
-      aboutYou.map((item) => (
-        <div class="justify-left flex items-center gap-4">
-          <div class="mt-1 w-[50px] shrink-0 rounded-full bg-green-300">
-            <Icon
-              class=" rounded-full bg-white text-green-300"
-              name={item.icon}
-            />
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
-          </div>
-        </div>
-      ))
-    }
-  </div>
-
-  <div class="mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
-    <h2 class="text-center font-semibold">REALITY</h2>
-    {
-      realities.map((item) => (
-        <div class="justify-left flex items-center gap-4">
-          <div class="mt-1 w-[50px] shrink-0 rounded-full bg-yellow-300">
-            <Icon
-              class=" rounded-full bg-white text-yellow-300"
-              name={item.icon}
-            />
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
-          </div>
-        </div>
-      ))
-    }
-  </div>
-</div>
-<div
-  class="m-auto mt-8 grid w-[45%] grid-cols-1 gap-6 rounded bg-slate-300 p-6">
-  <h2 class="text-center font-semibold">SUPPORT TEAM EFFECT</h2>
-  {
-    effects.map((item) => (
-      <div class="justify-left flex items-center gap-4">
-        <div class="mt-1 w-[50px] shrink-0 rounded-full bg-red-300">
-          <Icon class=" rounded-full bg-white text-red-300" name={item.icon} />
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
-        </div>
-      </div>
-    ))
-  }
+  <p class="ml-36 text-sm">
+    *We're just guessing here. But it's probably close.
+  </p>
+  <img
+    src="/eventst.png"
+    alt="chain of unfortunate events picture"
+    class="m-auto my-5 ml-48 w-[75%]"
+  />
 </div>

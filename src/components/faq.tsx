@@ -5,19 +5,19 @@ const faqs = [
   {
     question: "What technology is this? Generative AI?",
     answer:
-      "Yes, we leverage the latest advancements in Generative AI through our use of the GPT model to generate responses to user inquiries. Additionally, we utilize other AI tools to conduct thorough searches across your entire Zendesk help center to provide users with the most relevant articles."
+      "We leverage the latest advancements in Generative AI through our use of the GPT model to generate responses to user inquiries. Additionally, we utilize other AI tools to conduct thorough searches across your entire Zendesk help center to provide users with the most relevant articles."
   },
   {
     question:
       "Does Generative AI have a tendency to generate false or inaccurate information?",
     answer:
-      "Older versions of Generative AI were known for generating false or inaccurate information, but the newer GPT-4 model has made significant improvements in this area. With clever prompts and context-specific training, we can actually achieve results that are as good as or better than what humans can do."
+      "Older versions of Generative AI were known for generating false or inaccurate information, but the newer GPT-4 model has made improvements in this area. With clever prompts and context-specific training, we can usually achieve results that are as good as or better than what humans can do."
   },
   {
     question:
       "Will the implementation of this require a significant investment of our time?",
     answer:
-      "Nope, our dedicated implementation engineer will make sure everything goes smoothly without taking up too much of your time. We'll work closely with your team to make sure the implementation is done right and doesn't cause any disruptions."
+      "Nope, our dedicated implementation engineer will make sure everything goes smoothly without taking up too much of your time. "
   },
   {
     question: "Who would benefit from using this?",
@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "What if Zendesk builds this?",
     answer:
-      "Well, shucks. If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. Our goal is to eventually replace Zendesk as an AI first contact center."
+      "If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. Our goal is to eventually replace Zendesk as an AI first contact center."
   },
   {
     question:

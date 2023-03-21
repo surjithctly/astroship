@@ -1,9 +1,26 @@
 const navigation = {
-  main: [
+  solutions: [
+    { name: "Help Center", href: "/demo" }
+    // { name: "Chatbot", href: "#" },
+    // { name: "CRM", href: "#" }
+  ],
+  support: [
+    { name: "Pricing", href: "/pricing" },
+    { name: "Documentation", href: "/contact" },
+    { name: "Guides", href: "/contact" },
+    { name: "API Status", href: "/contact" }
+  ],
+  company: [
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
     { name: "Jobs", href: "/careers" },
-    { name: "Press", href: "/contact" }
+    { name: "Press", href: "/contact" },
+    { name: "Partners", href: "/contact" }
+  ],
+  legal: [
+    { name: "Claim", href: "/contact" },
+    { name: "Privacy", href: "/contact" },
+    { name: "Terms", href: "/contact" }
   ],
   social: [
     {
@@ -46,37 +63,110 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 pb-6 pt-24 lg:px-8">
-        <nav
-          className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
-          aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <a
-                href={item.href}
-                className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                {item.name}
-              </a>
+    <footer className="mt-16 bg-slate-100" aria-labelledby="footer-heading">
+      <hr />
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-24 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8">
+            <p className="h-7 text-slate-500 opacity-80">
+              <span className="font-bold text-slate-800">Wisely</span>Desk
+            </p>
+            <p className="text-sm leading-6 text-gray-600 opacity-60">
+              Revamp your Help Center CX. Convenient, 24/7 and unlimited scale
+              conversations about your entire knowledge base.
+            </p>
+            <div className="flex space-x-6">
+              {navigation.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-400 hover:text-gray-500">
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
             </div>
-          ))}
-        </nav>
-        <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              target="_blank"
-              className="text-gray-400 hover:text-gray-500">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
+          </div>
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                  Solutions
+                </h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.solutions.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                  Support
+                </h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.support.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                  Company
+                </h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.company.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                  Legal
+                </h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.legal.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-          Copyright © {new Date().getFullYear()} WiselyDesk. All rights
-          reserved.
-        </p>
+        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+          <p className="text-xs leading-5 text-gray-500">
+            Copyright © {new Date().getFullYear()} WiselyDesk. All rights
+            reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

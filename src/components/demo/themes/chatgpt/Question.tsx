@@ -53,7 +53,7 @@ function Question({
                 placeholder="Input your question"
                 rows={1}
                 onChange={(e) => setQuestion(e.target.value)}
-                // disabled={!isValidZendeskUrl}
+                disabled={!isValidZendeskUrl}
                 className={`h-[24px] max-h-[200px] w-full resize-none overflow-y-hidden border-0 bg-transparent p-0 pl-2 pr-7 focus:ring-0 focus-visible:ring-0 md:pl-0 ${
                   !isValidZendeskUrl && "cursor-not-allowed"
                 }`}></textarea>

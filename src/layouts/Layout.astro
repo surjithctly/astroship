@@ -8,14 +8,6 @@ export interface Props {
   title: string;
 }
 
-// const { src } = await getImage({
-//   src: "../../assets/hero.png",
-//   width: 800,
-//   height: 742,
-//   format: "avif",
-// });
-// console.log(src);
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
@@ -25,9 +17,7 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
-const makeTitle = title
-  ? title + " | " + "WiselyDesk"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+const makeTitle = title + " | " + "WiselyDesk";
 ---
 
 <!DOCTYPE html>
@@ -35,16 +25,15 @@ const makeTitle = title
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png?" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Supercharge your Zendesk help center."
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
+        creator: "@wiselydesk",
         site: "@web3templates",
         card: "summary_large_image"
       }}
@@ -52,11 +41,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `WiselyDesk - Help Desk Automation`,
           image: resolvedImageWithDomain
         },
         image: {
-          alt: "Astroship Homepage Screenshot"
+          alt: "WiselyDesk Landing Pages Screenshot"
         }
       }}
     />
