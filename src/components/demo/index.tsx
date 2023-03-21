@@ -42,6 +42,14 @@ function Demo() {
   return (
     <>
       <Notice />
+      <p className="pt-2">Usage:</p>
+      <ol className="list-decimal">
+        <li>
+          Paste the url of a Zendesk help center article in the input box
+          (article can be any companies)
+        </li>
+        <li>Scroll down and ask any question about that article</li>
+      </ol>
       <ArticleInput
         isValidZendeskUrl={isValidZendeskUrl}
         setZendeskUrl={setZendeskUrl}
