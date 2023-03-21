@@ -58,11 +58,17 @@ export default function Knowledgeable() {
               </dl>
             </div>
           </div>
-          <img
-            src="/refundv2.gif"
-            alt="Refund Demo"
-            className="mt-20 rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-          />
+          <div>
+            <p className="mt-16 text-center text-sm">
+              <i>Demo conversation about refund policy for Georgia's Bakery</i>
+            </p>
+            <img
+              loading="lazy"
+              src="/refundv2.gif"
+              alt="Refund Demo"
+              className="rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
+            />
+          </div>
         </div>
       </div>
     </div>

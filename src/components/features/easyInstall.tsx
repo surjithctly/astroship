@@ -59,13 +59,15 @@ export default function EasyInstall() {
               </dl>
             </div>
           </div>
-          <div className="flex items-start justify-end lg:order-first">
+          <div className="lg:order-first">
+            <p className="mt-32 text-center text-sm">
+              <i>Demo conversation with angry user and an escalation</i>
+            </p>
             <img
-              src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-              alt="Product screenshot"
-              className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
-              width={2432}
-              height={1442}
+              loading="lazy"
+              src="/mad_customer.gif"
+              alt="Mad Customer"
+              className="rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[65rem]"
             />
           </div>
         </div>
