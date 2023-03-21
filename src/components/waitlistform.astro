@@ -65,12 +65,11 @@ import Button from "./ui/button.astro";
 
   <div id="result" class="mt-3 text-center"></div>
 </form>
-<Button class="my-1 bg-blue-700 hover:bg-blue-800" size="md">
-  <a
-    href=""
-    onclick="Calendly.initPopupWidget({url: 'https://calendly.com/wiselydesk-waitlist/waitlist-introduction'});return false;"
-    >Schedule 30 minute introduction instead</a
-  >
+<Button
+  onclick="Calendly.initPopupWidget({url: 'https://calendly.com/wiselydesk-waitlist/waitlist-introduction'});return false;"
+  class="my-1 bg-blue-700 hover:bg-blue-800"
+  size="md">
+  Schedule 30 minute introduction instead
 </Button>
 <!-- Calendly link widget begin -->
 <link
@@ -81,6 +80,7 @@ import Button from "./ui/button.astro";
   src="https://assets.calendly.com/assets/external/widget.js"
   type="text/javascript"
   async
+  defer
 ></script>
 
 <!-- Calendly link widget end -->

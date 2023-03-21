@@ -1,0 +1,11 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Demo from "@components/demo";
+---
+
+<Layout title="Demo">
+  <Container>
+    <Demo client:idle />
+  </Container>
+</Layout>
