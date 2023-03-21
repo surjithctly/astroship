@@ -36,7 +36,7 @@ export default function EasyInstall() {
                 A breeze to operate
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                A world of possibilites using new AI technology
+                A world of possibilites using latest AI technology
               </p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Use the latest and great technology to help your customers.
