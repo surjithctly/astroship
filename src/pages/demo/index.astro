@@ -6,7 +6,7 @@ import Link from "@components/ui/link.astro";
 
 <Layout title="Demo Options">
   <Container>
-    <div class="my-20">
+    <div class="mb-4 mt-20 sm:my-20">
       <h1
         class="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         No sign up or credit card required. <br />Demo right in your browser.
@@ -16,8 +16,8 @@ import Link from "@components/ui/link.astro";
         > account.
       </p>
     </div>
-    <div class="grid grid-cols-2">
-      <div class="flex h-[300px] flex-col justify-center">
+    <div class="sm:grid sm:grid-cols-2">
+      <div class="flex h-[200px] flex-col justify-center sm:h-[300px]">
         <Link href="/demo/article" size="lg" class="mx-auto bg-indigo-500">
           Demo Using Your Article
         </Link>
@@ -26,7 +26,7 @@ import Link from "@components/ui/link.astro";
           the bot about that article.
         </p>
       </div>
-      <div class="flex h-[300px] flex-col justify-center">
+      <div class="flex h-[200px] flex-col justify-center sm:h-[300px]">
         <Link
           target="_blank"
           href="/demo/fakeHelpCenter"
