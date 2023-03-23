@@ -18,15 +18,6 @@ import Link from "@components/ui/link.astro";
     </div>
     <div class="sm:grid sm:grid-cols-2">
       <div class="flex h-[200px] flex-col justify-center sm:h-[300px]">
-        <Link href="/demo/article" size="lg" class="mx-auto bg-indigo-500">
-          Demo Using Your Article
-        </Link>
-        <p class="text-md mx-10 mt-6 text-center">
-          Enter a URL to one Zendesk article of your choice and ask questions to
-          the bot about that article.
-        </p>
-      </div>
-      <div class="flex h-[200px] flex-col justify-center sm:h-[300px]">
         <Link
           target="_blank"
           href="/demo/fakeHelpCenter"
@@ -34,9 +25,19 @@ import Link from "@components/ui/link.astro";
           class="mx-auto bg-indigo-500">
           Demo Fake Help Center
         </Link>
-        <p class="text-md mx-10 mt-6 text-center">
-          View a demo in a fake help center, Georgia's Bakery. Ask questions
-          like refund policy, delivery options, or cookie options.
+        <p class="text-md mx-auto mt-6 w-[60%] text-center">
+          Ask Georgia's Bakery any questions, like refund policy, delivery
+          options, or pricing.
+        </p>
+      </div>
+      <div
+        class="mt-12 flex h-[200px] flex-col justify-center sm:h-[300px] lg:mt-0">
+        <Link href="/demo/article" size="lg" class="mx-auto bg-indigo-500">
+          Demo Using Your Article
+        </Link>
+        <p class="text-md mx-auto mt-6 w-[60%] text-center">
+          Enter a URL to one Zendesk article of your choice and ask questions
+          about that article.
         </p>
       </div>
     </div>
