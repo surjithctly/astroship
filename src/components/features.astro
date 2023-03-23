@@ -11,11 +11,35 @@ import EasyInstall from "@components/features/easyInstall";
   <p class="ml-6 text-sm sm:ml-36">
     *We're just guessing here. But it's probably close.
   </p>
-  <img
-    src="/eventst.png"
-    alt="chain of unfortunate events picture"
-    class="m-auto mt-5 hidden w-[60%] sm:block"
-  />
+  <div
+    class="justify-items-center gap-10 p-16 text-base leading-7 text-gray-600 lg:grid lg:grid-cols-2">
+    <div class="flex flex-col p-2">
+      <p class="text-center text-lg italic">
+        Time to find answer <span class="font-semibold">before</span> WiselyDesk:
+        <span class="font-semibold"> ~80 seconds</span>
+      </p>
+      <img
+        loading="lazy"
+        src="/zendeskSearch.gif"
+        alt="Zendesk search"
+        class="rounded"
+      />
+    </div>
+    <div class="mt-4 flex flex-col p-2 lg:mt-0">
+      <p class="text-center text-lg italic">
+        <span class="font-semibold">After</span> WiselyDesk: <span
+          class="font-semibold">
+          4 seconds</span
+        >
+      </p>
+      <img
+        loading="lazy"
+        src="/wdsearch_v2.gif"
+        alt="WiselyDesk search"
+        class="rounded"
+      />
+    </div>
+  </div>
 </div>
 <div class="mt-12 w-full">
   <h1 class="text-center text-4xl font-bold tracking-tight lg:text-5xl">

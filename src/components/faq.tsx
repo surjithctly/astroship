@@ -32,7 +32,7 @@ const faqs = [
   {
     question: "What if Zendesk builds this?",
     answer:
-      "If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. We also think, as a small startup, we'll be able to create features faster that will please our customers."
+      "If Zendesk introduces a similar feature and you prefer to use it, we'll gladly migrate you. Our priority is to work with happy customers, whether it's because our service is better, you enjoy working with our team, or our pricing is more affordable. We also think, as a small startup, we'll have a tighter and faster feedback loop for product improvements."
   },
   {
     question:
