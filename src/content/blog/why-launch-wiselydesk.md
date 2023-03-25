@@ -3,7 +3,7 @@ draft: false
 title: "Why launch WiselyDesk?"
 snippet: "At WiselyDesk, we're focusing on how we can build software leveraging groundbreaking AI technology to help organizations communicate with their customers"
 image: {
-    src: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?&fit=crop&w=430&h=240",
+    src: "/rocket.png",
     alt: "Why launch WiselyDesk"
 }
 publishDate: "2023-03-23 11:39"

@@ -1,9 +1,9 @@
 ---
 draft: false
-title: "How are the answers generated?"
+title: "How does WiselyDesk generate the answers?"
 snippet: "Simplified overview of how we *(and most generative AI chatbots)* generate answers, using AI, to questions."
 image: {
-    src: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?&fit=crop&w=430&h=240",
+    src: "/question-mark.png",
     alt: "Answers"
 }
 publishDate: "2023-03-25 08:39"
@@ -39,6 +39,11 @@ Before we dive in, let's cover some jargon.
 - Parse relevant information from each article, such as title and content.
 - Create word embeddings of each article and save the result. 
 
+<img src="/extract_word_embedding_from_zd.png" alt="Retrieve and parse Zendesk knowledge base articles" class="mb-0 rounded mt-1">
+<div class="text-center">
+<sup >Diagram of task one</sup>
+</div>
+
 #### 2) Generate a response based on relevant articles:
 
 - Create a word embedding of the question.
@@ -46,7 +51,18 @@ Before we dive in, let's cover some jargon.
 - Summarize the intended bot behaviour and attitude. For instance, *"Your name is Bestbot, and you are a friendly bot"*.
 - Combine the summary, relevant articles, and question into one prompt. 
 
+<img src="/combining-prompt-part-2.png" alt="Generate a response based on relevant articles" class="mb-0 rounded mt-1">
+<div class="text-center">
+<sup >Diagram of task two</sup>
+</div>
+
 **And Voila! Once you have the prompt, send it to the AI model to receive an answer!** 
+
+<img src="/answer-from-openai-model.png" alt="Semantic Search Explanation" class="mb-0 rounded mt-1">
+<div class="text-center">
+<sup >Answer from OpenAI AI model</sup>
+</div>
+
 
 ### What AI model does WiselyDesk use?
 
@@ -54,5 +70,5 @@ We use OpenAI AI models (GPT3.5 and GPT4). We use two third party providers, Ope
 
 ### Outro
 
-Thank you for visiting our website and blog! We are super excited to get our first 5-7 beta customers who use Zendesk help center currently. We're happy to show you a no-strings attached / no payment required demo of how this chat could look like in your help center! 
+We hope you learned a thing or two. We'll have a discord server up and running soon, so you can ask us further question if something wasn't clear or if you want to learn more!
 
