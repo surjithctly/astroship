@@ -75,7 +75,7 @@ export default function Footer() {
               <span className="font-bold text-slate-800">Wisely</span>Desk
             </p>
             <p className="text-sm leading-6 text-gray-600 opacity-60">
-              Revamp your Help Center CX with AI. Get instant answer about your
+              Revamp your Help Center CX with AI. Get instant answers about your
               entire knowledge base - faster than typing out your questions.
             </p>
             <div className="flex space-x-6">
