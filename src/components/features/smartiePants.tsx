@@ -60,7 +60,7 @@ export default function Knowledgeable() {
           </div>
           <div>
             <p className="mt-16 text-center text-sm">
-              <i>Demo conversation about refund policy for Georgia's Bakery</i>
+              <i>Demo conversation about refund policy for Georgia's Cookies</i>
             </p>
             <img
               loading="lazy"
