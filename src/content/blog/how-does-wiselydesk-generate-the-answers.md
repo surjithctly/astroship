@@ -68,6 +68,9 @@ Before we dive in, let's cover some jargon.
 
 We use OpenAI AI models (GPT3.5 and GPT4). We use two third party providers, OpenAI (obviously!), and Microsoft - who has a license to supply OpenAI AI models with their infrastructure. Dual providers allows us to ensure our software runs well even if one provider is having a bad day.
 
+### Alternatively, the technical term: 
+
+We use retrieval augmentation with memory to generate a completion using LLMs.
 ### Outro
 
 We hope you learned a thing or two. We'll have a discord server up and running soon, so you can ask us further question if something wasn't clear or if you want to learn more!
