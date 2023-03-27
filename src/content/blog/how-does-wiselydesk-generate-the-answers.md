@@ -68,9 +68,26 @@ Before we dive in, let's cover some jargon.
 
 We use OpenAI AI models (GPT3.5 and GPT4). We use two third party providers, OpenAI (obviously!), and Microsoft - who has a license to supply OpenAI AI models with their infrastructure. Dual providers allows us to ensure our software runs well even if one provider is having a bad day.
 
-### Alternatively, the technical term: 
+### Alternatively, a more technical term: 
 
 We use retrieval augmentation with memory to generate a completion using LLMs.
+
+#### Want to try a simplified version yourself?
+
+If you want to try a simplified version of this yourself, then we would be happy to help you get started. We'll use OpenAI API, Python, and Replit. The later two are free to use, and OpenAI comes with a $5 credit.
+
+**Pre-requisite:**
+1. Basic Python knowledge (Can recommend [codeacademy](https://try.codecademy.com/learn-python-3) or [Automate the boring stuff with python](https://automatetheboringstuff.com/) to learn)
+2. OpenAI API key - can sign on [OpenAI's webpage](https://platform.openai.com/docs/quickstart) and receive $5 dollar credit.
+3. Sign up for [Replit](https://replit.com/) (free account).
+
+**How to get started:**
+1. [Fork](https://replit.com/) our Replit to use in your account: [https://replit.com/@JayChiarella1/Basic-QA-with-ZD-help-center-bot#main.py](https://replit.com/@JayChiarella1/Basic-QA-with-ZD-help-center-bot#main.py)
+2. Create an [OpenAI API key](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key).
+3. In your forked Replit, scroll under the "tools" section at the bottom left -> click "secrets" and add your OpenAI API key with the key *OPENAI_API_KEY* (has to be exact) and the value from your key in your OpenAI account.
+4. Go back to your Replit and click run!
+
+If you run into any trouble or would like help, please feel free to email us at hello@wiselydesk.com - we're happy to spread some knowledge here!
 ### Outro
 
 We hope you learned a thing or two. We'll have a discord server up and running soon, so you can ask us further question if something wasn't clear or if you want to learn more!
