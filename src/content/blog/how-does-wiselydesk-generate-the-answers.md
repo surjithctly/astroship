@@ -72,7 +72,7 @@ We use OpenAI AI models (GPT3.5 and GPT4). We use two third party providers, Ope
 
 We use retrieval augmentation with memory to generate a completion using LLMs.
 
-#### Want to try a simplified version yourself?
+### Want to try a simplified version yourself?
 
 If you want to try a simplified version of this yourself, then we would be happy to help you get started. We'll use OpenAI API, Python, and Replit. The later two are free to use, and OpenAI comes with a $5 credit.
 
