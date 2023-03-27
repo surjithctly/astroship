@@ -11,7 +11,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "/opengraph.png",
   Astro.site
 ).toString();
 
@@ -38,18 +38,17 @@ const makeTitle = title + " | " + "WiselyDesk";
       canonical={canonicalURL}
       twitter={{
         creator: "@wiselydesk",
-        site: "@web3templates",
         card: "summary_large_image"
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `WiselyDesk - Help Desk Automation`,
+          title: `WiselyDesk - (useful) AI chat for Zendesk help center`,
           image: resolvedImageWithDomain
         },
         image: {
-          alt: "WiselyDesk Landing Pages Screenshot"
+          alt: "WiselyDesk Landing Page Screenshot"
         }
       }}
     />
