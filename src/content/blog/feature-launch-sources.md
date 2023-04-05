@@ -27,7 +27,7 @@ Each time a user asks a question, WiselyDesk identifies the most relevant knowle
 If you or your users want to view the most likely sources of the AI response - then click the *Source* link. 
 
 <div class="text-center">
-<sup >1. Click on the Source link at the bottom of an AI message</sup>
+<sup >1. When using the bot, you can click on the Source link at the bottom of an AI message</sup>
 </div>
 <img src="/sources-ai-feature-wiselydesk.png" alt="Sources Feature" class="mb-1 rounded mt-0">
 
