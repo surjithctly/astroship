@@ -38,7 +38,7 @@ If you or your users want to view the most likely sources of the AI response - t
 
 ### Note - "most likely sources"
 
-Before the AI answers a question, WiselyDesk provides relevant knowledge base articles to serve as context. However, the generation of AI responses mostly remains a black box to the tech industry - as there isn't full visibility into the AI's reasoning. This makes it not possible to absolutely guarantee the use of provided context.
+Before the AI answers a question, WiselyDesk provides relevant knowledge base articles as context. However, the generation of AI responses mostly remains a black box to the tech industry - as there isn't full visibility into the AI's reasoning. This makes it not possible to absolutely guarantee the AI's use of provided context.
 
 While we haven't found our virtual assistant ignoring sources, regular monitoring is needed. We apply various engineering safety techniques and battle-tested bot instructions to address this. We'll discuss this more in future blog posts and conversations.
 
