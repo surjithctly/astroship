@@ -42,7 +42,7 @@ We run a script that asks the chatbot the same questions a large number of times
 
 In fact, **before** we launch our chatbot infront of our customer's users, we make sure to **test the top questions** at least 50 to 100 (sometimes 1000) times to ensure each of the answers are **semantically similar**. 
 
-If the answers are all semantically similar, then we move on to the test the new top questions. If the answers are not semantically similar, then we invesigate by looking the sources and the bot instructions. More on this in later articles.
+If the answers are all semantically similar, then we test the other top questions. If the answers are not semantically similar, then we invesigate by looking at the sources and the bot instructions. More on this in later articles.
 
 ### Outro
 
