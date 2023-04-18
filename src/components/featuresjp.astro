@@ -1,0 +1,68 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon";
+
+const features = [
+    {
+        title: "多数の日本国内のシニアアドバイザー",
+        description:
+        "アドバイザーは幹部、中小企業経営者を含み、医療機器、物流、不動産、教育、ITなど、多くの業界にまたがり、投資の安全性を確保するため、財務、経営などに関する最終判断を行う。",
+        icon: "bx:bxs-briefcase",
+    },
+    {
+        title: "創業者",
+        description:
+        "創業者の一人は、北京大学の法学修士であり、中国国内の法人および個人の海外送金に関する専門的なアドバイスを提供できます。",
+        icon: "bx:bxs-window-alt",
+    },
+    {
+        title: "カスタマーサポート",
+        description:
+        "日本語、英語、そして中国語に対応。",
+        icon: "bx:bxs-data",
+    },
+    {
+        title: "メンバー",
+        description:
+        "会社のメンバーは長期間日本に居住しており、現地の風土や習慣を理解し、提案の専門性を確保します。",
+        icon: "bx:bxs-bot",
+    },
+    {
+        title: "デジタル化",
+        description:
+        "AI技術を広く導入。M&A後にDX（デジタル化）に関するニーズがある場合は、AIおよびその他のIT分野で技術サポートを提供する協力会社があります。",
+        icon: "bx:bxs-file-find",
+    },
+    {
+        title: "無料",
+        description:
+        "初期（15日以内）のコンサルティングサービスは無料で提供されます。",
+        icon: "bx:bxs-user",
+    },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    日本でビジネスを行うために必要なサービスを提供します：
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Schindler-JPの強みは：
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
