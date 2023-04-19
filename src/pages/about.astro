@@ -14,21 +14,29 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
+      <Fragment slot="title">公司介绍</Fragment>
       <Fragment slot="desc">我们是一个年轻充满活力的团队。</Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
       <h2 class="font-bold text-3xl text-gray-800">
-        助力您在日本的事业，工作和生活。
+        经营者简介：
       </h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+        张大鹏，1985年生，名古屋大学博士，在日本生活近10年。长期从事AI人工智能类工作，对AI行业有很深的了解。同时广泛组织各类活动，所组织团队凝聚力强。
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        日本語紹介：経営者は名古屋大学博士課程で卒業、国立研究所でサービスロボット開発に従事。母国に戻て、AIベンチャー企業を起業、複数の大学（SHJT、SEUなど）と連携して、１億円以上のプロジェクトを協力していました。。平成30年から、研究所に戻て、AI医療機器を開発。
+        経営者はこれまで，AI/ICT/IOT関連の技術について、様々な機械学習アルゴリズムを用いて、人間情報を分析して、HMI/HRIの研究、IoT/医療機器の研究と開発した。例えば、隠れマルコフモデルの拡張モデルや確率的切り替えを伴う動的システムモデルを用いた動作解析・認証に取り組んできた。また理論的成果にとどまらず，署名認証，歩行認識や運転行動解析を対象として実観測データに提案モデルを適用し，その有用性を実証実験で検証してきた。
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800">
+        合作方简介：
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        上海探索律师事务所，是一家2019年成立的新型律所，该所以强大客户群体为依托，近年来发展迅速，其计划开拓移民服务板块。公司与其达成战略合作，其有日本移民意向的客户会介绍我公司来服务。
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+<!--     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
       {
         publishedTeamMembers.map((teamMemberEntry) => (
           <div class="group">
@@ -57,6 +65,6 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           </div>
         ))
       }
-    </div>
+    </div> -->
   </Container>
 </Layout>
