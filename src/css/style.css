@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+.service-container {
+    padding: 80px 0px 200px;
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    overflow: hidden;
+}
+
+.service-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#service-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--Very-dark-desaturated-blue);
+    font-family: 'Overpass', sans-serif;
+    margin-bottom: 50px;
+}
+
+.service-rows {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.service-row {
+    padding: 20px 0px;
+    text-align: center;
+}
+
+.service-row-heading {
+    margin: 15px 0px;
+    font-size: 1.5rem;
+    color: var(--Very-dark-blue-headings);
+    font-family: 'Overpass', sans-serif;
+}
+
+.service-row-desc {
+    width: 330px;
+    font-size: 1.1rem;
+    line-height: 1.85rem;
+    color: var(--Very-dark-grayish-blue-body-copy);
+    font-family: 'Overpass', sans-serif;
+    font-weight: 300;
+}
+
+.service-pic {
+    background-image: url("images/illustration-editor-mobile.svg");
+    background-size: contain;
+    width: 450px;
+    height: 360px;
+}

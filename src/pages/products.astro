@@ -1,0 +1,77 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Product from "@components/productCompo.astro";
+
+const pricing = [
+    {
+        name: "Personal",
+        price: "Free",
+        popular: false,
+        features: [
+            "Lifetime free",
+            "Up to 3 users",
+            "Unlimited Pages",
+            "Astro Sub domain",
+            "Basic Integrations",
+            "Community Support",
+        ],
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280",
+        button: {
+            text: "Get Now",
+            link: "/",
+        },
+    },
+    {
+        name: "Personal 1",
+        price: "Free",
+        popular: false,
+        features: [
+            "Lifetime free",
+            "Up to 3 users",
+            "Unlimited Pages",
+            "Astro Sub domain",
+            "Basic Integrations",
+            "Community Support",
+        ],
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280",
+        button: {
+            text: "Get Now",
+            link: "/",
+        },
+    },
+    {
+        name: "Personal 2",
+        price: "Free",
+        popular: false,
+        features: [
+            "Lifetime free",
+            "Up to 3 users",
+            "Unlimited Pages",
+            "Astro Sub domain",
+            "Basic Integrations",
+            "Community Support",
+        ],
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280",
+        button: {
+            text: "Get Now",
+            link: "/",
+        },
+    },
+];
+---
+
+<Layout title="Store">
+    <Container>
+        <Sectionhead>
+            <Fragment slot="title">Store</Fragment>
+            <Fragment slot="desc"></Fragment>
+            Books available
+        </Sectionhead>
+    </Container>
+
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+        {pricing.map((item) => <Product plan={item} />)}
+    </div>
+</Layout>
