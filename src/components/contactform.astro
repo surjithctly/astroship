@@ -5,13 +5,13 @@ import Button from "./ui/button.astro";
 <!-- To make this contact form work, create your free access key from https://web3forms.com/
      Then you will get all form submissions in your email inbox. -->
 <form
-  action="https://api.web3forms.com/submit"
+action="https://formcarry.com/s/m5dCKaa63V"
   method="POST"
   id="form"
   class="needs-validation"
+  accept-charset="UTF-8"
   novalidate>
-  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-  <!-- Create your free access key from https://web3forms.com/ -->
+  <input type="hidden" name="_gotcha">
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
     <input
@@ -80,48 +80,48 @@ import Button from "./ui/button.astro";
   const form = document.getElementById("form");
   const result = document.getElementById("result");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    form.classList.add("was-validated");
-    if (!form.checkValidity()) {
-      form.querySelectorAll(":invalid")[0].focus();
-      return;
-    }
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+  // form.addEventListener("submit", function (e) {
+  //   e.preventDefault();
+  //   form.classList.add("was-validated");
+  //   if (!form.checkValidity()) {
+  //     form.querySelectorAll(":invalid")[0].focus();
+  //     return;
+  //   }
+  //   const formData = new FormData(form);
+  //   const object = Object.fromEntries(formData);
+  //   const json = JSON.stringify(object);
 
-    result.innerHTML = "Sending...";
+  //   result.innerHTML = "Sending...";
 
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-          result.classList.add("text-green-500");
-          result.innerHTML = json.message;
-        } else {
-          console.log(response);
-          result.classList.add("text-red-500");
-          result.innerHTML = json.message;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        result.innerHTML = "Something went wrong!";
-      })
-      .then(function () {
-        form.reset();
-        form.classList.remove("was-validated");
-        setTimeout(() => {
-          result.style.display = "none";
-        }, 5000);
-      });
-  });
+  //   fetch("https://api.web3forms.com/submit", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: json,
+  //   })
+  //     .then(async (response) => {
+  //       let json = await response.json();
+  //       if (response.status == 200) {
+  //         result.classList.add("text-green-500");
+  //         result.innerHTML = json.message;
+  //       } else {
+  //         console.log(response);
+  //         result.classList.add("text-red-500");
+  //         result.innerHTML = json.message;
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       result.innerHTML = "Something went wrong!";
+  //     })
+  //     .then(function () {
+  //       form.reset();
+  //       form.classList.remove("was-validated");
+  //       setTimeout(() => {
+  //         result.style.display = "none";
+  //       }, 5000);
+  //     });
+  // });
 </script>

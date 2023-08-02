@@ -11,7 +11,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "/opengraph.png",
   Astro.site
 ).toString();
 
@@ -27,7 +27,7 @@ const makeTitle = title
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
@@ -36,20 +36,18 @@ const makeTitle = title
       description="Utility Gods is collection of services for the community. Free to use."
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "UtilityGods",
+        site: "www.utilitygods.com",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `UtilityGods - One Stop for all Utility`,
           image: resolvedImageWithDomain,
         },
-        image: {
-          alt: "Astroship Homepage Screenshot",
-        },
+       
       }}
     />
   </head>
@@ -62,6 +60,14 @@ const makeTitle = title
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+
+      html,body{
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+
       }
     </style>
   </body>
