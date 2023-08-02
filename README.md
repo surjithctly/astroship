@@ -6,7 +6,7 @@ This Free Template is sponsored by [Web3Templates](https://web3templates.com)
 
 ## Live Demo
 
-### [https://astroship.web3templates.com/](https://astroship.web3templates.com/)
+### [https://www.utilitygods.com/](https://www.utilitygods.com/)
 
 ### [Download Astroship Template](https://web3templates.com/templates/astroship-starter-website-template-for-astro)
 
@@ -29,7 +29,6 @@ Click here to deploy on Netlify:
 ### Pagespeed Score
 
 [![pagespeed](https://user-images.githubusercontent.com/1884712/210250214-7aa98167-7993-4b90-8138-326b8fa0c223.png)](https://pagespeed.web.dev/report?url=https%3A%2F%2Fastroship.web3templates.com%2F)
-
 
 ## Installation
 
