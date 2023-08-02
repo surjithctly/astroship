@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://astroship.web3templates.com/sitemap-index.xml
+Sitemap: http://www.utilitygods.com/sitemap-index.xml
