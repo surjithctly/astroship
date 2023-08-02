@@ -9,8 +9,8 @@ const menuitems = [
     title: "Services",
     path: "#",
     children: [
-      { title: "Caption It Now", path: "/" },
-      { title: "QR Gods", path: "#" },
+      { title: "Caption It Now", path: "http://www.captionitnow.com" },
+      { title: "QR Gods", path: "http://www.qrgods.com" },
     ],
   },
   {
@@ -59,6 +59,7 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
+                      target="_blank"
                       class="flex lg:px-3 py-2 text-sky-600 hover:text-gray-900">
                       {item.title}
                     </a>
