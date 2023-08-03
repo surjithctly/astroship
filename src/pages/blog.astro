@@ -17,11 +17,11 @@ publishedBlogEntries.sort(function (a, b) {
 ---
 
 <Layout title="Blog">
-  <Container>
+  <Container class="h-[70%]">
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        We write about building Utility, supporting the community and our thoughts.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -69,6 +69,11 @@ publishedBlogEntries.sort(function (a, b) {
               </a>
             </li>
           ))
+        }
+        {
+          publishedBlogEntries.length==0&& <div class="text-gray-400 text-2xl text-center">
+            Coming soon...
+            </div>
         }
       </ul>
     </main>
