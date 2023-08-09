@@ -1,0 +1,45 @@
+---
+// @ts-ignore
+import Link from "./ui/link.astro";
+export const prerender = true;
+
+const features = [
+  {
+    imageName: "uber.png",
+  },
+  {
+    imageName: "lyft.png",
+  },
+  {
+    imageName: "docker.png",
+  },
+  {
+    imageName: "aws.png",
+  },
+  {
+    imageName: "nasa.png",
+  },
+];
+
+
+---
+<div class="mt-16 md:mt-0 flex justify-center">
+  {features.map((item, index) => (
+    <div class="flex gap-4 items-start" key={index}>
+      <div>
+        <Icon class="text-white" name={item.icon} />
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg">{item.title}</h3>
+        <div class="flex justify-center"> <!-- Add this div for centering the image -->
+          <img
+            src={`./src/assets/${item.imageName}`}
+            alt={item.title}
+            class="w-100 h-150"
+          />
+        </div>
+        <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>;
