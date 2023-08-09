@@ -1,80 +1,124 @@
 ---
+
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Pricing from "@components/pricing.astro";
 
+
 const pricing = [
-  {
-    name: "Personal",
-    price: "Free",
-    popular: false,
-    features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "/",
+    {
+      name: "Free",
+      price: "$0",
+      popular: false,
+      features: [
+        "Development version",
+        "API connector",
+        "Component library",
+        "1 app editor",
+        "50k workload units/mo",
+        "6 hours of server logs"
+      ],
+      button: {
+        text: "Try Free",
+        link: "/"
+      }
     },
-  },
-  {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
+    {
+      name: "Starter",
+      price: {
+        monthly: "$29",
+        annual: "$26",
+        discount: "10%",
+        original: "$24"
+      },
+      popular: true,
+      features: [
+        "Live app",
+        "Custom domain",
+        "Recurring workflows",
+        "Basic version control",
+        "175k workload units/mo",
+        "2 days of server logs"
+      ],
+      button: {
+        text: "Start a free trial",
+        link: "#"
+      }
     },
-    popular: true,
-    features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
-    ],
-    button: {
-      text: "Get Started",
-      link: "#",
+    {
+      name: "Growth",
+      price: "$119",
+      popular: false,
+      features: [
+        "2 app editors",
+        "Premium version control",
+        "Two-factor authorization",
+        "10 custom branches",
+        "250k workload units/mo",
+        "14 days of server logs"
+      ],
+      button: {
+        text: "Get started",
+        link: "/contact"
+      }
     },
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    popular: false,
-    features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
-    ],
-    button: {
-      text: "Contact us",
-      link: "/contact",
+    {
+      name: "Team",
+      price: "$349",
+      popular: false,
+      features: [
+        "5 app editors",
+        "Sub apps",
+        "25 custom branches",
+        "500k workload units/mo",
+        "20 days of server logs",
+      ],
+      button: {
+        text: "Get started",
+        link: "/contact"
+      }
     },
-  },
-];
+    {
+      name: "Custom",
+      price: "Contact us",
+      popular: false,
+      features: [
+        "Custom workload units",
+        "Choice of hosting location",
+        "Customizable server",
+        "Enhanced security",
+        "Dedicated support team",
+        "Pay by invoice or ACH"
+      ],
+      button: {
+        text: "Talk to sales",
+        link: "/contact"
+      }
+    }
+  ];
 ---
 
 <Layout title="Pricing">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc"
-        >Simple & Predictable pricing. No Surprises.</Fragment
-      >
+      <Fragment slot="desc">Simple & Predictable pricing. No Surprises.</Fragment>
+
+
     </Sectionhead>
 
+
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <Pricing plan={item} />)}
+      {pricing.map((item) => (
+        <div>
+          <Pricing plan={item} />
+
+        </div>
+      ))}
+    </div>
+    <div>
+    
     </div>
   </Container>
 </Layout>
