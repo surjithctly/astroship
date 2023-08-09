@@ -6,13 +6,13 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Features",
+    title: "Product",
     path: "#",
     children: [
-      { title: "Action", path: "/" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
-      { title: "404 Page", path: "/404" },
+      { title: "Features", path: "" },
+      { title: "Responsive design", path: "" },
+      { title: "Version control", path: "" },
+      { title: "Marketplace", path: "" },
     ],
   },
   {
@@ -20,17 +20,26 @@ const menuitems = [
     path: "/pricing",
   },
   {
-    title: "About",
-    path: "/about",
+    title: "Use cases",
+    path: "#",
+    children: [
+      { title: "For founders", path: "" },
+      { title: "For enterprise", path: "" },
+      { title: "For developers", path: "" },
+    ],
   },
   {
     title: "Blog",
-    path: "/blog",
+    path: "",
   },
   {
-    title: "Contact",
-    path: "/contact",
+    title: "Contact sales",
+    path: "",
   },
+  {
+    title: "Tutorials",
+    path: "",
+  }
 ];
 ---
 
@@ -39,8 +48,8 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
+          ><span class="font-bold text-slate-800">Code</span><span
+            class="text-slate-500">Blocks</span
           >
         </a>
         <div class="block lg:hidden">
