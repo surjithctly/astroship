@@ -1,6 +1,6 @@
 ---
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/hero.png";
+import heroImage from "assets/hero-alt.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
@@ -10,9 +10,9 @@ import { Icon } from "astro-icon";
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
       src={heroImage}
-      alt="Astronaut in the air"
+      alt="Phoenix Bird"
       widths={[200, 400, 600]}
-      aspectRatio="4:3"
+      aspectRatio="1:1"
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
@@ -21,12 +21,12 @@ import { Icon } from "astro-icon";
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      We Are Divine Conscious Beings: Elevate Your Spirit, Illuminate Your Path
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      Discover the Woke Platform: A decentralized hub where creators tokenize content with Conscious Tokens (CSTs) and viewers thrive financially.
+      <wbr /> Dive into an ecosystem powered by our native Woke (WKT) token, fueling transactions, rewards, and more. 
+      Explore, engage, elevate!
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
@@ -35,9 +35,8 @@ import { Icon } from "astro-icon";
         target="_blank"
         class="flex gap-1 items-center justify-center"
         rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        <Icon class="text-white w-5 h-5" name="bx:bxs-coin" />
+        Buy WKT
       </Link>
       <Link
         size="lg"
@@ -47,7 +46,7 @@ import { Icon } from "astro-icon";
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        Stay Woke
       </Link>
     </div>
   </div>

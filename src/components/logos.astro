@@ -1,16 +1,31 @@
 ---
-// @ts-ignore
-import { Icon } from "astro-icon";
+// Mock data for WKT coin
+const mockCoinData = {
+  name: 'Woke Token',
+  current_price: 123.45, // Mock price
+  market_cap: 1000000, // Mock market cap
+};
 ---
 
-<div class="mt-24">
-  <h2 class="text-center text-slate-500">Works with your technologies</h2>
-  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
-    <Icon class="h-8 md:h-12" name="simple-icons:react" />
-    <Icon class="h-8 md:h-12" name="simple-icons:svelte" />
-    <Icon class="h-8 md:h-14" name="simple-icons:tailwindcss" />
-    <Icon class="h-8 md:h-16" name="simple-icons:alpinedotjs" />
-    <Icon class="h-8 md:h-12" name="simple-icons:vercel" />
-    <Icon class="h-8 md:h-12" name="simple-icons:astro" />
+<main class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-3/4 space-y-6">
+    <h1 class="text-3xl font-bold text-center">{mockCoinData.name}</h1>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <p class="text-sm font-semibold text-gray-500">Current Price</p>
+        <p class="text-2xl font-bold">${mockCoinData.current_price}</p>
+      </div>
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <p class="text-sm font-semibold text-gray-500">Market Cap</p>
+        <p class="text-2xl font-bold">${mockCoinData.market_cap.toLocaleString()}</p>
+      </div>
+    </div>
+
+    {/* Mock Chart */}
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-center mb-4">Price Chart (Last 7 Days)</h2>
+      <img class="rounded-lg" src="https://via.placeholder.com/640x320?text=WKT+Price+Chart" alt="Mock WKT Price Chart" />
+    </div>
   </div>
-</div>
+</main>

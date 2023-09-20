@@ -19,7 +19,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  : "Astroship - Elegant Starter Template with Astro & Tailwind CSS";
 ---
 
 <!DOCTYPE html>
@@ -30,10 +30,13 @@ const makeTitle = title
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Astroship is an elegant starter website template for Astro built with TailwindCSS."
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -44,7 +47,7 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Astroship - Elegant Starter Template for Astro`,
           image: resolvedImageWithDomain,
         },
         image: {
@@ -53,15 +56,22 @@ const makeTitle = title
       }}
     />
   </head>
-  <body>
+  <body class="font-poppins bg-lightblue-100 text-gray-800">
     <Navbar />
-    <slot />
+    <main class="container mx-auto px-4 py-8">
+      <slot />
+    </main>
     <Footer />
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+
+      /* Custom Light Blue Color */
+      .bg-lightblue-100 {
+        background-color: #E6F7FF;
       }
     </style>
   </body>
