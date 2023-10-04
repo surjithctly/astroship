@@ -31,6 +31,11 @@ const menuitems = [
     title: "Contact",
     path: "/contact",
   },
+  {
+    title: "Pro Version",
+    badge: true,
+    path: "https://astroship-pro.web3templates.com/",
+  },
 ];
 ---
 
@@ -64,8 +69,13 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
-                      {item.title}
+                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
+                      <span> {item.title}</span>
+                      {item.badge && (
+                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+                          New
+                        </span>
+                      )}
                     </a>
                   </li>
                 )}
