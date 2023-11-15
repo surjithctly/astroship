@@ -14,7 +14,7 @@ This Free Template is sponsored by [Web3Templates](https://web3templates.com)
 
 **[https://astroship-pro.web3templates.com/](https://astroship-pro.web3templates.com/)**
 
-**[Purchase Astroship Pro — $39](https://web3templates.com/templates/astroship-pro-astro-saas-website-template)**
+**[Purchase Astroship Pro — $49](https://web3templates.com/templates/astroship-pro-astro-saas-website-template)**
 
 
 <!-- prettier-ignore -->
