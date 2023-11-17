@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -33,7 +33,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
         publishedTeamMembers.map((teamMemberEntry) => (
           <div class="group">
             <div class="w-full aspect-square">
-              <Image
+              <Picture
                 src={teamMemberEntry.data.avatar.src}
                 alt={teamMemberEntry.data.avatar.alt}
                 sizes="(max-width: 800px) 100vw, 400px"
