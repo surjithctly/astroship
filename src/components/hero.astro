@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
@@ -8,11 +8,10 @@ import { Icon } from "astro-icon";
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
-    <Picture
+    <Image
       src={heroImage}
       alt="Astronaut in the air"
       widths={[200, 400, 600]}
-      aspectRatio="4:3"
       sizes="(max-width: 800px) 100vw, 620px"
       loading="eager"
       format="avif"
@@ -25,8 +24,8 @@ import { Icon } from "astro-icon";
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
       Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly
+      create any website with this starter.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
@@ -37,7 +36,7 @@ import { Icon } from "astro-icon";
         rel="noopener">
         <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
 
-        Download for Free
+         Download for Free
       </Link>
       <Link
         size="lg"
@@ -47,7 +46,7 @@ import { Icon } from "astro-icon";
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+         GitHub Repo
       </Link>
     </div>
   </div>
