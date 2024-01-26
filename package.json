@@ -14,7 +14,6 @@
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.2",
-    "@fontsource-variable/inter": "^5.0.15",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^3.5.5",
     "astro-font": "^0.0.77",

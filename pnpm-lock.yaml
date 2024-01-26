@@ -14,9 +14,6 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.0.2
     version: 5.0.2(astro@3.5.5)(tailwindcss@3.3.5)
-  '@fontsource-variable/inter':
-    specifier: ^5.0.15
-    version: 5.0.15
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
@@ -796,10 +793,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /@fontsource-variable/inter@5.0.15:
-    resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
-    dev: false
 
   /@img/sharp-darwin-arm64@0.33.0:
     resolution: {integrity: sha512-070tEheekI1LJWTGPC9WlQEa5UoKTXzzlORBHMX4TbfUxMiL336YHR8vBEUNsjse0RJCX8dZ4ZXwT595aEF1ug==}
