@@ -1,8 +1,8 @@
 ---
 import { SEO } from "astro-seo";
+import { AstroFont } from "astro-font";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
 
 export interface Props {
   title: string;
@@ -12,7 +12,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
   "/opengraph.jpg",
-  Astro.site
+  Astro.site,
 ).toString();
 
 const { title } = Astro.props;
@@ -22,15 +22,27 @@ const makeTitle = title
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Inter",
+          preload: false,
+          display: "swap",
+          fallback: "sans-serif",
+          cssVariable: "font-inter",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Inter:wght@100..900",
+        },
+      ]}
+    />
     <SEO
       title={makeTitle}
       description="Astroship is a starter website template for Astro built with TailwindCSS."
