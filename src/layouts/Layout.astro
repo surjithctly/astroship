@@ -1,35 +1,33 @@
 ---
-import { SEO } from "astro-seo";
-import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
+import { SEO } from "astro-seo"
+import Footer from "@components/footer.astro"
+import Navbar from "@components/navbar/navbar.astro"
+import "@fontsource-variable/inter/index.css"
+import { ViewTransitions } from "astro:transitions"
 
 export interface Props {
-  title: string;
+  title: string
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString()
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
+const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString()
 
-const { title } = Astro.props;
+const { title } = Astro.props
 
 const makeTitle = title
   ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  : "Astroship - Starter Template for Astro with Tailwind CSS"
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-
+    <ViewTransitions />
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}

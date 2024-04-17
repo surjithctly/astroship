@@ -26,6 +26,9 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.1.99
         version: 1.1.99
+      '@iconify-json/uil':
+        specifier: ^1.1.8
+        version: 1.1.8
       '@tailwindcss/typography':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.3.5)
@@ -484,6 +487,9 @@ packages:
 
   '@iconify-json/simple-icons@1.1.99':
     resolution: {integrity: sha512-/csVihX/ztkl2j4Vk4JoEJv8DdQHrZafzC5QHe21Y+ztuVglvavjb4yWEn9KQHTitLH2fIMnP8+RSTxu5kdmtw==}
+
+  '@iconify-json/uil@1.1.8':
+    resolution: {integrity: sha512-zkWB8XImzb1gfi5kN9xAfDXF5OqzxbKvtZq9xRUplEWEJYOoDB1RpbbQpCwJQ41j8Nf0ag0LFJr++qhYmvxftQ==}
 
   '@iconify/tools@3.0.7':
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
@@ -2957,6 +2963,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/simple-icons@1.1.99':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/uil@1.1.8':
     dependencies:
       '@iconify/types': 2.0.0
 
