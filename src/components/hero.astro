@@ -1,26 +1,13 @@
 ---
-import { Picture } from "astro:assets"
-import heroImage from "assets/hero.png"
 import Link from "@components/ui/link.astro"
 import { Icon } from "astro-icon/components"
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
+<main class="place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="mt-8">
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter max-w-screen-lg">
+      Your website built with the best frameworks
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
       Astroship is a starter template for startups, marketing websites & landing
@@ -34,19 +21,18 @@ import { Icon } from "astro-icon/components"
         target="_blank"
         class="flex gap-1 items-center justify-center"
         rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        <Icon class="text-white" name="bx:bxl-whatsapp" size={18} />
+        Get in touch
       </Link>
       <Link
         size="lg"
         style="outline"
         rel="noopener"
-        href="https://github.com/surjithctly/astroship"
+        href="https://github.com/douglasshinzato"
         class="flex gap-1 items-center justify-center"
         target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        <Icon class="text-black" name="bx:bxl-github" size={18} />
+        GitHub
       </Link>
     </div>
   </div>
