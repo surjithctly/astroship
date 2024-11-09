@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import logoSmall from '../../assets/logo_transparent.png';
 
 const menuitems = [
   {
@@ -38,10 +40,8 @@ const menuitems = [
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Innov</span><span
-            class="text-slate-500">Art</span
-          >
+        <a href="/" class="text-lg">
+          <Image src={logoSmall} alt="InnovArt Logo" class="h-28 w-auto object-contain" />
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
