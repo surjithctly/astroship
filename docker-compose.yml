@@ -1,0 +1,43 @@
+services:
+  # Development service with hot reload
+  nodejs:
+    build:
+      context: .
+      target: base
+      dockerfile: Dockerfile
+      cache_from:
+        - node:18-alpine
+      # BuildKit cache configuration
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    working_dir: /app
+  dev:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+      cache_from:
+        - node:18-alpine
+      # BuildKit cache configuration
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DOCKER_BUILDKIT=1
+    command: pnpm run dev --host 0.0.0.0
+    networks:
+      - app-network
+    env_file:
+      - .env
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  node_modules:
