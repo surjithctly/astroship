@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ${K8S_NAMESPACE}
+  annotations:
+    kubernetes.io/change-cause: "${SHA_SHORT}"
+  labels:
+    app: ${APP_NAME}
+  name: ${APP_NAME}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ${APP_NAME}
+    spec:
+      securityContext:
+        fsGroup: 33
+      containers:
+        - name: ${APP_NAME}
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            # limits:
+            #   cpu: "500m"
+            #   memory: "512Mi"
+          image: "${GCP_REGISTRY}/${GCLOUD_PROJECT}/${REPOSITORY}/${PACKAGE}:latest" #${SHA_SHORT}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4321
+              name: http
+          env:
+          - name: build
+            value: "${SHA_SHORT}"
+          - name: HOST
+            value: "0.0.0.0"
+          - name: PORT
+            value: "${TARGET_PORT}"
+          - name: ALLOWED_HOSTS
+            value: ${ALLOWED_HOSTS}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 80
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 80
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 5
+      volumes:
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-config
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ${K8S_NAMESPACE}
+  labels:
+    app: ${APP_NAME}
+  name: ${APP_NAME}
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: ${TARGET_PORT}
+  selector:
+    app: ${APP_NAME}
