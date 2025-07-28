@@ -1,0 +1,33 @@
+name: 'Auth GCP'
+description: 'Auth gcp and configure docker to push into GCP registry'
+inputs:
+  cluster_name:
+    required: true
+    description: "Cluster name"
+  location:
+    required: true
+    description: "Cluster location"
+  service_account_email:
+    required: true
+    description: "Service account to impersonate"
+  workload_identity_provider_id:
+    required: true
+    description: "Workload identity provider id"
+runs  :
+  using: "composite"
+  steps:
+      - name: Setting up Cloud SDK ⚙️
+        uses: google-github-actions/setup-gcloud@v1
+      - id: 'auth'
+        name: Authenticating to GCP 🔑
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ inputs.workload_identity_provider_id }}
+          service_account: ${{ inputs.service_account_email }}
+      - id: 'get-credentials'
+        name: Get GKE credentials  ☸️🐋
+        uses: 'google-github-actions/get-gke-credentials@v1'
+        with:
+          cluster_name: ${{ inputs.cluster_name }}
+          location: ${{ inputs.location }}
+          

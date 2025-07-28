@@ -1,0 +1,97 @@
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: ${K8S_NAMESPACE}
+  labels:
+    app: ${APP_NAME}
+apiVersion: v1
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
+    
+    http {
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+        
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log  /proc/self/fd/1  main;
+        error_log   /proc/self/fd/2;
+
+        sendfile        on;
+        tcp_nopush      on;
+        tcp_nodelay     on;
+        keepalive_timeout  65;
+        types_hash_max_size 2048;
+
+        # Enable gzip compression
+        gzip on;
+        gzip_vary on;
+        gzip_min_length 1024;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_types
+            text/plain
+            text/css
+            text/xml
+            text/javascript
+            application/javascript
+            application/xml+rss
+            application/json
+            image/svg+xml;
+
+        server {
+            listen 80;
+            server_name _;
+            
+            root /usr/share/nginx/html;
+            index index.html;
+
+            # Security headers
+            add_header X-Frame-Options "SAMEORIGIN" always;
+            add_header X-XSS-Protection "1; mode=block" always;
+            add_header X-Content-Type-Options "nosniff" always;
+            add_header Referrer-Policy "no-referrer-when-downgrade" always;
+            add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
+
+            # Handle Astro.js routing (SPA mode)
+            location / {
+                try_files $uri $uri/ $uri.html /index.html;
+            }
+
+            # Cache static assets
+            location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$ {
+                expires 1y;
+                add_header Cache-Control "public, immutable";
+                add_header Vary Accept-Encoding;
+            }
+
+            # Cache HTML files for shorter period
+            location ~* \.html$ {
+                expires 1h;
+                add_header Cache-Control "public";
+            }
+
+            # Security: deny access to hidden files
+            location ~ /\. {
+                deny all;
+            }
+
+            # Health check endpoint
+            location /health {
+                access_log off;
+                return 200 "healthy\n";
+                add_header Content-Type text/plain;
+            }
+
+            # ACME challenge for Let's Encrypt
+            location ^~ /.well-known/acme-challenge/ {
+                root /usr/share/nginx/html;
+                allow all;
+            }
+        }
+    }

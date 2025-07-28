@@ -1,0 +1,9 @@
+# GitHub Issue Templates
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/Genopsys-io/astroship/blob/main/README.md
+    about: Check the documentation for usage instructions
+  - name: Docker Guide
+    url: https://github.com/Genopsys-io/astroship/blob/main/DOCKER.md
+    about: Docker development and deployment guide

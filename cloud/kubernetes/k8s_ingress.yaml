@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: ${K8S_NAMESPACE}
+  labels:
+    app: ${APP_NAME}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.org/hsts-behind-proxy: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+  name: ${APP_NAME}
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ${APP_DOMAIN}
+    http:
+      paths:
+      - backend:
+          service:
+            name: ${APP_NAME}
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - ${APP_DOMAIN}
+    secretName: tls-certificate

@@ -2,6 +2,7 @@
 dist/
 .output/
 .astro
+.pnpm-store/
 
 # dependencies
 node_modules/
