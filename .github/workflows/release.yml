@@ -1,0 +1,143 @@
+# Release Workflow
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+env:
+  REGISTRY          : "europe-west1-docker.pkg.dev"
+  GCP_PROJECT       : "www-genopsys"
+  REPOSITORY        : "astroship"
+  APP_PROJECT_NAME  : "astroship"
+  GCP_SECRET        : "astroship-production"
+  CLOUD_PATH        : "./cloud/kubernetes"
+  PREFIX_TAG        : ""
+  IMAGE_NAME        : ${{ github.repository }}
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+
+    - name: Install dependencies
+      run: |
+        if [ -f pnpm-lock.yaml ]; then
+          pnpm install --frozen-lockfile
+        else
+          npm ci
+        fi
+
+    - name: Build application
+      run: |
+        if [ -f pnpm-lock.yaml ]; then
+          pnpm run build
+        else
+          npm run build
+        fi
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Extract version from tag
+      id: version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        labels: |
+          org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+          org.opencontainers.image.version=${{ steps.version.outputs.VERSION }}
+          org.opencontainers.image.revision=${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        platforms: linux/amd64,linux/arm64
+
+    - name: Generate changelog
+      id: changelog
+      run: |
+        if [ -f CHANGELOG.md ]; then
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          cat CHANGELOG.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        else
+          echo "CHANGELOG=No changelog available" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Release Archive
+      run: |
+        tar -czf astroship-${{ steps.version.outputs.VERSION }}.tar.gz \
+          --exclude='.git*' \
+          --exclude='node_modules' \
+          --exclude='dist' \
+          --exclude='.astro' \
+          .
+
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.version.outputs.VERSION }}
+        release_name: Astroship ${{ steps.version.outputs.VERSION }}
+        body: |
+          ## Astroship Release ${{ steps.version.outputs.VERSION }}
+
+          ### Docker Images
+          - `${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}`
+          - `${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest`
+
+          ### Changes
+          ${{ steps.changelog.outputs.CHANGELOG }}
+
+          ### Deployment
+          ```bash
+          # Pull and run the new version
+          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}
+          docker run -p 3000:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}
+          ```
+
+          ### Kubernetes Deployment
+          ```bash
+          # Update image in your deployment
+          kubectl set image deployment/app app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}
+          ```
+
+          **Full Changelog**: ${{ github.server_url }}/${{ github.repository }}/compare/${{ github.event.before }}...${{ steps.version.outputs.VERSION }}
+        draft: false
+        prerelease: false
+
+  deploy-production:
+    name: Deploy to Production
+    needs: release
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: production
+      image_tag: ${{ github.ref_name }}

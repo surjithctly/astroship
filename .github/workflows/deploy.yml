@@ -1,0 +1,48 @@
+# Deploy to Kubernetes Workflow
+name: Deploy to Kubernetes
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      namespace:
+        required: true
+        type: string
+      image_tag:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+    
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Apply Kubernetes file
+      shell: bash
+      working-directory: ${{ inputs.cloud-path }}
+      run: |
+        gcloud auth configure-docker ${{ inputs.gcp-registry }}
+        export $(gcloud secrets versions access latest --secret=${{ inputs.gcp-secret }} |grep -v "^#\|^$" | xargs)
+        for f in ./*.yaml ; do
+          if [[ $f == *"deployment.yaml" ]]; then
+            cat $f | envsubst | kubectl apply -f -
+          else
+            cat $f | kubectl apply -f -
+          fi
+        done
+      env:
+        GCP_CREDENTIALS: ${{ inputs.gcp-credentials }}
+        GCP_REGISTRY: ${{ inputs.gcp-registry }}
+        GCP_PROJECT: ${{ inputs.gcp-project }}
+        APP_PROJECT: ${{ inputs.app-project }}
+        SHA_SHORT : ${{ steps.get_sha_short.outputs.SHA_SHORT }}
+        TAG_NAME: ${{ steps.get_tag.outputs.TAG_NAME }}
+        REPOSITORY: ${{ inputs.repository }}
