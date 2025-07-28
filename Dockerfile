@@ -46,5 +46,5 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R astro:nodejs /app
 USER astro
 
-EXPOSE 3000
-CMD ["pnpm", "start"]
+EXPOSE 4321
+CMD ["pnpm", "run", "start", "--host", "0.0.0.0"]
