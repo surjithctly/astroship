@@ -8,7 +8,17 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://astroship.web3templates.com",
   integrations: [mdx(), sitemap(), icon()],
+  server: {
+    host: process.env.HOST || '0.0.0.0',
+    port: parseInt(process.env.PORT) || 4321
+  },
   vite: {
+    server: {
+      allowedHosts: process.env.ALLOWED_HOSTS?.split(',') || [
+        'app.knl.app',
+        'localhost'
+      ]
+    },
     plugins: [tailwindcss()],
   },
 });
