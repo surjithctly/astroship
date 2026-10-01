@@ -26,3 +26,13 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+/*
+  Tailwind CSS v4 defaults buttons to the UA cursor; restore v3's pointer.
+*/
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}

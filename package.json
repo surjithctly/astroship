@@ -1,8 +1,11 @@
 {
   "name": "astroship",
   "type": "module",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,20 +14,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.2.0",
-    "@astrojs/sitemap": "^3.2.1",
-    "@fontsource-variable/bricolage-grotesque": "^5.2.5",
-    "@fontsource-variable/inter": "^5.2.5",
-    "@iconify-json/bx": "^1.2.2",
-    "@iconify-json/simple-icons": "^1.2.28",
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@iconify-json/bx": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.98",
     "@iconify-json/uil": "^1.2.3",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.14",
-    "astro": "^5.5.2",
-    "astro-icon": "^1.1.5",
-    "astro-navbar": "^2.3.9",
-    "astro-seo": "^0.8.4",
-    "sharp": "^0.33.5",
-    "tailwindcss": "^4.0.14"
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "astro-icon": "^1.2.0",
+    "astro-navbar": "^2.4.0",
+    "astro-seo": "^1.2.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3"
   }
 }
