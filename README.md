@@ -55,6 +55,10 @@ Click here to deploy on Netlify:
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/surjithctly/astroship)
 
+Click here to deploy on Wasmer Edge. The import builds this repository's static `dist` output and does not create a copy in your GitHub account, so import your own fork to customize the site:
+
+[![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=surjithctly%2Fastroship)
+
 ## Preview
 
 ![image](https://user-images.githubusercontent.com/1884712/200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
